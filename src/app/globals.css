@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #020617; /* Slate 950 / brand-dark */
+  color: #F8FAFC;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+}
+
+/* Typography utilities */
+.font-cormorant { font-family: 'Cormorant Garamond', serif; }
+.font-syne      { font-family: 'Syne', sans-serif; }
+
+/* Text outline */
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+  color: transparent;
+}
+
+/* Scroll line animation */
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.3; transform: scaleY(0.8); }
+  50%      { opacity: 1;   transform: scaleY(1); }
+}
+.animate-scroll { animation: scrollPulse 2s ease-in-out infinite; }
+
+/* Orb drift */
+@keyframes orbDrift {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(30px,-20px) scale(1.05); }
+  66%     { transform: translate(-20px,30px) scale(0.95); }
+}
+.animate-orb  { animation: orbDrift 18s ease-in-out infinite; }
+.animate-orb2 { animation: orbDrift 18s ease-in-out infinite; animation-delay: -8s; animation-direction: reverse; }
+.animate-orb3 { animation: orbDrift 18s ease-in-out infinite; animation-delay: -4s; }
+
+/* Service card left bar */
+.svc-bar::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, #c9a55a, #1fcfbe);
+  transform: scaleY(0);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  transform-origin: bottom;
+}
+.svc-bar:hover::before { transform: scaleY(1); }
+
+/* Process step arrow */
+.step-arrow::after {
+  content: '→';
+  position: absolute; top: 50%; right: -1px; transform: translateY(-50%);
+  width: 24px; height: 24px; font-size: 0.7rem;
+  display: flex; align-items: center; justify-content: center;
+  background: #08090c; color: #8892a4; z-index: 1;
+}
+
+/* Futuristic Enhancements */
+.text-glow {
+  text-shadow: 0 0 20px rgba(123, 44, 191, 0.4), 0 0 40px rgba(123, 44, 191, 0.2);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 20px rgba(0, 245, 212, 0.4), 0 0 40px rgba(0, 245, 212, 0.2);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(123, 44, 191, 0.05), transparent);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes grid-flow {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 80px; }
+}
+
+.grid-flow {
+  animation: grid-flow 20s linear infinite;
+}
