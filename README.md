@@ -1,133 +1,74 @@
-# NEXO VIBE — Site Profissional
+# NexoVibe — Inteligência em Dados e Espaço 🌍📊🚀
 
-Stack: **Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · Resend**
+**Bridging AI and GIS for Strategic Impact.**
 
----
+A NexoVibe é uma plataforma estratégica dedicada a transformar dados complexos em soluções de alto impacto, com foco especializado em Inteligência Artificial (IA), Análise de Dados e Geotecnologias (SIG). 
 
-## 🚀 Iniciar em desenvolvimento
-
-```bash
-# 1. Instalar dependências
-npm install
-
-# 2. Copiar variáveis de ambiente
-cp .env.example .env.local
-# Edite .env.local e adicione a sua RESEND_API_KEY
-
-# 3. Iniciar servidor de desenvolvimento
-npm run dev
-# Abra http://localhost:3000
-```
+Este repositório contém a infraestrutura web da marca, desenvolvida com tecnologias de ponta para oferecer uma experiência "Dashboard-style" imersiva e profissional.
 
 ---
 
-## 📁 Estrutura do Projecto
-
-```
-src/
-├── app/
-│   ├── layout.tsx          # Layout raiz (SEO, fontes)
-│   ├── page.tsx            # Página inicial (/)
-│   ├── globals.css         # Estilos globais + tokens
-│   ├── servicos/
-│   │   └── page.tsx        # Página de serviços (/servicos)
-│   └── api/
-│       └── contact/
-│           └── route.ts    # API de contacto (email via Resend)
-│
-├── components/
-│   ├── ui/
-│   │   ├── Cursor.tsx      # Cursor personalizado animado
-│   │   ├── Navbar.tsx      # Navegação fixa com scroll effect
-│   │   ├── Footer.tsx      # Rodapé
-│   │   ├── Reveal.tsx      # Wrapper de animação (Framer Motion)
-│   │   ├── Icons.tsx       # Ícones SVG inline
-│   │   └── ContactForm.tsx # Formulário de contacto com API
-│   └── sections/
-│       ├── HeroSection.tsx     # Hero com orbs e grid
-│       ├── StatsBar.tsx        # Barra de estatísticas
-│       ├── ServicesSection.tsx # Lista de 6 serviços
-│       ├── ProcessSection.tsx  # Processo em 4 etapas
-│       ├── ToolsSection.tsx    # Stack tecnológico
-│       └── CTASection.tsx      # CTA + formulário de contacto
-│
-└── lib/
-    └── data.ts             # Dados: serviços, stats, tools, steps
-```
+## 🛠️ Tecnologias de Elite
+- **Framework**: [Next.js 14+](https://nextjs.org/) (App Router)
+- **UI/UX**: [React](https://reactjs.org/) + [Tailwind CSS](https://tailwindcss.com/)
+- **Animações**: [Framer Motion](https://www.framer.com/motion/)
+- **Tipografia**: Poppins & Inter (Modern Technical Aesthetics)
+- **E-mails**: [Resend](https://resend.com/)
+- **Base de Dados**: [Supabase](https://supabase.com/)
 
 ---
 
-## 📧 Configurar emails (Resend)
+## 🌟 Pilares Estratégicos
 
-1. Crie conta em [resend.com](https://resend.com) (gratuito até 3.000 emails/mês)
-2. Crie uma API Key no dashboard
-3. Adicione ao `.env.local`:
+### 1. Data Analytics & IA
+Implementação de modelos preditivos e dashboards inteligentes para análise de tendências e suporte à decisão organizacional.
+
+### 2. Geotecnologias (SIG)
+Análise espacial avançada para planeamento territorial, mapeamento de riscos (ex: Flood Risk Mapping Moçambique) e logística.
+
+### 3. Automação MEAL
+Digitalização e optimização de processos de Monitoria, Avaliação e Aprendizagem (MEAL) para o sector público e ONGs.
+
+---
+
+## 🚀 Como Iniciar
+
+1. **Clonar o Projecto:**
+   ```bash
+   git clone https://github.com/Jubilio/nexovibe.git
    ```
-   RESEND_API_KEY=re_sua_chave_aqui
+
+2. **Instalar Dependências:**
+   ```bash
+   npm install
    ```
-4. Verifique o seu domínio `nexovibe.co.mz` nas definições do Resend
+
+3. **Configurar Variáveis de Ambiente:**
+   Crie um ficheiro `.env.local` baseado no `.env.example`.
+
+4. **Correr em Desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-## 🌐 Deploy no Vercel (recomendado)
-
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-
-# Adicionar variáveis de ambiente no dashboard do Vercel:
-# Settings → Environment Variables → RESEND_API_KEY
-```
-
-Ou directamente em [vercel.com/new](https://vercel.com/new) — importe o repositório GitHub e o Vercel detecta Next.js automaticamente.
-
----
-
-## ➕ Adicionar novas páginas
-
-Para criar a página `/portfolio`:
-
-```bash
-mkdir src/app/portfolio
-# Criar src/app/portfolio/page.tsx
-```
-
-```tsx
-// src/app/portfolio/page.tsx
-import Navbar from '@/components/ui/Navbar'
-import Footer from '@/components/ui/Footer'
-
-export default function PortfolioPage() {
-  return (
-    <>
-      <Navbar active="/portfolio" />
-      <main>{/* conteúdo */}</main>
-      <Footer />
-    </>
-  )
-}
+## 🏗️ Estrutura do Projecto
+```text
+/src
+  /app          # Rotas e Páginas (Next.js App Router)
+  /components   # Componentes de UI e Secções Estratégicas
+  /lib          # Utilitários, Dados e Configurações
+/public         # Assets estáticos (Ícones, Imagens, Favicon SVG)
 ```
 
 ---
 
-## 🎨 Personalizar dados
-
-Edite `src/lib/data.ts` para actualizar serviços, estatísticas, ferramentas e passos do processo — sem tocar nos componentes.
-
----
-
-## 📦 Scripts disponíveis
-
-| Comando | Descrição |
-|---------|-----------|
-| `npm run dev` | Servidor de desenvolvimento |
-| `npm run build` | Build de produção |
-| `npm run start` | Iniciar em produção |
-| `npm run lint` | Verificar erros TypeScript/ESLint |
+## 📬 Contacto & Parcerias
+- **Website**: [nexovibe.co.mz](https://nexovibe.co.mz)
+- **LinkedIn**: [Jubílio Maússe](https://www.linkedin.com/in/jubilio-mausse/)
+- **GitHub**: [@Jubilio](https://github.com/Jubilio)
 
 ---
-
-© 2026 NEXO VIBE · Jubílio Maússe · Maputo, Moçambique
+*Developed with focus on Innovation, Precision, and Impact.*  
+**© 2026 NexoVibe Intelligence.**
