@@ -2,27 +2,44 @@
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/ui/Footer'
 import Reveal from '@/components/ui/Reveal'
+import Cursor from '@/components/ui/Cursor'
 import { motion } from 'framer-motion'
 
+const values = [
+  { title: 'Inovação orientada a impacto', desc: 'Soluções que resolvem problemas reais.' },
+  { title: 'Precisão e qualidade de dados', desc: 'A base para qualquer decisão inteligente.' },
+  { title: 'Ética e transparência', desc: 'Integridade em cada algoritmo e mapa.' },
+  { title: 'Eficiência e Automação', desc: 'Fazendo mais com menos erro humano.' },
+  { title: 'Sustentabilidade', desc: 'Foco no longo prazo e equilíbrio ambiental.' },
+]
+
 export default function AboutPage() {
-  const values = [
-    { title: 'Inovação orientada a impacto', desc: 'Soluções que resolvem problemas reais.' },
-    { title: 'Precisão e qualidade de dadas', desc: 'A base para qualquer decisão inteligente.' },
-    { title: 'Ética e transparência', desc: 'Integridade em cada algoritmo e mapa.' },
-    { title: 'Eficiência e Automação', desc: 'Fazendo mais com menos erro humano.' },
-    { title: 'Sustentabilidade', desc: 'Foco no longo prazo e equilíbrio ambiental.' },
-  ]
-
   return (
-    <main className="min-h-screen bg-brand-dark pt-32">
+    <>
+      <Cursor />
       <Navbar active="/sobre" />
+      <main className="relative min-h-screen bg-brand-dark pt-32 overflow-hidden">
+        
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 z-[1] pointer-events-none grid-flow"
+             style={{
+               backgroundImage: 'linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px)',
+               backgroundSize: '80px 80px',
+               maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%)',
+             }} />
+        <div className="scanline" />
+        <div className="animate-orb absolute w-[600px] h-[600px] rounded-full blur-[100px] pointer-events-none z-[1]"
+             style={{ background: 'radial-gradient(circle, rgba(123,44,191,.10) 0%, transparent 70%)', top: '-10%', left: '-10%' }} />
+        <div className="animate-orb2 absolute w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none z-[1]"
+             style={{ background: 'radial-gradient(circle, rgba(0,245,212,.08) 0%, transparent 70%)', top: '20%', right: '-10%' }} />
 
-      {/* Hero Section */}
+        <div className="relative z-[2]">
+          {/* Hero Section */}
       <section className="px-[6%] mb-24">
         <Reveal>
           <p className="text-[.68rem] font-bold tracking-[.25em] uppercase text-brand-green mb-4">Sobre a NexoVibe</p>
-          <h1 className="font-poppins text-[clamp(2.5rem,6vw,4.5rem)] font-bold text-white leading-tight mb-8">
-            Unindo <em className="italic text-brand-purple">Dados</em>,<br /> 
+          <h1 className="font-poppins text-[clamp(2.5rem,6vw,4.5rem)] font-bold text-white leading-tight mb-8 text-glow">
+            Unindo <em className="italic text-brand-purple text-glow-green">Dados</em>,<br /> 
             Espaço e IA.
           </h1>
         </Reveal>
@@ -87,7 +104,9 @@ export default function AboutPage() {
         </div>
       </section>
 
+        </div>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

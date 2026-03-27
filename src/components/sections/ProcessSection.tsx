@@ -18,15 +18,15 @@ export default function ProcessSection() {
           </h2>
         </Reveal>
 
-        <div className="grid border border-white/[.07]" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-white/[.07]">
           {steps.map((step, i) => (
             <Reveal key={step.num} delay={i * .1}>
-              <div className={`relative p-10 transition-colors duration-300 hover:bg-white/[.035]
-                ${i < steps.length - 1 ? 'border-r border-white/[.07]' : ''}`}>
+               <div className={`relative p-8 lg:p-10 transition-colors duration-300 hover:bg-white/[.035] border-b lg:border-b-0
+                ${i < steps.length - 1 ? 'lg:border-r border-white/[.07]' : ''}`}>
                 {/* Arrow connector */}
                 {i < steps.length - 1 && (
-                  <span className="absolute top-1/2 -right-px -translate-y-1/2 w-6 h-6 text-[.7rem]
-                    flex items-center justify-center bg-[#08090c] text-fog z-10">→</span>
+                  <span className="hidden lg:flex absolute top-1/2 -right-px -translate-y-1/2 w-6 h-6 text-[.7rem]
+                    items-center justify-center bg-[#08090c] text-fog z-10">→</span>
                 )}
                 <div className="font-poppins text-[4rem] font-bold leading-none text-brand-purple/10 mb-5">
                   {step.num}

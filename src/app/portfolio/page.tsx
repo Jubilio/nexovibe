@@ -3,15 +3,31 @@ import { motion } from 'framer-motion'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/ui/Footer'
 import Reveal from '@/components/ui/Reveal'
+import Cursor from '@/components/ui/Cursor'
 import { projects } from '@/lib/data'
 import Image from 'next/image'
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-brand-dark pt-32 pb-20">
+    <>
+      <Cursor />
       <Navbar active="/portfolio" />
+      <main className="relative min-h-screen bg-brand-dark pt-32 pb-20 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 z-[1] pointer-events-none grid-flow"
+             style={{
+               backgroundImage: 'linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px)',
+               backgroundSize: '80px 80px',
+               maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%)',
+             }} />
+        <div className="scanline" />
+        <div className="animate-orb absolute w-[600px] h-[600px] rounded-full blur-[100px] pointer-events-none z-[1]"
+             style={{ background: 'radial-gradient(circle, rgba(123,44,191,.10) 0%, transparent 70%)', top: '-10%', left: '-10%' }} />
+        <div className="animate-orb2 absolute w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none z-[1]"
+             style={{ background: 'radial-gradient(circle, rgba(0,245,212,.08) 0%, transparent 70%)', top: '20%', right: '-10%' }} />
 
-      {/* Hero Section */}
+        <div className="relative z-[2]">
+          {/* Hero Section */}
       <section className="px-[6%] mb-20">
         <Reveal>
           <p className="text-[.68rem] font-bold tracking-[.25em] uppercase text-brand-green mb-4">Portfólio Estratégico</p>
@@ -109,7 +125,9 @@ export default function PortfolioPage() {
         </Reveal>
       </section>
 
+        </div>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

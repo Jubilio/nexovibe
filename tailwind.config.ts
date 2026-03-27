@@ -7,6 +7,8 @@ const config: Config = {
       fontFamily: {
         cormorant: ['var(--font-cormorant)', 'serif'],
         syne: ['var(--font-syne)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
       },
       colors: {
         brand: {

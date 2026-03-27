@@ -6,11 +6,11 @@ import { services } from '@/lib/data'
 
 export default function ServicesSection() {
   return (
-    <section id="servicos" className="py-28 px-[6%] bg-brand-dark relative z-[2]">
-      <div className="grid gap-24 max-w-[1200px] mx-auto" style={{ gridTemplateColumns: '320px 1fr' }}>
+    <section id="servicos" className="py-20 lg:py-28 px-[6%] bg-brand-dark relative z-[2]">
+      <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16 lg:gap-24 max-w-[1200px] mx-auto">
 
         {/* Sticky header */}
-        <div className="sticky top-32 self-start">
+        <div className="lg:sticky lg:top-32 self-start">
           <Reveal>
             <p className="flex items-center gap-3 text-[.68rem] font-bold tracking-[.22em] uppercase text-brand-green mb-6">
               <span className="w-6 h-px bg-brand-green" />O que oferecemos
@@ -34,9 +34,8 @@ export default function ServicesSection() {
             <Reveal key={svc.num} delay={(i % 3) * .1}>
               <motion.div
                 whileHover={{ backgroundColor: 'rgba(123,44,191,0.03)' }}
-                className={`svc-bar relative bg-slate-900 border rounded-xl overflow-hidden p-10 grid gap-6 cursor-pointer transition-all duration-300
+                className={`svc-bar relative bg-slate-900 border rounded-xl overflow-hidden p-8 sm:p-10 flex flex-col-reverse sm:grid sm:grid-cols-[1fr_auto] gap-6 cursor-pointer transition-all duration-300
                   ${svc.featured ? 'border-brand-purple/40 bg-brand-purple/5 shadow-xl shadow-brand-purple/10' : 'border-slate-800 hover:border-brand-purple/30'}`}
-                style={{ gridTemplateColumns: '1fr auto' }}
               >
                 {/* Featured badge */}
                 {svc.featured && (
