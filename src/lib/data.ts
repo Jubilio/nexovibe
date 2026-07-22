@@ -56,7 +56,7 @@ export const projects = [
     category: 'IA & Automação',
     desc: 'Suplemento de Excel para traduzir formulários Kobo/XLSForm e intervalos seleccionados, preservando variáveis, fórmulas, placeholders, formatação e lógica do questionário.',
     link: 'https://github.com/Jubilio/xlsform-ai-translator',
-    image: 'https://image.thum.io/get/width/1366/crop/768/noanimate/https://xlsform-ai-translator.onrender.com/taskpane.html',
+    image: '/projects/xlsform-card.svg',
     tags: ['Office.js', 'XLSForm', 'LLMs'],
   },
   {
