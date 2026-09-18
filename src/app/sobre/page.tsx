@@ -1,112 +1,133 @@
-'use client'
-import Navbar from '@/components/ui/Navbar'
-import Footer from '@/components/ui/Footer'
-import Reveal from '@/components/ui/Reveal'
-import Cursor from '@/components/ui/Cursor'
-import { motion } from 'framer-motion'
-
-const values = [
-  { title: 'Inovação orientada a impacto', desc: 'Soluções que resolvem problemas reais.' },
-  { title: 'Precisão e qualidade de dados', desc: 'A base para qualquer decisão inteligente.' },
-  { title: 'Ética e transparência', desc: 'Integridade em cada algoritmo e mapa.' },
-  { title: 'Eficiência e Automação', desc: 'Fazendo mais com menos erro humano.' },
-  { title: 'Sustentabilidade', desc: 'Foco no longo prazo e equilíbrio ambiental.' },
-]
-
+import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import Navbar from "@/components/ui/Navbar";
+import Footer from "@/components/ui/Footer";
+import ToolsSection from "@/components/sections/ToolsSection";
+export const metadata: Metadata = {
+  title: "Sobre Jubílio Maússe",
+  description:
+    "Conheça o trabalho de Jubílio Maússe na ligação entre SIG, análise humanitária, recolha de dados e desenvolvimento de software.",
+};
 export default function AboutPage() {
   return (
     <>
-      <Cursor />
       <Navbar active="/sobre" />
-      <main className="relative min-h-screen bg-brand-dark pt-32 overflow-hidden">
-        
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 z-[1] pointer-events-none grid-flow"
-             style={{
-               backgroundImage: 'linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px)',
-               backgroundSize: '80px 80px',
-               maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%)',
-             }} />
-        <div className="scanline" />
-        <div className="animate-orb absolute w-[600px] h-[600px] rounded-full blur-[100px] pointer-events-none z-[1]"
-             style={{ background: 'radial-gradient(circle, rgba(123,44,191,.10) 0%, transparent 70%)', top: '-10%', left: '-10%' }} />
-        <div className="animate-orb2 absolute w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none z-[1]"
-             style={{ background: 'radial-gradient(circle, rgba(0,245,212,.08) 0%, transparent 70%)', top: '20%', right: '-10%' }} />
-
-        <div className="relative z-[2]">
-          {/* Hero Section */}
-      <section className="px-[6%] mb-24">
-        <Reveal>
-          <p className="text-[.68rem] font-bold tracking-[.25em] uppercase text-brand-green mb-4">Sobre a NexoVibe</p>
-          <h1 className="font-poppins text-[clamp(2.5rem,6vw,4.5rem)] font-bold text-white leading-tight mb-8 text-glow">
-            Unindo <em className="italic text-brand-purple text-glow-green">Dados</em>,<br /> 
-            Espaço e IA.
-          </h1>
-        </Reveal>
-
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          <Reveal delay={0.1}>
-            <p className="text-slate-400 text-lg leading-relaxed">
-              A **NexoVibe** nasceu da necessidade de transformar a complexidade tecnológica em clareza estratégica. 
-              Especializados no mercado de Moçambique, combinamos Inteligência Artificial, 
-              Análise de Dados e Geotecnologias (SIG) para criar soluções que impulsionam o impacto real.
+      <main id="main-content">
+        <section className="container interior-page about-intro">
+          <div>
+            <p className="eyebrow">SOBRE MIM / POR TRÁS DA NEXOVIBE</p>
+            <h1>
+              Olá, sou o<br />
+              <span>Jubílio Maússe.</span>
+            </h1>
+            <p className="about-lead">
+              Ligo a análise do território à construção de ferramentas úteis.
             </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="text-slate-400 text-lg leading-relaxed">
-              Focamos em apoiar organizações humanitárias, governamentais e empresariais na 
-              digitalização de processos e na tomada de decisões baseadas em evidências espaciais e preditivas.
+            <p>
+              O meu trabalho cruza sistemas de informação geográfica,
+              sensoriamento remoto, análise de dados e desenvolvimento de
+              software. Interessa-me transformar perguntas complexas em métodos
+              claros e soluções que as pessoas consigam utilizar.
             </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="px-[6%] py-24 bg-slate-900/30 border-y border-slate-800/50">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          <Reveal>
-            <div className="p-10 rounded-2xl bg-brand-dark border border-brand-purple/20">
-              <h2 className="text-brand-purple text-[.65rem] font-bold tracking-[.3em] uppercase mb-6">Nossa Missão</h2>
-              <p className="font-poppins text-2xl font-bold text-white leading-snug">
-                Capacitar organizações com soluções inteligentes baseadas em IA e SIG para tomada de decisão eficiente e sustentável.
-              </p>
+            <p>
+              Na NexoVibe reúno esse percurso: projectos de código aberto,
+              ferramentas para recolha e análise de dados e aplicações
+              orientadas a desafios reais em Moçambique.
+            </p>
+            <div className="button-row">
+              <Link href="/portfolio" className="button button-primary">
+                Conhecer os projectos ↗
+              </Link>
+              <a
+                href="https://www.linkedin.com/in/jubilio-mausse/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button button-quiet"
+              >
+                LinkedIn ↗
+              </a>
             </div>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="p-10 rounded-2xl bg-brand-dark border border-brand-green/20">
-              <h2 className="text-brand-green text-[.65rem] font-bold tracking-[.3em] uppercase mb-6">Nossa Visão</h2>
-              <p className="font-poppins text-2xl font-bold text-white leading-snug">
-                Ser a referência em África na integração de Inteligência Artificial, Data Analytics e Geotecnologias aplicadas ao impacto.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="px-[6%] py-32">
-        <Reveal>
-          <h2 className="font-poppins text-[clamp(2rem,4vw,3rem)] font-bold text-white mb-20">
-            Valores que nos <em className="italic text-brand-purple text-outline">guiam</em>
-          </h2>
-        </Reveal>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {values.map((v, i) => (
-            <Reveal key={v.title} delay={i * 0.1}>
-              <div className="group p-8 rounded-xl border border-slate-800 hover:border-brand-green/30 transition-all bg-slate-900/20">
-                <div className="w-10 h-px bg-brand-purple mb-6 group-hover:w-full transition-all duration-500" />
-                <h4 className="font-poppins text-lg font-bold text-white mb-3">{v.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
+          </div>
+          <aside className="profile-panel">
+            <span className="profile-kicker">JUBÍLIO FILIANO MAÚSSE</span>
+            <Image
+              className="profile-photo"
+              src="/jubilio.jpg"
+              width={460}
+              height={460}
+              sizes="(max-width: 640px) 100vw, 400px"
+              alt="Retrato de Jubílio Maússe"
+              priority
+            />
+            <h2>
+              Território. Dados.
+              <br />
+              Possibilidades.
+            </h2>
+            <dl>
+              <div>
+                <dt>Contexto</dt>
+                <dd>Moçambique</dd>
               </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-        </div>
+              <div>
+                <dt>Foco</dt>
+                <dd>GIS · Dados · Software</dd>
+              </div>
+              <div>
+                <dt>Partilha</dt>
+                <dd>Projectos de código aberto</dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+        <section className="container about-principles">
+          <p className="eyebrow">O QUE ORIENTA O MEU TRABALHO</p>
+          <div className="services-grid">
+            <article className="service-card">
+              <span className="step-number">01</span>
+              <h3>Contexto antes da ferramenta</h3>
+              <p>
+                Começar pela pergunta e pelas condições em que a solução será
+                utilizada.
+              </p>
+            </article>
+            <article className="service-card">
+              <span className="step-number">02</span>
+              <h3>Rigor em cada decisão</h3>
+              <p>
+                Documentar fontes, métodos e limitações para que o trabalho
+                possa ser compreendido e reproduzido.
+              </p>
+            </article>
+            <article className="service-card">
+              <span className="step-number">03</span>
+              <h3>Conhecimento que circula</h3>
+              <p>
+                Partilhar código, tutoriais e experiências para tornar as
+                ferramentas acessíveis a outras pessoas.
+              </p>
+            </article>
+          </div>
+        </section>
+        <ToolsSection />
+        <section className="container about-outro">
+          <h2>Também partilho o que aprendo.</h2>
+          <p>
+            Artigos, mapas e tutoriais sobre GIS, recursos hídricos, análise
+            humanitária e fluxos de dados.
+          </p>
+          <a
+            className="text-link"
+            href="https://jubilio.github.io/cv_articles"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ler artigos e tutoriais ↗
+          </a>
+        </section>
       </main>
       <Footer />
     </>
-  )
+  );
 }

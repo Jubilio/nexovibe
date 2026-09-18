@@ -1,84 +1,147 @@
-'use client'
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-
-type Status = 'idle' | 'loading' | 'success' | 'error'
-
+"use client";
+import { useRef, useState } from "react";
+type Status = "idle" | "loading" | "success" | "error";
 export default function ContactForm() {
-  const [status, setStatus] = useState<Status>('idle')
-  const [form, setForm] = useState({ name: '', email: '', service: '', message: '' })
-
-  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm(f => ({ ...f, [k]: e.target.value }))
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus('loading')
+  const [status, setStatus] = useState<Status>("idle");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    service: "",
+    message: "",
+  });
+  const pending = useRef(false);
+  const set =
+    (key: keyof typeof form) =>
+    (
+      event: React.ChangeEvent<
+        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      >,
+    ) =>
+      setForm((f) => ({ ...f, [key]: event.target.value }));
+  const submit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (pending.current) return;
+    pending.current = true;
+    setStatus("loading");
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
-      })
-      setStatus(res.ok ? 'success' : 'error')
-    } catch { setStatus('error') }
-  }
-
-  const inputCls = `w-full bg-white/[.03] border border-white/[.07] rounded-sm px-4 py-3 text-sm text-frost placeholder-fog/60
-    outline-none transition-all duration-200 focus:border-gold/50 focus:bg-white/[.05]`
-
+        signal: controller.signal,
+      });
+      const result = await res.json();
+      setStatus(res.ok && result.ok === true ? "success" : "error");
+    } catch {
+      setStatus("error");
+    } finally {
+      clearTimeout(timeout);
+      pending.current = false;
+    }
+  };
   return (
-    <div className="bg-[#131620] border border-white/[.07] rounded-sm p-8 md:p-10">
-      <p className="text-[.68rem] font-bold tracking-[.22em] uppercase text-teal mb-2">Contacto Directo</p>
-      <h3 className="font-cormorant text-3xl font-light text-white mb-6">
-        Vamos <em className="italic text-gold">conversar</em>
-      </h3>
-
-      <AnimatePresence mode="wait">
-        {status === 'success' ? (
-          <motion.div
-            key="success"
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-            className="text-center py-10"
+    <div className="contact-form-panel">
+      {status === "success" ? (
+        <div className="form-success" role="status">
+          <span aria-hidden="true">✓</span>
+          <h3>Mensagem enviada.</h3>
+          <p>Obrigado pelo contacto. Responderei assim que possível.</p>
+          <button
+            className="button button-secondary"
+            onClick={() => {
+              setForm({ name: "", email: "", service: "", message: "" });
+              setStatus("idle");
+            }}
           >
-            <div className="text-4xl mb-4">✓</div>
-            <p className="text-white font-semibold mb-2">Mensagem enviada!</p>
-            <p className="text-fog text-sm">Jubílio irá responder em breve.</p>
-          </motion.div>
-        ) : (
-          <motion.form key="form" onSubmit={submit} className="flex flex-col gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input required placeholder="Nome" value={form.name}    onChange={set('name')}    className={inputCls} />
-              <input required placeholder="Email" type="email" value={form.email}   onChange={set('email')}   className={inputCls} />
-            </div>
-            <select value={form.service} onChange={set('service')} className={inputCls}>
-              <option value="">Seleccione um serviço...</option>
-              <option>Desenvolvimento de Software</option>
-              <option>Prompt Engineering & IA</option>
-              <option>Data & GIS Analysis</option>
-              <option>SaaS & Produtos Digitais</option>
-              <option>Consultoria Estratégica Digital</option>
-              <option>Formação & Workshops</option>
-            </select>
-            <textarea
-              required rows={4} placeholder="Descreva o seu projecto..."
-              value={form.message} onChange={set('message')}
-              className={`${inputCls} resize-none`}
-            />
-            {status === 'error' && (
-              <p className="text-red-400 text-xs">Erro ao enviar. Tente por email: jubilio@nexovibe.co.mz</p>
-            )}
-            <button
-              type="submit" disabled={status === 'loading'}
-              className="mt-2 bg-gold text-ink font-bold text-[.75rem] tracking-[.15em] uppercase px-6 py-3.5 rounded-sm
-                transition-all duration-200 hover:bg-gold2 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(201,165,90,.35)]
-                disabled:opacity-50 disabled:cursor-not-allowed"
+            Enviar outra mensagem
+          </button>
+        </div>
+      ) : (
+        <form
+          onSubmit={submit}
+          aria-label="Formulário de contacto"
+          aria-busy={status === "loading"}
+        >
+          <div className="form-row">
+            <label htmlFor="contact-name">
+              O seu nome
+              <input
+                id="contact-name"
+                name="name"
+                autoComplete="name"
+                required
+                maxLength={120}
+                value={form.name}
+                onChange={set("name")}
+                placeholder="Como se chama?"
+              />
+            </label>
+            <label htmlFor="contact-email">
+              Email
+              <input
+                id="contact-email"
+                name="email"
+                autoComplete="email"
+                type="email"
+                required
+                maxLength={254}
+                value={form.email}
+                onChange={set("email")}
+                placeholder="nome@organizacao.com"
+              />
+            </label>
+          </div>
+          <label htmlFor="contact-service">
+            Área do projecto <span className="optional">(opcional)</span>
+            <select
+              id="contact-service"
+              name="service"
+              value={form.service}
+              onChange={set("service")}
             >
-              {status === 'loading' ? 'A enviar...' : 'Enviar Mensagem →'}
-            </button>
-          </motion.form>
-        )}
-      </AnimatePresence>
+              <option value="">Seleccione uma área</option>
+              <option>GIS & análise espacial</option>
+              <option>Dados & dashboards</option>
+              <option>Software & automação</option>
+              <option>IA & XLSForm</option>
+              <option>Formação & workshops</option>
+              <option>Outro desafio</option>
+            </select>
+          </label>
+          <label htmlFor="contact-message">
+            O que gostaria de construir?
+            <textarea
+              id="contact-message"
+              name="message"
+              required
+              maxLength={5000}
+              rows={4}
+              value={form.message}
+              onChange={set("message")}
+              placeholder="Conte-me um pouco sobre o seu projecto…"
+            />
+          </label>
+          {status === "error" && (
+            <p className="form-error" role="alert">
+              Não foi possível enviar. Tente novamente ou{" "}
+              <a href="mailto:jubilio@nexovibe.co.mz">contacte-me por email</a>.
+            </p>
+          )}
+          <button
+            className="button button-primary form-submit"
+            type="submit"
+            disabled={status === "loading"}
+          >
+            {status === "loading" ? "A enviar…" : "Enviar mensagem"}
+            <span aria-hidden="true">↗</span>
+          </button>
+          <p className="form-note">
+            Os seus dados serão utilizados apenas para responder ao contacto.
+          </p>
+        </form>
+      )}
     </div>
-  )
+  );
 }

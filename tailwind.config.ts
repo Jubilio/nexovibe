@@ -15,7 +15,7 @@ const config: Config = {
           blue:   '#0A192F', // Deep Navy (Trust)
           purple: '#7B2CBF', // AI/Innovation
           green:  '#00F5D4', // GIS/Sustain
-          dark:   '#020617', // Near Black background
+          dark:   '#0a0e11', // Near Black background
         },
         ink:   '#08090c',
         deep:  '#0e1018',
