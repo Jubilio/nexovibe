@@ -1,167 +1,180 @@
+export const categories = [
+  "Todos",
+  "GIS & Território",
+  "Dados & Investigação",
+  "Software & IA",
+] as const;
+export type Category = (typeof categories)[number];
+export type Project = {
+  id: string;
+  title: string;
+  category: Exclude<Category, "Todos">;
+  desc: string;
+  link: string;
+  tags: string[];
+  label: string;
+  mark: string;
+  accent: string;
+  featured?: boolean;
+};
+
+// Curated against the public repository READMEs on 18 September 2026.
+// Keep this snapshot explicit: no runtime dependency on GitHub or invented usage metrics.
+export const projects: Project[] = [
+  {
+    id: "simgeo",
+    title: "SimGeo",
+    category: "GIS & Território",
+    desc: "Cenários de cheias, ciclones e secas associados a dados de população, vulnerabilidade e infraestruturas para apoiar decisões no território.",
+    link: "https://github.com/Jubilio/simgeo",
+    tags: ["React", "Django", "PostGIS", "Earth Engine"],
+    label: "SISTEMA DE APOIO À DECISÃO",
+    mark: "SG",
+    accent: "mint",
+    featured: true,
+  },
+  {
+    id: "geoclick",
+    title: "GeoClick Capture",
+    category: "GIS & Território",
+    desc: "Verificação de localizações no QGIS: comparar fontes, guardar evidências e documentar cada decisão num registo auditável.",
+    link: "https://github.com/Jubilio/qgis-latlon",
+    tags: ["Python", "PyQGIS", "QGIS"],
+    label: "PLUGIN QGIS",
+    mark: "GC",
+    accent: "blue",
+    featured: true,
+  },
+  {
+    id: "xlsform-ai",
+    title: "XLSForm AI Translator",
+    category: "Software & IA",
+    desc: "Criação e tradução de questionários KoboToolbox dentro do Excel, com pré-visualização e preservação de variáveis, fórmulas e lógica.",
+    link: "https://github.com/Jubilio/xlsform-ai-translator",
+    tags: ["TypeScript", "Office.js", "XLSForm"],
+    label: "MICROSOFT EXCEL ADD-IN",
+    mark: "XL",
+    accent: "violet",
+    featured: true,
+  },
+  {
+    id: "gpx-converter",
+    title: "GPX Batch Converter",
+    category: "GIS & Território",
+    desc: "Conversão e união de ficheiros GPX em Shapefiles directamente no QGIS. Um fluxo de trabalho para transformar recolhas GPS em camadas prontas a analisar.",
+    link: "https://github.com/Jubilio/gpx-batch-converter",
+    tags: ["Python", "PyQGIS", "GPX"],
+    label: "AUTOMAÇÃO GEOGRÁFICA",
+    mark: "GPX",
+    accent: "mint",
+  },
+  {
+    id: "tls-watcher",
+    title: "TLS Cert Watcher",
+    category: "Software & IA",
+    desc: "Verificação individual ou em lote de certificados TLS, com detalhes de validade e exportação de resultados em CSV e JSON.",
+    link: "https://github.com/Jubilio/TLS-Cert-Watcher",
+    tags: ["React", "Node.js", "Express"],
+    label: "SEGURANÇA & MONITORIA",
+    mark: "TLS",
+    accent: "blue",
+  },
+  {
+    id: "mwanga",
+    title: "Mwanga",
+    category: "Software & IA",
+    desc: "Gestão financeira familiar com acompanhamento de receitas, despesas e poupanças, visualização de dados e uma assistente de IA.",
+    link: "https://github.com/Jubilio/mwanga",
+    tags: ["React", "Express", "SQLite", "PWA"],
+    label: "PRODUTO DIGITAL",
+    mark: "MW",
+    accent: "violet",
+  },
+  {
+    id: "vulnerability",
+    title: "Vulnerabilidade em Cabo Delgado",
+    category: "Dados & Investigação",
+    desc: "Projecto de análise em R que combina deslocamento e indicadores ambientais e socioeconómicos num índice territorial de vulnerabilidade.",
+    link: "https://github.com/Jubilio/cabo-delgado-vulnerability",
+    tags: ["R", "sf", "R Markdown"],
+    label: "ANÁLISE REPRODUTÍVEL",
+    mark: "CD",
+    accent: "mint",
+  },
+  {
+    id: "research",
+    title: "Investigação & conhecimento",
+    category: "Dados & Investigação",
+    desc: "Artigos, mapas e tutoriais sobre águas subterrâneas, sensoriamento remoto, análise humanitária e recolha de dados com KoboToolbox.",
+    link: "https://jubilio.github.io/cv_articles",
+    tags: ["GIS", "Remote Sensing", "MEAL"],
+    label: "PUBLICAÇÕES & TUTORIAIS",
+    mark: "RD",
+    accent: "blue",
+  },
+];
+
 export const services = [
   {
-    num: '01',
-    title: 'Data Analytics\n& Business Intelligence',
-    desc: 'Transformamos dados brutos em insights accionáveis através de dashboards avançados e análise estatística rigorosa para suporte à decisão.',
-    tags: ['Power BI', 'Python', 'SQL', 'ETL', 'Dashboards'],
-    featured: false,
-    icon: 'code',
+    num: "01",
+    title: "Inteligência geoespacial",
+    desc: "Cartografia, análise espacial e aplicações WebGIS para compreender o território e apoiar decisões.",
+    tags: ["QGIS", "ArcGIS", "Earth Engine", "PostGIS"],
+    icon: "map",
   },
   {
-    num: '02',
-    title: 'Sistemas de\nInteligência Artificial',
-    desc: 'Desenvolvimento de agentes inteligentes, modelos preditivos e integração de LLMs para automação e optimização de processos complexos.',
-    tags: ['Machine Learning', 'RAG', 'Prompt Engineering', 'LLMs'],
-    featured: true,
-    icon: 'ai',
+    num: "02",
+    title: "Dados para decisões",
+    desc: "Da recolha à interpretação: questionários, pipelines de análise e dashboards adaptados às perguntas de cada projecto.",
+    tags: ["Python", "R", "Power BI", "KoboToolbox"],
+    icon: "grid",
   },
   {
-    num: '03',
-    title: 'Geotecnologias\n& GIS (SIG)',
-    desc: 'Análise espacial de alta precisão, monitoramento remoto e cartografia interactiva para planeamento territorial e mitigação de riscos.',
-    tags: ['QGIS', 'ArcGIS', 'Remote Sensing', 'Spatial Analysis'],
-    featured: true,
-    icon: 'map',
+    num: "03",
+    title: "Software & automação",
+    desc: "Plugins, aplicações web e integrações de IA que simplificam tarefas repetitivas e tornam os processos mais consistentes.",
+    tags: ["TypeScript", "React", "Django", "Office.js"],
+    icon: "code",
   },
-  {
-    num: '04',
-    title: 'Monitoramento & Alerta\nSentinel System',
-    desc: 'Sistemas de vigilância de dados em tempo real para segurança, monitoramento ambiental e resposta humanitária rápida.',
-    tags: ['Real-time', 'Alerts', 'Monitoring', 'Surveillance'],
-    featured: false,
-    icon: 'grid',
-  },
-  {
-    num: '05',
-    title: 'Estratégia de Dados\nImpacto Humanitário',
-    desc: 'Consultoria técnica para ONGs e Governo em digitalização de MEAL e frameworks de dados para desenvolvimento sustentável.',
-    tags: ['MEAL', 'Humanitarian', 'Strategy', 'Auditoria'],
-    featured: false,
-    icon: 'info',
-  },
-  {
-    num: '06',
-    title: 'Capacitação Técnica\nEspecializada',
-    desc: 'Treinamento em ferramentas de ponta: Python para dados, GIS aplicado e IA Generativa para equipas de alta performance.',
-    tags: ['Formação', 'Workshops', 'Data Literacy'],
-    featured: false,
-    icon: 'book',
-  },
-]
-
-export const projects = [
-  {
-    id: 'xlsform-ai',
-    title: 'XLSForm AI Translator para Microsoft Excel',
-    category: 'IA & Automação',
-    desc: 'Suplemento de Excel para traduzir formulários Kobo/XLSForm e intervalos seleccionados, preservando variáveis, fórmulas, placeholders, formatação e lógica do questionário.',
-    link: 'https://github.com/Jubilio/xlsform-ai-translator',
-    image: '/projects/xlsform-card.svg',
-    tags: ['Office.js', 'XLSForm', 'LLMs'],
-  },
-  {
-    id: 'gpx-converter',
-    title: 'GPX Batch Converter para QGIS',
-    category: 'GIS & Automação',
-    desc: 'Ferramenta para conversão em lote de centenas de ficheiros GPX em Shapefile, com normalização de nomes, relatórios de execução, controlo de erros e compatibilidade preparada para QGIS 3 e 4.',
-    link: 'https://github.com/Jubilio/gpx-batch-converter',
-    image: 'data:image/webp;base64,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...==',
-    tags: ['QGIS', 'Python', 'GPX'],
-  },
-  {
-    id: 'groundwater-mueda',
-    title: 'Mapeamento do Potencial de Águas Subterrâneas — Mueda',
-    category: 'Investigação GIS & RS',
-    desc: 'Estudo científico que integra sensoriamento remoto, AHP em SIG e validação com fontes de água para identificar zonas com potencial de águas subterrâneas no norte de Moçambique.',
-    link: 'https://jubilio.github.io/cv_articles/groundwater-mueda',
-    image: 'https://image.thum.io/get/width/1366/crop/768/noanimate/https://jubilio.github.io/cv_articles/groundwater-mueda',
-    tags: ['AHP', 'Earth Engine', 'Groundwater'],
-  },
-  {
-    id: 'humanitarian-risk',
-    title: 'Análise de Risco Humanitário e Necessidades Agudas',
-    category: 'Humanitarian Data',
-    desc: 'Framework analítico para triangular segurança alimentar, WASH, saúde e condições de vida, apoiando a identificação de populações e áreas com maior risco de necessidades críticas.',
-    link: 'mailto:jubilio@nexovibe.co.mz?subject=Análise%20de%20Risco%20Humanitário',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Risk Analytics', 'MEAL', 'GIS'],
-  },
-  {
-    id: 'sentinel',
-    title: 'Sentinel — Intelligent Monitoring Platform',
-    category: 'AI & Security',
-    desc: 'Sistema avançado de monitoramento e autenticação segura, servindo como base para infraestruturas de alerta e acompanhamento em tempo real.',
-    link: 'https://sentinel-seven-rosy.vercel.app/',
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Auth', 'Real-time', 'Monitoring'],
-  },
-  {
-    id: 'discovery',
-    title: 'AI-Powered Content Discovery Platform',
-    category: 'IA & Data',
-    desc: 'Plataforma de gestão de conhecimento que utiliza classificação inteligente de dados para optimizar a descoberta e organização de informação digital.',
-    link: 'https://leitorlivros.netlify.app/',
-    image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Library', 'IA', 'Categorization'],
-  },
-  {
-    id: 'mwanga',
-    title: 'Smart Link Intelligence Dashboard',
-    category: 'Data Analytics',
-    desc: 'Ecossistema de gestão de links com analytics integrado para rastreamento de desempenho e centralização estratégica de activos digitais.',
-    link: 'https://mwanga-opal.vercel.app/',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Analytics', 'Management', 'Dashboard'],
-  },
-  {
-    id: 'waterwatch',
-    title: 'WaterWatch — WebGIS de Consumo de Água',
-    category: 'WebGIS',
-    desc: 'Aplicação WebGIS para exploração espacial do consumo de água, combinando visualização cartográfica interactiva e indicadores para análise territorial.',
-    link: 'https://github.com/Jubilio/WaterWatch',
-    image: 'https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Leaflet', 'WebGIS', 'Water'],
-  },
-]
-
-export const stats = [
-  { num: '5+', label: 'Anos de Experiência' },
-  { num: '25+', label: 'Soluções & Automações' },
-  { num: '15+', label: 'Projectos GIS & Dados' },
-  { num: '100%', label: 'Orientação a Impacto' },
-]
-
+];
 export const tools = [
-  'Python','R','QGIS','ArcGIS','JavaScript','TypeScript',
-  'Next.js','PostgreSQL','PostGIS','Supabase','Claude AI',
-  'OpenAI API','Power BI','Tableau','Pandas','Geopandas',
-  'Earth Engine','Docker','Git','Tailwind CSS','Office.js',
-  'KoboToolbox','XLSForm',
-]
-
+  "Python",
+  "R",
+  "QGIS",
+  "ArcGIS",
+  "Earth Engine",
+  "PostGIS",
+  "React",
+  "TypeScript",
+  "Django",
+  "Power BI",
+  "KoboToolbox",
+  "XLSForm",
+];
 export const steps = [
   {
-    num: '01',
-    title: 'Análise Dialéctica',
-    desc: 'Mergulho profundo nos seus problemas de dados para identificar as raízes da ineficiência estratégica.',
-    icon: 'chat',
+    num: "01",
+    title: "Compreender",
+    desc: "Definir o problema, as pessoas que vão usar a solução e os dados disponíveis.",
   },
   {
-    num: '02',
-    title: 'Arquitectura',
-    desc: 'Desenho de soluções que integram IA, Espaço e Dados de forma harmoniosa e escalável.',
-    icon: 'doc',
+    num: "02",
+    title: "Desenhar",
+    desc: "Escolher o método e construir um protótipo que permita testar a ideia.",
   },
   {
-    num: '03',
-    title: 'Deploy Inteligente',
-    desc: 'Implementação ágil com foco em segurança de dados e facilidade de decisão para os utilizadores.',
-    icon: 'pulse',
+    num: "03",
+    title: "Desenvolver",
+    desc: "Implementar, testar e documentar a solução com atenção à qualidade dos dados.",
   },
   {
-    num: '04',
-    title: 'Impacto & Escala',
-    desc: 'Acompanhamento contínuo para garantir que a solução evolui com os desafios do mercado moçambicano.',
-    icon: 'check',
+    num: "04",
+    title: "Acompanhar",
+    desc: "Recolher feedback e melhorar a ferramenta com base na utilização real.",
   },
-]
+];
+export const stats = [
+  { num: "GIS", label: "Compreender o território" },
+  { num: "DATA", label: "Transformar informação" },
+  { num: "CODE", label: "Construir ferramentas" },
+];

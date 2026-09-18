@@ -31,3 +31,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated Office add-in icons (predev / prebuild)
+/public/xlsform-translator/assets/

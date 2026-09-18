@@ -1,55 +1,78 @@
-'use client'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+"use client";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
-  { href: '/',          label: 'Início' },
-  { href: '/portfolio', label: 'Portfólio' },
-  { href: '/sobre',     label: 'Sobre' },
-]
-
+  { href: "/", label: "Início" },
+  { href: "/portfolio", label: "Projectos" },
+  { href: "/sobre", label: "A NexoVibe" },
+];
 export default function Navbar({ active }: { active?: string }) {
-  const [scrolled, setScrolled] = useState(false)
-
+  const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+    if (!open) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [open]);
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[6%] transition-all duration-400 ${
-      scrolled
-        ? 'py-3.5 bg-brand-dark/90 backdrop-blur-xl border-b border-slate-800'
-        : 'py-5 bg-transparent border-b border-transparent'
-    }`}>
-      <Link href="/" className="font-poppins text-xl font-bold tracking-[.1em] text-white no-underline flex items-center gap-2">
-        <span className="w-8 h-8 rounded bg-gradient-to-br from-brand-purple to-brand-green flex items-center justify-center text-white text-xs">NV</span>
-        NexoVibe
-      </Link>
-
-      <ul className="hidden md:flex gap-10 list-none">
-        {links.map(l => (
-          <li key={l.href}>
+    <header className="site-header">
+      <a href="#main-content" className="skip-link">
+        Saltar para o conteúdo
+      </a>
+      <nav className="container nav-inner" aria-label="Navegação principal">
+        <Link href="/" className="wordmark" aria-label="NexoVibe — Início">
+          <span className="brand-symbol" aria-hidden="true">
+            N<span>↗</span>
+          </span>
+          NexoVibe<span className="wordmark-dot">.</span>
+        </Link>
+        <div className="desktop-nav">
+          {links.map((l) => (
             <Link
+              key={l.href}
               href={l.href}
-              className={`text-[0.7rem] font-bold tracking-widest uppercase no-underline transition-colors duration-200 relative group
-                ${active === l.href ? 'text-brand-green' : 'text-slate-400 hover:text-white'}`}
+              aria-current={active === l.href ? "page" : undefined}
             >
               {l.label}
-              <span className={`absolute -bottom-1 left-0 h-px bg-brand-green transition-all duration-300
-                ${active === l.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
             </Link>
-          </li>
-        ))}
-      </ul>
-
-      <a
-        href="mailto:jubilio@nexovibe.co.mz"
-        className="text-[0.65rem] font-bold tracking-widest uppercase no-underline text-white bg-brand-purple px-6 py-2.5 rounded-lg transition-all hover:bg-opacity-80 hover:-translate-y-px shadow-lg shadow-brand-purple/20"
-      >
-        Projecto? →
-      </a>
-    </nav>
-  )
+          ))}
+        </div>
+        <a className="nav-contact" href="/#contacto">
+          Vamos conversar <span aria-hidden="true">↗</span>
+        </a>
+        <button
+          ref={menuButton}
+          className="menu-toggle"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+        >
+          <span aria-hidden="true">{open ? "×" : "☰"}</span>
+        </button>
+        <div id="mobile-navigation" className="mobile-nav" hidden={!open}>
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              aria-current={active === l.href ? "page" : undefined}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <a href="/#contacto" onClick={() => setOpen(false)}>
+            Vamos conversar ↗
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
 }

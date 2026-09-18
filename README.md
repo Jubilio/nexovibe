@@ -1,74 +1,48 @@
-# NexoVibe — Inteligência em Dados e Espaço 🌍📊🚀
+# NexoVibe — Inteligência em Dados, GIS & Software
 
-**Bridging AI and GIS for Strategic Impact.**
+Site institucional e portfólio de soluções da NexoVibe: inteligência geoespacial, análise de dados e desenvolvimento de software.
 
-A NexoVibe é uma plataforma estratégica dedicada a transformar dados complexos em soluções de alto impacto, com foco especializado em Inteligência Artificial (IA), Análise de Dados e Geotecnologias (SIG). 
+## Stack
 
-Este repositório contém a infraestrutura web da marca, desenvolvida com tecnologias de ponta para oferecer uma experiência "Dashboard-style" imersiva e profissional.
+Next.js 14 (App Router), React 18, TypeScript e Tailwind CSS. O formulário de contacto utiliza a API Resend. O portfólio não necessita de base de dados nem de pedidos à API GitHub durante a navegação.
 
----
+## Executar
 
-## 🛠️ Tecnologias de Elite
-- **Framework**: [Next.js 14+](https://nextjs.org/) (App Router)
-- **UI/UX**: [React](https://reactjs.org/) + [Tailwind CSS](https://tailwindcss.com/)
-- **Animações**: [Framer Motion](https://www.framer.com/motion/)
-- **Tipografia**: Poppins & Inter (Modern Technical Aesthetics)
-- **E-mails**: [Resend](https://resend.com/)
-- **Base de Dados**: [Supabase](https://supabase.com/)
-
----
-
-## 🌟 Pilares Estratégicos
-
-### 1. Data Analytics & IA
-Implementação de modelos preditivos e dashboards inteligentes para análise de tendências e suporte à decisão organizacional.
-
-### 2. Geotecnologias (SIG)
-Análise espacial avançada para planeamento territorial, mapeamento de riscos (ex: Flood Risk Mapping Moçambique) e logística.
-
-### 3. Automação MEAL
-Digitalização e optimização de processos de Monitoria, Avaliação e Aprendizagem (MEAL) para o sector público e ONGs.
-
----
-
-## 🚀 Como Iniciar
-
-1. **Clonar o Projecto:**
-   ```bash
-   git clone https://github.com/Jubilio/nexovibe.git
-   ```
-
-2. **Instalar Dependências:**
-   ```bash
-   npm install
-   ```
-
-3. **Configurar Variáveis de Ambiente:**
-   Crie um ficheiro `.env.local` baseado no `.env.example`.
-
-4. **Correr em Desenvolvimento:**
-   ```bash
-   npm run dev
-   ```
-
----
-
-## 🏗️ Estrutura do Projecto
-```text
-/src
-  /app          # Rotas e Páginas (Next.js App Router)
-  /components   # Componentes de UI e Secções Estratégicas
-  /lib          # Utilitários, Dados e Configurações
-/public         # Assets estáticos (Ícones, Imagens, Favicon SVG)
+```sh
+npm ci
+npm run dev
 ```
 
----
+```sh
+npx tsc --noEmit
+npm run build
+npm start
+```
 
-## 📬 Contacto & Parcerias
-- **Website**: [nexovibe.co.mz](https://nexovibe.co.mz)
-- **LinkedIn**: [Jubílio Maússe](https://www.linkedin.com/in/jubilio-mausse/)
-- **GitHub**: [@Jubilio](https://github.com/Jubilio)
+`predev` e `prebuild` geram os ícones do XLSForm AI Translator a partir de `scripts/generate-xlsform-icons.mjs`. Os ficheiros gerados não precisam de ser versionados.
 
----
-*Developed with focus on Innovation, Precision, and Impact.*  
-**© 2026 NexoVibe Intelligence.**
+## Contacto
+
+Configure `RESEND_API_KEY` no ambiente de alojamento e verifique o domínio `nexovibe.co.mz` no Resend para permitir o remetente `noreply@nexovibe.co.mz`. Para desenvolvimento local, pode definir a variável em `.env.local` (não versionado).
+
+Sem esta configuração, o endpoint devolve 503 e a interface disponibiliza o email directo. Só é apresentado sucesso quando o fornecedor aceita o envio. As mensagens dos visitantes não são registadas no console.
+
+## Actualizar o conteúdo
+
+- `src/lib/data.ts`: projectos, categorias, áreas de actuação e ferramentas.
+- `featured: true`: inclui um projecto na selecção da página inicial.
+- `src/app/globals.css`: cores, tipografia, layouts e comportamento responsivo.
+- `src/app/sobre/page.tsx`: apresentação da marca, princípios e referência discreta ao fundador.
+
+As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 2026. Os painéis dos projectos são identificadores tipográficos, não capturas das aplicações. Consulte [as notas da reformulação](docs-redesign.md).
+
+## Rotas
+
+- `/` — apresentação institucional, projectos em destaque, áreas de actuação e contacto.
+- `/portfolio` — catálogo de projectos com filtros por área.
+- `/sobre` — marca e princípios de trabalho.
+- `/xlsform-translator/privacy`, `/terms`, `/support` e `/user-guide` — páginas existentes do suplemento, sob o prefixo `/xlsform-translator`.
+
+## Links
+
+[Website](https://nexovibe.co.mz) · [GitHub](https://github.com/Jubilio) · [LinkedIn](https://www.linkedin.com/in/jubilio-mausse/) · [Artigos e tutoriais](https://jubilio.github.io/cv_articles)
