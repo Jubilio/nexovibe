@@ -1,13 +1,12 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ToolsSection from "@/components/sections/ToolsSection";
 export const metadata: Metadata = {
-  title: "Sobre Jubílio Maússe",
+  title: "Sobre a NexoVibe",
   description:
-    "Conheça o trabalho de Jubílio Maússe na ligação entre SIG, análise humanitária, recolha de dados e desenvolvimento de software.",
+    "Conheça a NexoVibe: soluções de análise de dados, inteligência geoespacial e software orientadas aos desafios das organizações.",
 };
 export default function AboutPage() {
   return (
@@ -16,106 +15,100 @@ export default function AboutPage() {
       <main id="main-content">
         <section className="container interior-page about-intro">
           <div>
-            <p className="eyebrow">SOBRE MIM / POR TRÁS DA NEXOVIBE</p>
+            <p className="eyebrow">A NEXOVIBE / TECNOLOGIA COM PROPÓSITO</p>
             <h1>
-              Olá, sou o<br />
-              <span>Jubílio Maússe.</span>
+              Tecnologia que
+              <br />
+              <span>liga as peças.</span>
             </h1>
             <p className="about-lead">
-              Ligo a análise do território à construção de ferramentas úteis.
+              Dados, território e software ao serviço das organizações.
             </p>
             <p>
-              O meu trabalho cruza sistemas de informação geográfica,
-              sensoriamento remoto, análise de dados e desenvolvimento de
-              software. Interessa-me transformar perguntas complexas em métodos
-              claros e soluções que as pessoas consigam utilizar.
+              A NexoVibe é uma marca de soluções tecnológicas que integra
+              sistemas de informação geográfica, análise de dados e
+              desenvolvimento de software. O seu foco é transformar informação
+              complexa em ferramentas úteis para decisões e operações.
             </p>
             <p>
-              Na NexoVibe reúno esse percurso: projectos de código aberto,
-              ferramentas para recolha e análise de dados e aplicações
-              orientadas a desafios reais em Moçambique.
+              Com origem em Moçambique, a marca desenvolve aplicações, plugins e
+              fluxos de automação adaptados ao contexto de cada projecto — da
+              recolha de dados à análise e à apresentação de resultados.
             </p>
             <div className="button-row">
               <Link href="/portfolio" className="button button-primary">
                 Conhecer os projectos ↗
               </Link>
-              <a
-                href="https://www.linkedin.com/in/jubilio-mausse/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button button-quiet"
-              >
-                LinkedIn ↗
-              </a>
+              <Link href="/#contacto" className="button button-quiet">
+                Falar sobre uma solução ↗
+              </Link>
             </div>
           </div>
-          <aside className="profile-panel">
-            <span className="profile-kicker">JUBÍLIO FILIANO MAÚSSE</span>
-            <Image
-              className="profile-photo"
-              src="/jubilio.jpg"
-              width={460}
-              height={460}
-              sizes="(max-width: 640px) 100vw, 400px"
-              alt="Retrato de Jubílio Maússe"
-              priority
-            />
+          <aside
+            className="brand-panel"
+            aria-label="Áreas de actuação da NexoVibe"
+          >
+            <span className="brand-kicker">
+              NEXOVIBE / DADOS · ESPAÇO · CÓDIGO
+            </span>
+            <div className="brand-monogram" aria-hidden="true">
+              N<span>↗</span>
+            </div>
             <h2>
-              Território. Dados.
-              <br />
-              Possibilidades.
+              Da informação
+              <br />à aplicação.
             </h2>
             <dl>
               <div>
-                <dt>Contexto</dt>
-                <dd>Moçambique</dd>
+                <dt>Inteligência</dt>
+                <dd>Análise de dados & GIS</dd>
               </div>
               <div>
-                <dt>Foco</dt>
-                <dd>GIS · Dados · Software</dd>
+                <dt>Desenvolvimento</dt>
+                <dd>Software & automação</dd>
               </div>
               <div>
-                <dt>Partilha</dt>
-                <dd>Projectos de código aberto</dd>
+                <dt>Abordagem</dt>
+                <dd>Soluções à medida</dd>
               </div>
             </dl>
           </aside>
         </section>
         <section className="container about-principles">
-          <p className="eyebrow">O QUE ORIENTA O MEU TRABALHO</p>
+          <p className="eyebrow">OS PRINCÍPIOS DA NEXOVIBE</p>
           <div className="services-grid">
             <article className="service-card">
               <span className="step-number">01</span>
               <h3>Contexto antes da ferramenta</h3>
               <p>
-                Começar pela pergunta e pelas condições em que a solução será
-                utilizada.
+                Cada solução começa pela compreensão do desafio, dos dados
+                disponíveis e das condições em que será utilizada.
               </p>
             </article>
             <article className="service-card">
               <span className="step-number">02</span>
               <h3>Rigor em cada decisão</h3>
               <p>
-                Documentar fontes, métodos e limitações para que o trabalho
-                possa ser compreendido e reproduzido.
+                Fontes, métodos e limitações documentados para tornar os
+                resultados compreensíveis e os processos reproduzíveis.
               </p>
             </article>
             <article className="service-card">
               <span className="step-number">03</span>
               <h3>Conhecimento que circula</h3>
               <p>
-                Partilhar código, tutoriais e experiências para tornar as
-                ferramentas acessíveis a outras pessoas.
+                Código, tutoriais e documentação que facilitam a utilização, a
+                manutenção e a evolução das ferramentas.
               </p>
             </article>
           </div>
         </section>
         <ToolsSection />
         <section className="container about-outro">
-          <h2>Também partilho o que aprendo.</h2>
+          <h2>Conhecimento aplicado e partilhado.</h2>
           <p>
-            Artigos, mapas e tutoriais sobre GIS, recursos hídricos, análise
-            humanitária e fluxos de dados.
+            Artigos, mapas e tutoriais que dão contexto ao trabalho em GIS,
+            recursos hídricos, análise humanitária e fluxos de dados.
           </p>
           <a
             className="text-link"
@@ -123,8 +116,18 @@ export default function AboutPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Ler artigos e tutoriais ↗
+            Explorar publicações técnicas ↗
           </a>
+          <p id="fundador" className="founder-note">
+            Fundador e responsável técnico: Jubílio Maússe.{" "}
+            <a
+              href="https://www.linkedin.com/in/jubilio-mausse/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Perfil profissional ↗
+            </a>
+          </p>
         </section>
       </main>
       <Footer />

@@ -2,11 +2,11 @@
 
 ## Content
 
-The site presents Jubílio Maússe's work under the NexoVibe brand. Project descriptions were checked against the public repository READMEs on 18 September 2026. Edit `src/lib/data.ts` to maintain the curated catalogue, categories and home-page selection (`featured: true`). No public GitHub API request is needed at page-load time.
+The site presents NexoVibe as a technology solutions brand. The public presentation focuses on services and projects; the founder is identified discreetly at the foot of the About page, without portraits or claims about team size. Project descriptions were checked against the public repository READMEs on 18 September 2026. Edit `src/lib/data.ts` to maintain the curated catalogue, categories and home-page selection (`featured: true`). No public GitHub API request is needed at page-load time.
 
 Selected repositories: SimGeo, GeoClick Capture (`qgis-latlon`), GPX Batch Converter, XLSForm AI Translator, TLS Cert Watcher, Mwanga, Cabo Delgado Vulnerability and `cv_articles`. Mwanga's description now reflects its financial-management focus. The empty WaterWatch repository and unverified numerical claims are not presented as evidence of delivered work.
 
-The profile photo is the public GitHub avatar of `Jubilio`, copied locally on 18 September 2026. Project cover panels are typographic identifiers, not product screenshots. Existing XLSForm documentation, legal URLs and generated add-in icons are retained.
+Personal portraits have been removed from the site. Project cover panels are typographic identifiers, not product screenshots. Existing XLSForm documentation, legal URLs and generated add-in icons are retained.
 
 ## Contact
 

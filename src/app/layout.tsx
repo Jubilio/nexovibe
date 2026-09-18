@@ -11,11 +11,11 @@ const inter = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jubílio Maússe — GIS, Dados & Software | NexoVibe",
+    default: "NexoVibe — Inteligência em Dados, GIS & Software",
     template: "%s | NexoVibe",
   },
   description:
-    "Portfólio de Jubílio Maússe: inteligência geoespacial, análise de dados e desenvolvimento de software. Conheça os projectos, ferramentas e investigações da NexoVibe.",
+    "A NexoVibe desenvolve soluções de inteligência geoespacial, análise de dados e software para apoiar decisões e simplificar processos nas organizações.",
   keywords: [
     "IA",
     "GIS",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     "Moçambique",
     "NexoVibe",
     "Moçambique Tech",
-    "Jubílio Maússe",
+    "Soluções tecnológicas",
   ],
-  authors: [{ name: "NexoVibe" }, { name: "Jubílio Maússe" }],
+  authors: [{ name: "NexoVibe" }],
   openGraph: {
-    title: "Jubílio Maússe — GIS, Dados & Software | NexoVibe",
+    title: "NexoVibe — Inteligência em Dados, GIS & Software",
     description:
-      "Portfólio de Jubílio Maússe: inteligência geoespacial, análise de dados e desenvolvimento de software. Conheça os projectos, ferramentas e investigações da NexoVibe.",
+      "A NexoVibe desenvolve soluções de inteligência geoespacial, análise de dados e software para apoiar decisões e simplificar processos nas organizações.",
     url: "https://nexovibe.co.mz",
     siteName: "NexoVibe",
     locale: "pt_MZ",

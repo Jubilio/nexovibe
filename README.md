@@ -1,6 +1,6 @@
-# NexoVibe — Jubílio Maússe
+# NexoVibe — Inteligência em Dados, GIS & Software
 
-Portfólio de inteligência geoespacial, análise de dados e desenvolvimento de software, com projectos e publicações de Jubílio Maússe.
+Site institucional e portfólio de soluções da NexoVibe: inteligência geoespacial, análise de dados e desenvolvimento de software.
 
 ## Stack
 
@@ -32,16 +32,15 @@ Sem esta configuração, o endpoint devolve 503 e a interface disponibiliza o em
 - `src/lib/data.ts`: projectos, categorias, áreas de actuação e ferramentas.
 - `featured: true`: inclui um projecto na selecção da página inicial.
 - `src/app/globals.css`: cores, tipografia, layouts e comportamento responsivo.
-- `src/app/sobre/page.tsx`: apresentação pessoal.
-- `public/jubilio.jpg`: retrato do perfil público de GitHub de Jubilio.
+- `src/app/sobre/page.tsx`: apresentação da marca, princípios e referência discreta ao fundador.
 
 As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 2026. Os painéis dos projectos são identificadores tipográficos, não capturas das aplicações. Consulte [as notas da reformulação](docs-redesign.md).
 
 ## Rotas
 
-- `/` — apresentação, projectos em destaque, áreas de actuação e contacto.
+- `/` — apresentação institucional, projectos em destaque, áreas de actuação e contacto.
 - `/portfolio` — catálogo de projectos com filtros por área.
-- `/sobre` — percurso e princípios de trabalho.
+- `/sobre` — marca e princípios de trabalho.
 - `/xlsform-translator/privacy`, `/terms`, `/support` e `/user-guide` — páginas existentes do suplemento, sob o prefixo `/xlsform-translator`.
 
 ## Links

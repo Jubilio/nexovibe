@@ -268,36 +268,6 @@ p {
   color: var(--text);
   background: transparent;
 }
-.hero-signature {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-top: 40px;
-}
-.signature-mark {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #19232a;
-  border: 1px solid #3b4d52;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  color: #c4ddd6;
-}
-.hero-signature strong,
-.hero-signature div > span {
-  display: block;
-  font-size: 12px;
-  line-height: 1.8;
-}
-.hero-signature strong {
-  font-weight: 500;
-  color: #c1cbce;
-}
-.hero-signature div > span {
-  color: #8999a1;
-}
 .orbital-panel {
   position: relative;
   aspect-ratio: 1 / 1.12;
@@ -892,18 +862,18 @@ h2 {
   line-height: 1.5;
   margin-top: 30px !important;
 }
-.profile-panel {
+.brand-panel {
   border: 1px solid #304340;
   border-radius: 9px;
   padding: 34px;
   background: radial-gradient(ellipse at 90% 5%, #1b4139, #111a1e 65%);
 }
-.profile-kicker {
+.brand-kicker {
   font: 11px monospace;
   letter-spacing: 0.12em;
   color: #a5beb5;
 }
-.profile-monogram {
+.brand-monogram {
   font-size: 100px;
   letter-spacing: -0.08em;
   color: #8be6c8;
@@ -912,17 +882,17 @@ h2 {
   justify-content: center;
   align-items: start;
 }
-.profile-monogram > span {
+.brand-monogram > span {
   font-size: 40px;
 }
-.profile-panel h2 {
+.brand-panel h2 {
   font-size: 32px;
 }
-.profile-panel dl {
+.brand-panel dl {
   margin-top: 25px;
   font-size: 12px;
 }
-.profile-panel dl > div {
+.brand-panel dl > div {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -930,10 +900,10 @@ h2 {
   padding: 16px 0;
   border-top: 1px solid #ffffff15;
 }
-.profile-panel dt {
+.brand-panel dt {
   color: #9baeb0;
 }
-.profile-panel dd {
+.brand-panel dd {
   color: #d2dfdd;
   margin: 0;
 }
@@ -1019,9 +989,6 @@ h2 {
   .hero-description {
     font-size: 15px;
   }
-  .hero-signature {
-    margin-top: 25px;
-  }
   .orbit-label {
     padding: 8px;
     font-size: 12px;
@@ -1077,7 +1044,7 @@ h2 {
   .about-intro {
     grid-template-columns: 1fr;
   }
-  .profile-panel {
+  .brand-panel {
     max-width: 500px;
   }
   .section-heading {
@@ -1146,9 +1113,6 @@ h2 {
   }
   .hero .button {
     font-size: 14px;
-  }
-  .hero-signature {
-    margin-top: 26px;
   }
   .orbital-panel {
     margin: 30px auto -10px;
@@ -1331,7 +1295,7 @@ h2 {
   .about-outro {
     padding-bottom: 65px;
   }
-  .profile-panel {
+  .brand-panel {
     padding: 25px;
   }
 }
@@ -1351,18 +1315,26 @@ h2 {
   }
 }
 
-.signature-photo {
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid #527166;
+.hero-capabilities {
+  margin-top: 36px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: #a0b5b6;
+  font-size: 13px;
 }
-.profile-photo {
-  width: 100%;
-  height: auto;
-  max-height: 310px;
-  object-fit: cover;
-  object-position: center 35%;
-  border-radius: 5px;
-  margin: 24px 0;
-  filter: saturate(0.65);
+.hero-capabilities span {
+  color: #49655d;
+}
+.about-outro .founder-note {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--muted);
+}
+.founder-note a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }

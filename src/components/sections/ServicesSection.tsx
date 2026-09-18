@@ -14,8 +14,8 @@ export default function ServicesSection() {
             </h2>
           </div>
           <p className="section-description">
-            Combino conhecimento do território com análise e desenvolvimento
-            para responder a desafios concretos.
+            A NexoVibe combina conhecimento do território com análise e
+            desenvolvimento para responder a desafios concretos.
           </p>
         </div>
         <div className="services-grid">

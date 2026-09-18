@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const links = [
   { href: "/", label: "Início" },
   { href: "/portfolio", label: "Projectos" },
-  { href: "/sobre", label: "Sobre mim" },
+  { href: "/sobre", label: "A NexoVibe" },
 ];
 export default function Navbar({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 export default function HeroSection() {
   return (
@@ -6,39 +5,32 @@ export default function HeroSection() {
       <div className="hero-copy">
         <p className="eyebrow">
           <span className="eyebrow-line" />
-          JUBÍLIO MAÚSSE · NEXOVIBE
+          NEXOVIBE · SOLUÇÕES TECNOLÓGICAS
         </p>
         <h1 id="hero-title">
-          Entre dados
-          <br />e território,
+          Inteligência
           <br />
-          <span>crio soluções.</span>
+          em dados e
+          <br />
+          <span>território.</span>
         </h1>
         <p className="hero-description">
-          Sou especialista em SIG e análise de dados. Desenvolvo ferramentas que
-          ligam informação, pessoas e decisões — de Moçambique para o mundo.
+          A NexoVibe integra análise de dados, geotecnologias e desenvolvimento
+          de software para apoiar decisões e simplificar processos nas
+          organizações.
         </p>
         <div className="button-row">
           <Link className="button button-primary" href="/portfolio">
             Explorar projectos <span aria-hidden="true">↗</span>
           </Link>
           <Link href="/sobre" className="button button-quiet">
-            Conhecer o meu percurso <span aria-hidden="true">→</span>
+            Conhecer a NexoVibe <span aria-hidden="true">→</span>
           </Link>
         </div>
-        <div className="hero-signature">
-          <Image
-            src="/jubilio.jpg"
-            width={40}
-            height={40}
-            alt=""
-            className="signature-photo"
-          />
-          <div>
-            <strong>Jubílio Filiano Maússe</strong>
-            <span>GIS · Data Analytics · Software</span>
-          </div>
-        </div>
+        <p className="hero-capabilities">
+          GIS & análise espacial <span aria-hidden="true">/</span> Dados &
+          automação
+        </p>
       </div>
       <div className="orbital-panel" aria-hidden="true">
         <div className="orbital-top">

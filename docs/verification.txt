@@ -1,2 +1,3 @@
 Browser verification passed: home, project catalogue, about; 4 filter categories; mobile menu and Escape; no overflow at 320, 390, 768 and 1440 pixels; profile images loaded; contact UI success/error/reset (mocked); actual API 400 and 503; 4 XLSForm legal/help routes; no page JavaScript errors.
 Contact handler: 15 isolated checks passed (provider mocked, no emails sent).
+Corporate identity update: production build passed; Chromium checked institutional headings/metadata, absence of portraits, discreet founder attribution, navigation and layouts at 320/390/1440 px. No JavaScript errors. Previous contact/filter checks remain the baseline; those behaviours were not modified.

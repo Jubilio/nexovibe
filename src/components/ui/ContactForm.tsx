@@ -47,7 +47,9 @@ export default function ContactForm() {
         <div className="form-success" role="status">
           <span aria-hidden="true">✓</span>
           <h3>Mensagem enviada.</h3>
-          <p>Obrigado pelo contacto. Responderei assim que possível.</p>
+          <p>
+            Obrigado pelo contacto. A NexoVibe responderá assim que possível.
+          </p>
           <button
             className="button button-secondary"
             onClick={() => {
@@ -120,13 +122,16 @@ export default function ContactForm() {
               rows={4}
               value={form.message}
               onChange={set("message")}
-              placeholder="Conte-me um pouco sobre o seu projecto…"
+              placeholder="Descreva o seu projecto e os seus objectivos…"
             />
           </label>
           {status === "error" && (
             <p className="form-error" role="alert">
               Não foi possível enviar. Tente novamente ou{" "}
-              <a href="mailto:jubilio@nexovibe.co.mz">contacte-me por email</a>.
+              <a href="mailto:jubilio@nexovibe.co.mz">
+                contacte a NexoVibe por email
+              </a>
+              .
             </p>
           )}
           <button

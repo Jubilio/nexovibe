@@ -7,7 +7,7 @@ export default function Footer() {
           <Link href="/" className="wordmark">
             NexoVibe<span className="wordmark-dot">.</span>
           </Link>
-          <p>Dados, território e tecnologia. Por Jubílio Maússe.</p>
+          <p>Inteligência em dados. Soluções para organizações.</p>
         </div>
         <div className="footer-links">
           <a
@@ -17,13 +17,7 @@ export default function Footer() {
           >
             GitHub ↗
           </a>
-          <a
-            href="https://www.linkedin.com/in/jubilio-mausse/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn ↗
-          </a>
+          <a href="/sobre">Sobre a marca</a>
           <a href="mailto:jubilio@nexovibe.co.mz">Email ↗</a>
         </div>
         <span className="copyright">

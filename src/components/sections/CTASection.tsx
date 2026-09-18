@@ -14,7 +14,7 @@ export default function CTASection() {
           </h2>
           <p>
             Tem um desafio de dados, um projecto GIS ou uma ferramenta em mente?
-            Conte-me o que pretende construir.
+            Partilhe o seu desafio com a NexoVibe.
           </p>
           <a href="mailto:jubilio@nexovibe.co.mz" className="contact-email">
             jubilio@nexovibe.co.mz <span aria-hidden="true">↗</span>

@@ -109,7 +109,7 @@ export const projects: Project[] = [
     link: "https://jubilio.github.io/cv_articles",
     tags: ["GIS", "Remote Sensing", "MEAL"],
     label: "PUBLICAÇÕES & TUTORIAIS",
-    mark: "JM",
+    mark: "RD",
     accent: "blue",
   },
 ];

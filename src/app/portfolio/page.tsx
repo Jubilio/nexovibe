@@ -5,7 +5,7 @@ import ProjectExplorer from "@/components/ui/ProjectExplorer";
 export const metadata: Metadata = {
   title: "Projectos",
   description:
-    "Explore projectos de Jubílio Maússe: SimGeo, GeoClick Capture, GPX Batch Converter, XLSForm AI Translator e ferramentas de dados e software.",
+    "Explore o portfólio de soluções NexoVibe: SimGeo, GeoClick Capture, GPX Batch Converter, XLSForm AI Translator e ferramentas de dados e software.",
 };
 export default function PortfolioPage() {
   return (
@@ -21,9 +21,9 @@ export default function PortfolioPage() {
           </h1>
           <div className="page-intro">
             <p>
-              Uma selecção do meu trabalho em inteligência geoespacial, análise
-              de dados e desenvolvimento de software. Explore os projectos e o
-              código por trás de cada solução.
+              Projectos e ferramentas que traduzem a abordagem da NexoVibe à
+              inteligência geoespacial, à análise de dados e ao software.
+              Explore os projectos e o código por trás de cada solução.
             </p>
             <a
               href="https://github.com/Jubilio?tab=repositories"
