@@ -6,6 +6,7 @@ const links = [
   { href: "/", label: "Início" },
   { href: "/portfolio", label: "Projectos" },
   { href: "/sobre", label: "A NexoVibe" },
+  { href: "/scanner", label: "AI Scanner" },
 ];
 export default function Navbar({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);
