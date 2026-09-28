@@ -115,27 +115,9 @@ export const projects: Project[] = [
 ];
 
 export const services = [
-  {
-    num: "01",
-    title: "Inteligência geoespacial",
-    desc: "Cartografia, análise espacial e aplicações WebGIS para compreender o território e apoiar decisões.",
-    tags: ["QGIS", "ArcGIS", "Earth Engine", "PostGIS"],
-    icon: "map",
-  },
-  {
-    num: "02",
-    title: "Dados para decisões",
-    desc: "Da recolha à interpretação: questionários, pipelines de análise e dashboards adaptados às perguntas de cada projecto.",
-    tags: ["Python", "R", "Power BI", "KoboToolbox"],
-    icon: "grid",
-  },
-  {
-    num: "03",
-    title: "Software & automação",
-    desc: "Plugins, aplicações web e integrações de IA que simplificam tarefas repetitivas e tornam os processos mais consistentes.",
-    tags: ["TypeScript", "React", "Django", "Office.js"],
-    icon: "code",
-  },
+  { num: "01", title: "Segurança de aplicações de IA", desc: "Avaliação de assistentes, sistemas RAG e agentes: instruções maliciosas, exposição de informação e utilização indevida de ferramentas.", tags: ["LLM", "RAG", "Agentes"], icon: "code", checks: ["Acesso a documentos e isolamento entre utilizadores", "Prompt injection e tratamento de respostas", "Permissões, limites e acções das ferramentas"] },
+  { num: "02", title: "Pentest Web & API", desc: "Testes controlados para identificar falhas nas aplicações e integrações que suportam as suas operações.", tags: ["Web", "REST", "GraphQL"], icon: "grid", checks: ["Autenticação e gestão de sessões", "Autorização e acesso a recursos", "Lógica de negócio e exposição de dados"] },
+  { num: "03", title: "Segurança de dados & WebGIS", desc: "Revisão de plataformas geoespaciais e fluxos de dados, com atenção à sensibilidade da informação e a quem lhe pode aceder.", tags: ["WebGIS", "Dados", "Serviços OGC"], icon: "map", checks: ["Permissões de camadas e serviços geográficos", "Exportações e acesso a dados sensíveis", "Configuração e partilha da informação"] },
 ];
 export const tools = [
   "Python",
@@ -152,26 +134,10 @@ export const tools = [
   "XLSForm",
 ];
 export const steps = [
-  {
-    num: "01",
-    title: "Compreender",
-    desc: "Definir o problema, as pessoas que vão usar a solução e os dados disponíveis.",
-  },
-  {
-    num: "02",
-    title: "Desenhar",
-    desc: "Escolher o método e construir um protótipo que permita testar a ideia.",
-  },
-  {
-    num: "03",
-    title: "Desenvolver",
-    desc: "Implementar, testar e documentar a solução com atenção à qualidade dos dados.",
-  },
-  {
-    num: "04",
-    title: "Acompanhar",
-    desc: "Recolher feedback e melhorar a ferramenta com base na utilização real.",
-  },
+  { num: "01", title: "Definir o âmbito", desc: "Acordar os sistemas, objectivos, autorização, limites operacionais e condições dos testes." },
+  { num: "02", title: "Avaliar e validar", desc: "Executar os testes acordados, confirmar os resultados e documentar as evidências e limitações." },
+  { num: "03", title: "Priorizar e orientar", desc: "Entregar os resultados com impacto, prioridades de correcção e recomendações aplicáveis." },
+  { num: "04", title: "Apoiar e retestar", desc: "Esclarecer as recomendações e verificar as correcções dentro do período acordado na proposta." },
 ];
 export const stats = [
   { num: "GIS", label: "Compreender o território" },

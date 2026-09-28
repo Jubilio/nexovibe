@@ -1,124 +1,26 @@
 import Link from "next/link";
 export default function HeroSection() {
   return (
-    <section className="hero container" aria-labelledby="hero-title">
+    <section className="hero container security-hero" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow">
-          <span className="eyebrow-line" />
-          NEXOVIBE · SOLUÇÕES TECNOLÓGICAS
-        </p>
-        <h1 id="hero-title">
-          Inteligência
-          <br />
-          em dados e
-          <br />
-          <span>território.</span>
-        </h1>
-        <p className="hero-description">
-          A NexoVibe integra análise de dados, geotecnologias e desenvolvimento
-          de software para apoiar decisões e simplificar processos nas
-          organizações.
-        </p>
+        <p className="eyebrow"><span className="eyebrow-line" />NEXOVIBE / SECURITY & ENGINEERING</p>
+        <h1 id="hero-title">Conheça o risco.<br /><span>Proteja o que<br />está a construir.</span></h1>
+        <p className="hero-description">Segurança para aplicações de IA, dados e sistemas geoespaciais. Identificamos falhas, demonstramos o impacto e ajudamos a definir o que corrigir primeiro.</p>
         <div className="button-row">
-          <Link className="button button-primary" href="/portfolio">
-            Explorar projectos <span aria-hidden="true">↗</span>
-          </Link>
-          <Link href="/sobre" className="button button-quiet">
-            Conhecer a NexoVibe <span aria-hidden="true">→</span>
-          </Link>
+          <a className="button button-primary" href="#contacto">Solicitar avaliação <span aria-hidden="true">↗</span></a>
+          <a className="button button-quiet" href="#servicos">Explorar serviços</a>
         </div>
-        <p className="hero-capabilities">
-          GIS & análise espacial <span aria-hidden="true">/</span> Dados &
-          automação
-        </p>
+        <p className="hero-capabilities">AI Security <span aria-hidden="true">/</span> Web & API <span aria-hidden="true">/</span> Data & GIS</p>
       </div>
-      <div className="orbital-panel" aria-hidden="true">
-        <div className="orbital-top">
-          <span>NEXOVIBE / EXPLORATIONS</span>
-          <span>01 — 03</span>
-        </div>
-        <div className="orbital-grid" />
-        <svg className="orbital-art" viewBox="0 0 560 560" fill="none">
-          <defs>
-            <radialGradient id="orb-glow">
-              <stop stopColor="#72ebc6" stopOpacity=".18" />
-              <stop offset="1" stopColor="#72ebc6" stopOpacity="0" />
-            </radialGradient>
-            <linearGradient
-              id="orb-line"
-              x1="100"
-              y1="80"
-              x2="480"
-              y2="490"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#89f3d1" />
-              <stop offset=".5" stopColor="#297d72" />
-              <stop offset="1" stopColor="#89f3d1" stopOpacity=".1" />
-            </linearGradient>
-          </defs>
-          <circle cx="280" cy="280" r="260" fill="url(#orb-glow)" />
-          <g stroke="#85e8cd" strokeOpacity=".1">
-            <path d="M280 20v520M20 280h520" />
-            <circle cx="280" cy="280" r="239" strokeDasharray="2 10" />
-            <circle cx="280" cy="280" r="181" />
-          </g>
-          <g className="orbit-rotation" stroke="url(#orb-line)" strokeWidth="1">
-            <ellipse
-              cx="280"
-              cy="280"
-              rx="198"
-              ry="79"
-              transform="rotate(-38 280 280)"
-            />
-            <ellipse
-              cx="280"
-              cy="280"
-              rx="198"
-              ry="79"
-              transform="rotate(22 280 280)"
-            />
-            <ellipse
-              cx="280"
-              cy="280"
-              rx="198"
-              ry="79"
-              transform="rotate(82 280 280)"
-            />
-            <circle cx="119" cy="391" r="5" fill="#8cf4d3" stroke="none" />
-            <circle cx="438" cy="343" r="4" fill="#8cf4d3" stroke="none" />
-          </g>
-          <circle
-            cx="280"
-            cy="280"
-            r="66"
-            fill="#0b1e1e"
-            stroke="#70dfbd"
-            strokeOpacity=".4"
-          />
-          <path d="M257 304v-48l46 48v-48" stroke="#b7ffe7" strokeWidth="3" />
-          <path d="M295 247h18v18" stroke="#b7ffe7" strokeWidth="3" />
-        </svg>
-        <div className="orbit-label label-data">
-          <span>01</span> Dados
-        </div>
-        <div className="orbit-label label-space">
-          <span>02</span> Território
-        </div>
-        <div className="orbit-label label-code">
-          <span>03</span> Código
-        </div>
-        <div className="orbital-bottom">
-          <span>DA ANÁLISE À APLICAÇÃO</span>
-          <span>MOZ ↗</span>
-        </div>
-      </div>
-      <div className="hero-baseline">
-        <span>TECNOLOGIA COM CONTEXTO. SOLUÇÕES COM PROPÓSITO.</span>
-        <a href="#projectos">
-          Conheça o trabalho <span aria-hidden="true">↓</span>
-        </a>
-      </div>
+      <aside className="security-brief" aria-label="Âmbito das avaliações de segurança">
+        <div className="brief-header"><span>SUPERFÍCIE DE AVALIAÇÃO</span><span>01—03</span></div>
+        <div className="brief-row"><span className="brief-index">01</span><div><h2>Inteligência artificial</h2><p>Modelos · Documentos · Agentes</p></div><span aria-hidden="true">↗</span></div>
+        <div className="brief-row"><span className="brief-index">02</span><div><h2>Aplicações & APIs</h2><p>Identidade · Permissões · Integrações</p></div><span aria-hidden="true">↗</span></div>
+        <div className="brief-row"><span className="brief-index">03</span><div><h2>Dados & território</h2><p>Camadas · Serviços · Exportações</p></div><span aria-hidden="true">↗</span></div>
+        <div className="brief-footer"><p>Do risco à correcção.</p><span>Âmbito definido. Evidências documentadas.<br />Prioridades claras para a sua equipa.</span></div>
+        <Link className="text-link brief-link" href="/relatorio-exemplo">Ver exemplo de entrega <span aria-hidden="true">↗</span></Link>
+      </aside>
+      <div className="hero-baseline"><span>SECURE AI, DATA & GEOSPATIAL SYSTEMS</span><a href="#metodologia">Como trabalhamos <span aria-hidden="true">↓</span></a></div>
     </section>
   );
 }

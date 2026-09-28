@@ -1,6 +1,6 @@
-# NexoVibe — Inteligência em Dados, GIS & Software
+# NexoVibe — Segurança de IA, Dados & WebGIS
 
-Site institucional e portfólio de soluções da NexoVibe: inteligência geoespacial, análise de dados e desenvolvimento de software.
+Site institucional da NexoVibe: segurança de aplicações de IA, pentest Web/API e segurança de dados/WebGIS, com portfólio de engenharia preservado.
 
 ## Stack
 
@@ -38,7 +38,9 @@ As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 202
 
 ## Rotas
 
-- `/` — apresentação institucional, projectos em destaque, áreas de actuação e contacto.
+- `/` — serviços de segurança, metodologia, entregáveis, projectos em destaque e pedido de proposta.
+- `/relatorio-exemplo` — amostra fictícia de relatório, com estilos para impressão.
+- `/scanner` — acesso à ferramenta AI Security Scanner existente.
 - `/portfolio` — catálogo de projectos com filtros por área.
 - `/sobre` — marca e princípios de trabalho.
 - `/xlsform-translator/privacy`, `/terms`, `/support` e `/user-guide` — páginas existentes do suplemento, sob o prefixo `/xlsform-translator`.
@@ -46,3 +48,7 @@ As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 202
 ## Links
 
 [Website](https://nexovibe.co.mz) · [GitHub](https://github.com/Jubilio) · [LinkedIn](https://www.linkedin.com/in/jubilio-mausse/) · [Artigos e tutoriais](https://jubilio.github.io/cv_articles)
+
+## Oferta de segurança
+
+O formulário inclui serviço, sistema a avaliar e prazo pretendido. Os dois últimos são incorporados na mensagem enviada pela API existente. O envio real continua a depender de `RESEND_API_KEY`. A amostra de relatório é explicitamente fictícia e não deve ser apresentada como auditoria de cliente ou certificação. Os projectos do portfólio documentam desenvolvimento, não contratos de segurança.

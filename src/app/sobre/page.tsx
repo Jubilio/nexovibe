@@ -6,7 +6,7 @@ import ToolsSection from "@/components/sections/ToolsSection";
 export const metadata: Metadata = {
   title: "Sobre a NexoVibe",
   description:
-    "Conheça a NexoVibe: soluções de análise de dados, inteligência geoespacial e software orientadas aos desafios das organizações.",
+    "Conheça a NexoVibe: segurança de aplicações de IA, dados e sistemas geoespaciais, apoiada em desenvolvimento de software e análise.",
 };
 export default function AboutPage() {
   return (
@@ -22,13 +22,10 @@ export default function AboutPage() {
               <span>liga as peças.</span>
             </h1>
             <p className="about-lead">
-              Dados, território e software ao serviço das organizações.
+              Segurança de IA, dados e sistemas geoespaciais.
             </p>
             <p>
-              A NexoVibe é uma marca de soluções tecnológicas que integra
-              sistemas de informação geográfica, análise de dados e
-              desenvolvimento de software. O seu foco é transformar informação
-              complexa em ferramentas úteis para decisões e operações.
+              A NexoVibe combina avaliação de segurança com desenvolvimento de software, análise de dados e sistemas de informação geográfica. O seu foco é ajudar organizações a compreender os riscos das suas aplicações e a implementar correcções adequadas ao seu contexto.
             </p>
             <p>
               Com origem em Moçambique, a marca desenvolve aplicações, plugins e
@@ -49,7 +46,7 @@ export default function AboutPage() {
             aria-label="Áreas de actuação da NexoVibe"
           >
             <span className="brand-kicker">
-              NEXOVIBE / DADOS · ESPAÇO · CÓDIGO
+              NEXOVIBE / IA · DADOS · TERRITÓRIO
             </span>
             <div className="brand-monogram" aria-hidden="true">
               N<span>↗</span>
@@ -60,8 +57,8 @@ export default function AboutPage() {
             </h2>
             <dl>
               <div>
-                <dt>Inteligência</dt>
-                <dd>Análise de dados & GIS</dd>
+                <dt>Segurança</dt>
+                <dd>IA, Web, API & WebGIS</dd>
               </div>
               <div>
                 <dt>Desenvolvimento</dt>
@@ -69,7 +66,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <dt>Abordagem</dt>
-                <dd>Soluções à medida</dd>
+                <dd>Âmbito, evidências & correcção</dd>
               </div>
             </dl>
           </aside>
