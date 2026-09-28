@@ -8,6 +8,8 @@ export default function ContactForm() {
     email: "",
     service: "",
     message: "",
+    system: "",
+    deadline: "",
   });
   const pending = useRef(false);
   const set =
@@ -21,6 +23,10 @@ export default function ContactForm() {
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (pending.current) return;
+    if (!form.name.trim() || !form.message.trim()) {
+      setStatus("error");
+      return;
+    }
     pending.current = true;
     setStatus("loading");
     const controller = new AbortController();
@@ -29,7 +35,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ name: form.name, email: form.email, service: form.service, message: `Sistema: ${form.system.trim() || "Não especificado"}\nPrazo pretendido: ${form.deadline.trim() || "A definir"}\n\n${form.message.trim()}` }),
         signal: controller.signal,
       });
       const result = await res.json();
@@ -53,7 +59,7 @@ export default function ContactForm() {
           <button
             className="button button-secondary"
             onClick={() => {
-              setForm({ name: "", email: "", service: "", message: "" });
+              setForm({ name: "", email: "", service: "", message: "", system: "", deadline: "" });
               setStatus("idle");
             }}
           >
@@ -96,14 +102,17 @@ export default function ContactForm() {
             </label>
           </div>
           <label htmlFor="contact-service">
-            Área do projecto <span className="optional">(opcional)</span>
+            Serviço pretendido <span className="optional">(opcional)</span>
             <select
               id="contact-service"
               name="service"
               value={form.service}
               onChange={set("service")}
             >
-              <option value="">Seleccione uma área</option>
+              <option value="">Seleccione um serviço</option>
+              <option>Segurança de aplicações de IA</option>
+              <option>Pentest Web & API</option>
+              <option>Segurança de dados & WebGIS</option>
               <option>GIS & análise espacial</option>
               <option>Dados & dashboards</option>
               <option>Software & automação</option>
@@ -112,17 +121,21 @@ export default function ContactForm() {
               <option>Outro desafio</option>
             </select>
           </label>
+          <div className="form-row">
+            <label htmlFor="contact-system">Sistema a avaliar <span className="optional">(opcional)</span><input id="contact-system" name="system" maxLength={300} value={form.system} onChange={set("system")} placeholder="Ex.: assistente interno, API, WebGIS" /></label>
+            <label htmlFor="contact-deadline">Prazo pretendido <span className="optional">(opcional)</span><input id="contact-deadline" name="deadline" maxLength={100} value={form.deadline} onChange={set("deadline")} placeholder="Ex.: antes do lançamento em Novembro" /></label>
+          </div>
           <label htmlFor="contact-message">
-            O que gostaria de construir?
+            Como podemos ajudar?
             <textarea
               id="contact-message"
               name="message"
               required
-              maxLength={5000}
+              maxLength={4000}
               rows={4}
               value={form.message}
               onChange={set("message")}
-              placeholder="Descreva o seu projecto e os seus objectivos…"
+              placeholder="Descreva o contexto e os seus objectivos. Não inclua palavras-passe, chaves de acesso ou dados pessoais de terceiros."
             />
           </label>
           {status === "error" && (
@@ -139,7 +152,7 @@ export default function ContactForm() {
             type="submit"
             disabled={status === "loading"}
           >
-            {status === "loading" ? "A enviar…" : "Enviar mensagem"}
+            {status === "loading" ? "A enviar…" : "Solicitar proposta"}
             <span aria-hidden="true">↗</span>
           </button>
           <p className="form-note">

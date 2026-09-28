@@ -11,12 +11,15 @@ const inter = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "NexoVibe — Inteligência em Dados, GIS & Software",
+    default: "NexoVibe — Segurança de IA, Dados & WebGIS",
     template: "%s | NexoVibe",
   },
   description:
-    "A NexoVibe desenvolve soluções de inteligência geoespacial, análise de dados e software para apoiar decisões e simplificar processos nas organizações.",
+    "Avaliações de segurança de aplicações de IA, pentest Web e API e revisão de segurança de dados e WebGIS. Evidências claras e apoio à correcção.",
   keywords: [
+    "AI Security",
+    "Pentest Web e API",
+    "Segurança WebGIS",
     "IA",
     "GIS",
     "SIG",
@@ -28,9 +31,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "NexoVibe" }],
   openGraph: {
-    title: "NexoVibe — Inteligência em Dados, GIS & Software",
+    title: "NexoVibe — Segurança de IA, Dados & WebGIS",
     description:
-      "A NexoVibe desenvolve soluções de inteligência geoespacial, análise de dados e software para apoiar decisões e simplificar processos nas organizações.",
+      "Avaliações de segurança de aplicações de IA, pentest Web e API e revisão de segurança de dados e WebGIS. Evidências claras e apoio à correcção.",
     url: "https://nexovibe.co.mz",
     siteName: "NexoVibe",
     locale: "pt_MZ",

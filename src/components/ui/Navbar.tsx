@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const links = [
-  { href: "/", label: "Início" },
+  { href: "/#servicos", label: "Serviços" },
+  { href: "/#metodologia", label: "Metodologia" },
   { href: "/portfolio", label: "Projectos" },
   { href: "/sobre", label: "A NexoVibe" },
   { href: "/scanner", label: "AI Scanner" },
@@ -46,7 +47,7 @@ export default function Navbar({ active }: { active?: string }) {
           ))}
         </div>
         <a className="nav-contact" href="/#contacto">
-          Vamos conversar <span aria-hidden="true">↗</span>
+          Solicitar avaliação <span aria-hidden="true">↗</span>
         </a>
         <button
           ref={menuButton}
@@ -70,7 +71,7 @@ export default function Navbar({ active }: { active?: string }) {
             </Link>
           ))}
           <a href="/#contacto" onClick={() => setOpen(false)}>
-            Vamos conversar ↗
+            Solicitar avaliação ↗
           </a>
         </div>
       </nav>

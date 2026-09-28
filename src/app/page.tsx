@@ -4,7 +4,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ProcessSection from "@/components/sections/ProcessSection";
-import ToolsSection from "@/components/sections/ToolsSection";
+import DeliverablesSection from "@/components/sections/DeliverablesSection";
 import CTASection from "@/components/sections/CTASection";
 export default function HomePage() {
   return (
@@ -12,10 +12,10 @@ export default function HomePage() {
       <Navbar active="/" />
       <main id="main-content">
         <HeroSection />
-        <ProjectsSection />
         <ServicesSection />
         <ProcessSection />
-        <ToolsSection />
+        <DeliverablesSection />
+        <ProjectsSection />
         <CTASection />
       </main>
       <Footer />

@@ -4,17 +4,16 @@ export default function CTASection() {
     <section id="contacto" className="contact-section">
       <div className="container contact-grid">
         <div>
-          <p className="eyebrow">04 / VAMOS CONVERSAR</p>
+          <p className="eyebrow">05 / VAMOS CONVERSAR</p>
           <h2>
-            O próximo projecto
+            A segurança do
             <br />
-            pode começar
+            seu sistema começa
             <br />
             <span>com uma conversa.</span>
           </h2>
           <p>
-            Tem um desafio de dados, um projecto GIS ou uma ferramenta em mente?
-            Partilhe o seu desafio com a NexoVibe.
+            Descreva o sistema que pretende avaliar e os seus objectivos. A partir dessa informação, definimos o âmbito e preparamos uma proposta.
           </p>
           <a href="mailto:jubilio@nexovibe.co.mz" className="contact-email">
             jubilio@nexovibe.co.mz <span aria-hidden="true">↗</span>

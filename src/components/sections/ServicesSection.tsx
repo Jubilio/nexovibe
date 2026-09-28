@@ -6,16 +6,15 @@ export default function ServicesSection() {
       <div className="container section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">02 / ÁREAS DE ACTUAÇÃO</p>
+            <p className="eyebrow">01 / SERVIÇOS DE SEGURANÇA</p>
             <h2>
-              Uma visão integrada.
+              Três especializações.
               <br />
-              <span className="muted-heading">Da pergunta à solução.</span>
+              <span className="muted-heading">Um objectivo: reduzir o risco.</span>
             </h2>
           </div>
           <p className="section-description">
-            A NexoVibe combina conhecimento do território com análise e
-            desenvolvimento para responder a desafios concretos.
+            Cada avaliação tem um âmbito acordado e recomendações adaptadas ao seu sistema, aos seus dados e à sua equipa.
           </p>
         </div>
         <div className="services-grid">
@@ -27,6 +26,7 @@ export default function ServicesSection() {
               </div>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
+              <ul className="service-checks">{s.checks.map((check) => <li key={check}>{check}</li>)}</ul>
               <div className="service-tags">{s.tags.join(" / ")}</div>
             </article>
           ))}
