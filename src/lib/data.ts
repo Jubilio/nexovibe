@@ -15,7 +15,10 @@ export type Project = {
   label: string;
   mark: string;
   accent: string;
+  image: { src: string; alt: string; width: number; height: number; caption: string; layout: "identity" | "document" | "cover" };
   featured?: boolean;
+  caseStudy?: string;
+  status?: string;
 };
 
 // Curated against the public repository READMEs on 18 September 2026.
@@ -23,6 +26,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "simgeo",
+    image: {"src": "/projects/portfolio/simgeo.webp", "alt": "Logótipo original do SimGeo: território, localização e ligações.", "width": 640, "height": 640, "caption": "Identidade do projecto", "layout": "identity"},
     title: "SimGeo",
     category: "GIS & Território",
     desc: "Cenários de cheias, ciclones e secas associados a dados de população, vulnerabilidade e infraestruturas para apoiar decisões no território.",
@@ -31,10 +35,12 @@ export const projects: Project[] = [
     label: "SISTEMA DE APOIO À DECISÃO",
     mark: "SG",
     accent: "mint",
-    featured: true,
   },
   {
     id: "geoclick",
+    image: {"src": "/projects/portfolio/geoclick.svg", "alt": "Ícone original do GeoClick Capture, com marcador de localização e alvo.", "width": 128, "height": 128, "caption": "Identidade do projecto", "layout": "identity"},
+    caseStudy: "geoclick-capture",
+    status: "Plugin publicado · QGIS",
     title: "GeoClick Capture",
     category: "GIS & Território",
     desc: "Verificação de localizações no QGIS: comparar fontes, guardar evidências e documentar cada decisão num registo auditável.",
@@ -47,6 +53,9 @@ export const projects: Project[] = [
   },
   {
     id: "xlsform-ai",
+    image: {"src": "/projects/portfolio/xlsform.svg", "alt": "Ilustração do repositório: folha Excel com o painel de tradução XLSForm.", "width": 1400, "height": 760, "caption": "Ilustração do repositório", "layout": "document"},
+    caseStudy: "xlsform-translator",
+    status: "Projecto open source · Em evolução",
     title: "XLSForm AI Translator",
     category: "Software & IA",
     desc: "Criação e tradução de questionários KoboToolbox dentro do Excel, com pré-visualização e preservação de variáveis, fórmulas e lógica.",
@@ -59,6 +68,10 @@ export const projects: Project[] = [
   },
   {
     id: "gpx-converter",
+    image: {"src": "/projects/portfolio/gpx-converter.webp", "alt": "Ícone original do GPX Batch Converter: conversão de dados GPS em camadas GIS.", "width": 256, "height": 256, "caption": "Identidade do projecto", "layout": "identity"},
+    caseStudy: "gpx-batch-converter",
+    status: "Plugin publicado · QGIS",
+    featured: true,
     title: "GPX Batch Converter",
     category: "GIS & Território",
     desc: "Conversão e união de ficheiros GPX em Shapefiles directamente no QGIS. Um fluxo de trabalho para transformar recolhas GPS em camadas prontas a analisar.",
@@ -70,6 +83,7 @@ export const projects: Project[] = [
   },
   {
     id: "tls-watcher",
+    image: {"src": "/projects/portfolio/tls-watcher.webp", "alt": "Demonstração do repositório TLS Cert Watcher, com campo de domínio e painel de resultados.", "width": 1200, "height": 838, "caption": "Demonstração do repositório", "layout": "document"},
     title: "TLS Cert Watcher",
     category: "Software & IA",
     desc: "Verificação individual ou em lote de certificados TLS, com detalhes de validade e exportação de resultados em CSV e JSON.",
@@ -81,6 +95,7 @@ export const projects: Project[] = [
   },
   {
     id: "mwanga",
+    image: {"src": "/projects/portfolio/mwanga.webp", "alt": "Imagem de apresentação original do Mwanga Financial, com símbolo M luminoso.", "width": 640, "height": 640, "caption": "Imagem do repositório", "layout": "identity"},
     title: "Mwanga",
     category: "Software & IA",
     desc: "Gestão financeira familiar com acompanhamento de receitas, despesas e poupanças, visualização de dados e uma assistente de IA.",
@@ -92,6 +107,8 @@ export const projects: Project[] = [
   },
   {
     id: "vulnerability",
+    status: "Em desenvolvimento · Integração de dados pendente",
+    image: {"src": "/projects/portfolio/vulnerability.webp", "alt": "Ilustração conceptual de território, povoações e ligações; não representa dados reais de Cabo Delgado.", "width": 1200, "height": 800, "caption": "Ilustração conceptual · IA", "layout": "cover"},
     title: "Vulnerabilidade em Cabo Delgado",
     category: "Dados & Investigação",
     desc: "Projecto de análise em R que combina deslocamento e indicadores ambientais e socioeconómicos num índice territorial de vulnerabilidade.",
@@ -103,6 +120,7 @@ export const projects: Project[] = [
   },
   {
     id: "research",
+    image: {"src": "/projects/portfolio/research.webp", "alt": "Mapa publicado do potencial de águas subterrâneas no distrito de Mueda, com legenda e pontos de água.", "width": 1074, "height": 835, "caption": "Mapa publicado · Mueda", "layout": "document"},
     title: "Investigação & conhecimento",
     category: "Dados & Investigação",
     desc: "Artigos, mapas e tutoriais sobre águas subterrâneas, sensoriamento remoto, análise humanitária e recolha de dados com KoboToolbox.",
@@ -115,9 +133,10 @@ export const projects: Project[] = [
 ];
 
 export const services = [
-  { num: "01", title: "Segurança de aplicações de IA", desc: "Avaliação de assistentes, sistemas RAG e agentes: instruções maliciosas, exposição de informação e utilização indevida de ferramentas.", tags: ["LLM", "RAG", "Agentes"], icon: "code", checks: ["Acesso a documentos e isolamento entre utilizadores", "Prompt injection e tratamento de respostas", "Permissões, limites e acções das ferramentas"] },
-  { num: "02", title: "Pentest Web & API", desc: "Testes controlados para identificar falhas nas aplicações e integrações que suportam as suas operações.", tags: ["Web", "REST", "GraphQL"], icon: "grid", checks: ["Autenticação e gestão de sessões", "Autorização e acesso a recursos", "Lógica de negócio e exposição de dados"] },
-  { num: "03", title: "Segurança de dados & WebGIS", desc: "Revisão de plataformas geoespaciais e fluxos de dados, com atenção à sensibilidade da informação e a quem lhe pode aceder.", tags: ["WebGIS", "Dados", "Serviços OGC"], icon: "map", checks: ["Permissões de camadas e serviços geográficos", "Exportações e acesso a dados sensíveis", "Configuração e partilha da informação"] },
+  { num: "01", title: "Dados & dashboards", desc: "Transformar dados dispersos em informação utilizável para acompanhamento, investigação e decisão.", tags: ["R", "Python", "Power BI"], icon: "grid", checks: ["Preparação, validação e análise de dados", "Indicadores e relatórios reproduzíveis", "Dashboards adaptados à equipa"] },
+  { num: "02", title: "GIS & inteligência geoespacial", desc: "Compreender o território, verificar localizações e desenvolver ferramentas para trabalhar com dados espaciais.", tags: ["QGIS", "WebGIS", "Earth Engine"], icon: "map", checks: ["Análise espacial e cartografia", "Verificação e qualidade de dados geográficos", "Plugins QGIS e aplicações WebGIS"] },
+  { num: "03", title: "Software & automação", desc: "Criar aplicações e simplificar tarefas repetitivas, a partir dos processos e necessidades de cada organização.", tags: ["Web", "APIs", "XLSForm"], icon: "code", checks: ["Aplicações e integrações à medida", "Automação de fluxos de trabalho", "Ferramentas de recolha e tradução com IA"] },
+  { num: "04", title: "Segurança de IA, Web & dados", desc: "Avaliar riscos de aplicações e orientar correcções, com âmbito e autorização definidos antes dos testes.", tags: ["LLM", "API", "WebGIS"], icon: "code", checks: ["Prompt injection e exposição de informação", "Autenticação, permissões e acesso a dados", "Evidências, recomendações e reteste acordado"] },
 ];
 export const tools = [
   "Python",
@@ -134,10 +153,10 @@ export const tools = [
   "XLSForm",
 ];
 export const steps = [
-  { num: "01", title: "Definir o âmbito", desc: "Acordar os sistemas, objectivos, autorização, limites operacionais e condições dos testes." },
-  { num: "02", title: "Avaliar e validar", desc: "Executar os testes acordados, confirmar os resultados e documentar as evidências e limitações." },
-  { num: "03", title: "Priorizar e orientar", desc: "Entregar os resultados com impacto, prioridades de correcção e recomendações aplicáveis." },
-  { num: "04", title: "Apoiar e retestar", desc: "Esclarecer as recomendações e verificar as correcções dentro do período acordado na proposta." },
+  { num: "01", title: "Compreender e definir", desc: "Identificar o problema, os utilizadores, os dados disponíveis e os critérios de sucesso. Acordar entregas, prazos e orçamento." },
+  { num: "02", title: "Preparar e construir", desc: "Validar os dados, desenhar a solução e desenvolver uma primeira versão. Nas avaliações de segurança, acordar autorização e limites dos testes." },
+  { num: "03", title: "Validar em conjunto", desc: "Testar a solução com exemplos representativos, rever resultados com a equipa e documentar limitações e correcções." },
+  { num: "04", title: "Entregar e acompanhar", desc: "Disponibilizar a solução e a documentação, preparar a utilização e definir o suporte ou manutenção incluídos na proposta." },
 ];
 export const stats = [
   { num: "GIS", label: "Compreender o território" },

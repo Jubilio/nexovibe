@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "../globals.css";
 
 const inter = localFont({
-  src: "../../public/fonts/inter-latin-variable.woff2",
+  src: "../../../public/fonts/inter-latin-variable.woff2",
   variable: "--font-inter",
   weight: "100 900",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nexovibe.netlify.app"),
   title: {
-    default: "NexoVibe — Segurança de IA, Dados & WebGIS",
+    default: "NexoVibe — Dados, GIS & Software",
     template: "%s | NexoVibe",
   },
   description:
-    "Avaliações de segurança de aplicações de IA, pentest Web e API e revisão de segurança de dados e WebGIS. Evidências claras e apoio à correcção.",
+    "Análise de dados, inteligência geoespacial, software e segurança de IA para organizações e empresas. Soluções desenvolvidas em Moçambique.",
   keywords: [
     "AI Security",
     "Pentest Web e API",
@@ -31,10 +32,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "NexoVibe" }],
   openGraph: {
-    title: "NexoVibe — Segurança de IA, Dados & WebGIS",
+    title: "NexoVibe — Dados, GIS & Software",
     description:
-      "Avaliações de segurança de aplicações de IA, pentest Web e API e revisão de segurança de dados e WebGIS. Evidências claras e apoio à correcção.",
-    url: "https://nexovibe.co.mz",
+      "Análise de dados, inteligência geoespacial, software e segurança de IA para organizações e empresas. Soluções desenvolvidas em Moçambique.",
+    url: "https://nexovibe.netlify.app",
     siteName: "NexoVibe",
     locale: "pt_MZ",
     type: "website",

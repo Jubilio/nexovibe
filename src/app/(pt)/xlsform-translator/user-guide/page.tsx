@@ -1,7 +1,8 @@
+import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from 'next'
 import XLSFormLegalPage from '@/components/XLSFormLegalPage'
 
-export const metadata: Metadata = { title: 'User Guide — XLSForm AI Translator' }
+export const metadata: Metadata = { alternates: localeAlternates("/xlsform-translator/user-guide" ), title: 'Guia do utilizador — XLSForm AI Translator' }
 
 export default function Page() {
   return <XLSFormLegalPage

@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Project } from "@/lib/data";
+import ProjectArtwork from "./ProjectArtwork";
 export default function ProjectCard({
   project,
   index,
@@ -9,20 +11,15 @@ export default function ProjectCard({
   return (
     <article className={`project-card accent-${project.accent}`}>
       <a
-        className="project-visual"
+        className="project-visual project-visual-image"
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Explorar ${project.title} (abre noutro separador)`}
       >
-        <span className="project-visual-label">{project.label}</span>
-        <span className="project-monogram" aria-hidden="true">
-          {project.mark}
-          <span>↗</span>
-        </span>
-        <span className="project-visual-footer">
-          NEXOVIBE / {String(index + 1).padStart(2, "0")}
-          <span aria-hidden="true">↗</span>
+        <ProjectArtwork project={project} eager={index < 2} />
+        <span className="project-image-caption">
+          {project.image.caption}<span aria-hidden="true">↗</span>
         </span>
       </a>
       <div className="project-info">
@@ -33,7 +30,9 @@ export default function ProjectCard({
             <span aria-hidden="true">↗</span>
           </a>
         </h3>
+        <p className="project-status">{project.status || "Projecto próprio · Consulte o estado no repositório"}</p>
         <p className="project-description">{project.desc}</p>
+        {project.caseStudy && <Link className="text-link case-link" href={`/portfolio/${project.caseStudy}`}>Ver projecto e demonstração ↗</Link>}
         <div className="tag-list">
           {project.tags.map((tag) => (
             <span key={tag}>{tag}</span>

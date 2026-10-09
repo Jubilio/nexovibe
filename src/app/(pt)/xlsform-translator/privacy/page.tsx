@@ -1,7 +1,8 @@
+import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from 'next'
 import XLSFormLegalPage from '@/components/XLSFormLegalPage'
 
-export const metadata: Metadata = { title: 'Privacy Policy — XLSForm AI Translator' }
+export const metadata: Metadata = { alternates: localeAlternates("/xlsform-translator/privacy" ), title: 'Política de privacidade — XLSForm AI Translator' }
 
 export default function Page() {
   return <XLSFormLegalPage

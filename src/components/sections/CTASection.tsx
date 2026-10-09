@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ui/ContactForm";
+import { whatsappUrl, contactPhone } from "@/lib/contact";
 export default function CTASection() {
   return (
     <section id="contacto" className="contact-section">
@@ -6,18 +7,17 @@ export default function CTASection() {
         <div>
           <p className="eyebrow">05 / VAMOS CONVERSAR</p>
           <h2>
-            A segurança do
-            <br />
-            seu sistema começa
-            <br />
-            <span>com uma conversa.</span>
+            Tem dados, uma ideia
+            <br />ou um processo
+            <br /><span>para melhorar?</span>
           </h2>
           <p>
-            Descreva o sistema que pretende avaliar e os seus objectivos. A partir dessa informação, definimos o âmbito e preparamos uma proposta.
+            Conte-nos o desafio, quem vai utilizar a solução e o resultado pretendido. Preparamos uma proposta com entregas, prazo e investimento.
           </p>
           <span className="contact-location">
             Moçambique · Colaboração à distância
           </span>
+          <div className="direct-contact"><a className="button button-secondary" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a><a href="mailto:nexovibecontact@gmail.com">nexovibecontact@gmail.com</a><span>{contactPhone}</span></div>
         </div>
         <ContactForm />
       </div>

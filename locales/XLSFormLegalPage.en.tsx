@@ -20,38 +20,38 @@ export default function XLSFormLegalPage({ titlePt, titleEn, introPt, introEn, s
   return (
     <main className="min-h-screen bg-brand-dark px-5 py-12 text-white">
       <div className="mx-auto max-w-4xl">
-        <Link href="/" className="text-sm text-emerald-300 hover:underline">← NexoVibe</Link>
+        <Link href="/en" className="text-sm text-emerald-300 hover:underline">← NexoVibe</Link>
         <div className="mt-4 flex"><LanguageSwitcher /></div>
         <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl md:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">XLSForm AI Translator</p>
-          <h1 className="mt-3 text-3xl font-bold md:text-5xl">{titlePt}</h1>
+          <h1 className="mt-3 text-3xl font-bold md:text-5xl">{titleEn}</h1>
 
           <div className="mt-8 grid gap-5 ">
-            <p className="leading-7 text-white/85">{introPt}</p>
 
+            <p className="leading-7 text-white/70">{introEn}</p>
           </div>
 
           <div className="mt-10 space-y-8">
             {sections.map((section) => (
               <section key={section.titleEn} className="border-t border-white/10 pt-7">
-                <h2 className="text-xl font-semibold">{section.titlePt}</h2>
 
+                <h2 className="text-xl font-semibold">{section.titleEn}</h2>
                 <div className="mt-4 grid gap-5 text-sm leading-7 text-white/80 ">
-                  <div>{section.bodyPt}</div>
 
+                  <div className="text-white/65">{section.bodyEn}</div>
                 </div>
               </section>
             ))}
           </div>
 
           <nav className="mt-10 flex flex-wrap gap-3 border-t border-white/10 pt-7 text-sm">
-            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/xlsform-translator/privacy">Privacidade</Link>
-            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/xlsform-translator/terms">Termos</Link>
-            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/xlsform-translator/support">Suporte</Link>
-            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/xlsform-translator/user-guide">Guia do utilizador</Link>
+            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/en/xlsform-translator/privacy">Privacy</Link>
+            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/en/xlsform-translator/terms">Terms</Link>
+            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/en/xlsform-translator/support">Support</Link>
+            <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/en/xlsform-translator/user-guide">User Guide</Link>
           </nav>
 
-          <p className="mt-8 text-xs text-white/45">Última actualização: 22 de Julho de 2026</p>
+          <p className="mt-8 text-xs text-white/45">Last updated: 22 July 2026</p>
         </div>
       </div>
     </main>

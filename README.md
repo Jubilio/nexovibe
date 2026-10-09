@@ -1,10 +1,10 @@
-# NexoVibe — Segurança de IA, Dados & WebGIS
+# NexoVibe — Dados, GIS & Software
 
-Site institucional da NexoVibe: segurança de aplicações de IA, pentest Web/API e segurança de dados/WebGIS, com portfólio de engenharia preservado.
+Site institucional da NexoVibe: dados, inteligência geoespacial, software, segurança e convites personalizados.
 
 ## Stack
 
-Next.js 14 (App Router), React 18, TypeScript e Tailwind CSS. O formulário de contacto utiliza a API transaccional da Brevo. O portfólio não necessita de base de dados nem de pedidos à API GitHub durante a navegação.
+Next.js 15.5.27 (App Router), React 18, TypeScript e Tailwind CSS. O formulário de contacto utiliza a API transaccional da Brevo. O portfólio não necessita de base de dados nem de pedidos à API GitHub durante a navegação.
 
 ## Executar
 
@@ -56,16 +56,19 @@ As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 202
 
 ## Rotas
 
-- `/` — serviços de segurança, metodologia, entregáveis, projectos em destaque e pedido de proposta.
+- `/` — serviços de dados, GIS, software e segurança, metodologia, entregáveis, projectos em destaque e pedido de proposta.
 - `/relatorio-exemplo` — amostra fictícia de relatório, com estilos para impressão.
 - `/scanner` — acesso à ferramenta AI Security Scanner existente.
 - `/portfolio` — catálogo de projectos com filtros por área.
 - `/sobre` — marca e princípios de trabalho.
+- `/portfolio/[slug]` — três estudos de caso baseados na documentação dos projectos.
+- `/privacidade` — tratamento dos dados do contacto comercial.
+- `/robots.txt` e `/sitemap.xml` — indexação das páginas públicas.
 - `/xlsform-translator/privacy`, `/terms`, `/support` e `/user-guide` — páginas existentes do suplemento, sob o prefixo `/xlsform-translator`.
 
 ## Links
 
-[Website](https://nexovibe.co.mz) · [GitHub](https://github.com/Jubilio) · [LinkedIn](https://www.linkedin.com/in/jubilio-mausse/) · [Artigos e tutoriais](https://jubilio.github.io/cv_articles)
+[Website](https://nexovibe.netlify.app) · [GitHub](https://github.com/Jubilio) · [LinkedIn](https://www.linkedin.com/in/jubilio-mausse/) · [Artigos e tutoriais](https://jubilio.github.io/cv_articles)
 
 ## Oferta de segurança
 
@@ -90,3 +93,41 @@ O formulário apresenta uma referência segura de erro. Os logs da função regi
 | `EMAIL_TIMEOUT`, `EMAIL_UNCONFIRMED` | Verificar entrega antes de repetir para evitar duplicações |
 
 A referência identifica a categoria da falha, sem revelar detalhes sensíveis. Um teste de envio real é necessário após corrigir a configuração.
+
+
+## Convites para eventos
+
+A página `/convites` apresenta três pacotes, escolha de serviço com preço em MT e formulário de proposta. O pedido inclui pacote, preço resolvido no servidor, dados do evento e referências de design; usa a integração Brevo existente. Não processa pagamentos.
+
+Preços de referência aprovados: Essencial 1.500 MT, Digital 4.500 MT e Completo 9.500 MT. Todos são negociáveis conforme as necessidades do evento; o valor final e as entregas são acordados na proposta. Os valores e a nota comercial estão em `src/lib/invitations.ts`, partilhados pela interface e pelo servidor; nunca aceitar preços enviados pelo navegador.
+
+O convite Ana & Rui é uma composição ilustrativa com dados fictícios, sem informações dos convidados dos projectos anteriores. Funcionalidades adicionais ficam sob orçamento. O período de alojamento, convidados e suporte é definido em cada proposta.
+
+Validação: `npm run build` e `node --test tests/contact-route.test.cjs` (transporte de email simulado, sem envio real).
+
+
+## Protecções do site
+
+- Next.js 15.5.27; Node 22 na Netlify; dependência Resend não utilizada removida.
+- Cabeçalhos CSP, anti-framing, nosniff, Referrer-Policy e Permissions-Policy. Nas páginas Next.js, a barra de revisão da Netlify pode abrir o seu iframe apenas no contexto deploy-preview; produção mantém frame-src none. A CSP permite scripts inline para a hidratação estática do Next.js; não equivale a uma política com nonce. Apenas o scanner permite ligações HTTPS externas para o endpoint configurado pelo utilizador.
+- O optimizador remoto de imagens está desactivado: nenhuma página depende dele.
+- O endpoint de contacto exige JSON e uma origem permitida, rejeita pedidos cross-site e verifica um campo honeypot. A validação da origem não substitui antispam: clientes fora do navegador podem falsificar esse cabeçalho. O corpo é lido com limite real de 32 KiB, incluindo pedidos sem Content-Length.
+- `netlify/edge-functions/contact-rate-limit.js` configura 5 pedidos por IP/domínio em 60 segundos no percurso `/api/contact`. A Netlify pode demorar até 10 segundos a aplicar o bloqueio; não é um limite global de despesa nem impede bots distribuídos. Confirmar o funcionamento no deploy; não funciona no servidor local Next.js. Não usar contadores em memória como limite global em serverless.
+- `URL` e `DEPLOY_PRIME_URL` são fornecidos pela Netlify e utilizados na validação da origem. Manter estes valores alinhados com os domínios do projecto.
+- A recepção de email e as permissões/MFA das contas continuam a depender da configuração real dos fornecedores.
+
+Documentação: https://docs.netlify.com/manage/security/secure-access-to-sites/rate-limiting/ e https://nextjs.org/support-policy.
+
+Os estudos de caso não inventam métricas de adopção ou resultados de clientes. Os diagramas representam os fluxos documentados; não são capturas das aplicações.
+
+## Português e inglês
+
+As rotas portuguesas mantêm os endereços existentes em `src/app/(pt)`. A versão inglesa usa `/en`, com `lang`, canonicals, alternates e sitemap próprios. O selector mantém o percurso da página. As páginas do XLSForm apresentam apenas o idioma escolhido. O scanner é uma aplicação independente em português e está identificado como tal na navegação inglesa.
+
+`npm run locales` gera as rotas inglesas e os componentes a partir dos templates partilhados e do catálogo revisto em `locales/en.json`. Este passo também corre em `predev`, `prebuild` e nos testes de idiomas. `src/app/en` e `src/generated/en` são saídas ignoradas pelo Git; não editar directamente. Ao alterar texto nos templates portugueses, actualizar o catálogo inglês. O gerador mantém `/api`, ficheiros públicos e identificadores de pacotes; não introduz tradução no navegador nem pedidos a fornecedores de IA.
+
+## Contacto directo e demonstrações
+
+WhatsApp comercial: +258 87 451 8769, centralizado em `src/lib/contact.ts`. Os links abrem mensagens preparadas no idioma da página e, nos convites, com o nome do pacote seleccionado. Só o visitante envia a mensagem; os campos pessoais do formulário não são copiados automaticamente. O email e o formulário Brevo mantêm-se disponíveis.
+
+Os três estudos de caso incluem percursos guiados para experimentar as ferramentas no ambiente adequado. Não são simuladores nem provas de execução do QGIS dentro do site. O fluxo Brevo continua testado com transporte simulado: a entrega real e as configurações privadas do fornecedor exigem confirmação separada.

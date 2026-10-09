@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const links = [
   { href: "/#servicos", label: "Serviços" },
   { href: "/#metodologia", label: "Metodologia" },
   { href: "/portfolio", label: "Projectos" },
+  { href: "/convites", label: "Convites" },
   { href: "/sobre", label: "A NexoVibe" },
   { href: "/scanner", label: "AI Scanner" },
 ];
@@ -46,9 +48,10 @@ export default function Navbar({ active }: { active?: string }) {
             </Link>
           ))}
         </div>
-        <a className="nav-contact" href="/#contacto">
-          Solicitar avaliação <span aria-hidden="true">↗</span>
+        <a className="nav-contact" href={active === "/convites" ? "/convites#pedido" : "/#contacto"}>
+          {active === "/convites" ? "Pedir convite" : "Solicitar proposta"} <span aria-hidden="true">↗</span>
         </a>
+        <LanguageSwitcher />
         <button
           ref={menuButton}
           className="menu-toggle"
@@ -70,8 +73,8 @@ export default function Navbar({ active }: { active?: string }) {
               {l.label}
             </Link>
           ))}
-          <a href="/#contacto" onClick={() => setOpen(false)}>
-            Solicitar avaliação ↗
+          <a href={active === "/convites" ? "/convites#pedido" : "/#contacto"} onClick={() => setOpen(false)}>
+            {active === "/convites" ? "Pedir convite ↗" : "Solicitar proposta ↗"}
           </a>
         </div>
       </nav>

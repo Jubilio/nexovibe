@@ -3,26 +3,30 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/generate-xlsform-icons.mjs",
+    "predev": "node scripts/generate-xlsform-icons.mjs && node scripts/build-locales.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/generate-xlsform-icons.mjs",
+    "prebuild": "node scripts/generate-xlsform-icons.mjs && node scripts/build-locales.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --test tests/*.test.cjs",
+    "locales": "node scripts/build-locales.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.18.2",
-    "next": "^14.2.35",
+    "next": "15.5.27",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "resend": "^3.0.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
     "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.23",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.0.0"
+  },
+  "overrides": {
+    "postcss": "$postcss"
   }
 }
