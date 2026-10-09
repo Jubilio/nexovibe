@@ -18,7 +18,7 @@ export default function Footer() {
             GitHub ↗
           </a>
           <a href="/sobre">Sobre a marca</a>
-          <a href="mailto:jubilio@nexovibe.co.mz">Email ↗</a>
+          <a href="mailto:nexovibecontact@gmail.com">Email ↗</a>
         </div>
         <span className="copyright">
           © {new Date().getFullYear()} NexoVibe · Moçambique

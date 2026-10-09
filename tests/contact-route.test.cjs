@@ -1,0 +1,74 @@
+const assert = require('node:assert/strict');
+const { test } = require('node:test');
+const fs = require('node:fs');
+const path = require('node:path');
+const ts = require('typescript');
+const { NextRequest } = require('next/server');
+
+// Execute the actual route with mocked transport; never send a real email.
+const source = fs.readFileSync(path.join(__dirname, '../src/app/api/contact/route.ts'), 'utf8');
+const compiled = ts.transpileModule(source, {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+}).outputText;
+const route = { exports: {} };
+new Function('require', 'module', 'exports', compiled)(require, route, route.exports);
+const { POST } = route.exports;
+const valid = { name: 'Visitante', email: 'visitor@example.org', message: 'Pedido de avaliação', service: 'Pentest Web & API' };
+const request = (body = valid) => new NextRequest('http://localhost/api/contact', {
+  method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+});
+
+test('contact route uses Brevo safely and reports delivery acceptance accurately', async (t) => {
+  const originalFetch = global.fetch;
+  const saved = { BREVO_API_KEY: process.env.BREVO_API_KEY, BREVO_SENDER_EMAIL: process.env.BREVO_SENDER_EMAIL };
+  try {
+    process.env.BREVO_API_KEY = 'test-only-key';
+    process.env.BREVO_SENDER_EMAIL = 'verified@example.org';
+    await t.test('rejects invalid input without contacting the provider', async () => {
+      global.fetch = async () => { throw new Error('Transport must not be called'); };
+      for (const body of [null, [], { ...valid, email: 'invalid' }, { ...valid, name: 'A\nB' }, { ...valid, message: ' ' }]) {
+        assert.equal((await POST(request(body))).status, 400);
+      }
+    });
+    await t.test('requires server configuration', async () => {
+      delete process.env.BREVO_API_KEY;
+      assert.equal((await POST(request())).status, 503);
+      process.env.BREVO_API_KEY = 'test-only-key';
+      process.env.BREVO_SENDER_EMAIL = 'invalid';
+      assert.equal((await POST(request())).status, 503);
+      process.env.BREVO_SENDER_EMAIL = 'verified@example.org';
+    });
+    await t.test('fixes recipient, uses verified sender and replies to visitor', async () => {
+      let called = false;
+      global.fetch = async (url, options) => {
+        called = true;
+        assert.equal(url, 'https://api.brevo.com/v3/smtp/email');
+        assert.equal(options.headers['api-key'], 'test-only-key');
+        const body = JSON.parse(options.body);
+        assert.deepEqual(body.to, [{ email: 'nexovibecontact@gmail.com', name: 'NexoVibe' }]);
+        assert.equal(body.sender.email, 'verified@example.org');
+        assert.equal(body.replyTo.email, valid.email);
+        assert.ok(body.textContent.includes(valid.message));
+        assert.equal(body.htmlContent, undefined);
+        return Response.json({ messageId: '<test@example.org>' }, { status: 201 });
+      };
+      const response = await POST(request({ ...valid, to: 'other@example.org', sender: 'spoof@example.org' }));
+      assert.ok(called);
+      assert.equal(response.status, 200);
+      assert.deepEqual(await response.json(), { ok: true });
+    });
+    await t.test('rejects provider failure, unconfirmed success and transport errors', async () => {
+      for (const response of [Response.json({ error: 'rejected' }, { status: 400 }), Response.json({}), new Response('invalid JSON', { status: 201 })]) {
+        global.fetch = async () => response;
+        assert.equal((await POST(request())).status, 502);
+      }
+      global.fetch = async () => { throw new Error('Network timeout'); };
+      assert.equal((await POST(request())).status, 502);
+    });
+  } finally {
+    global.fetch = originalFetch;
+    for (const [key, value] of Object.entries(saved)) {
+      if (value === undefined) delete process.env[key]; else process.env[key] = value;
+    }
+  }
+});

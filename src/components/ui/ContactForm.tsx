@@ -141,7 +141,7 @@ export default function ContactForm() {
           {status === "error" && (
             <p className="form-error" role="alert">
               Não foi possível enviar. Tente novamente ou{" "}
-              <a href="mailto:jubilio@nexovibe.co.mz">
+              <a href="mailto:nexovibecontact@gmail.com">
                 contacte a NexoVibe por email
               </a>
               .
