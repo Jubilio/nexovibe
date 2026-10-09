@@ -43,34 +43,46 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  const apiKey = process.env.BREVO_API_KEY?.trim();
+  const senderEmail = process.env.BREVO_SENDER_EMAIL?.trim();
+  if (!apiKey || !senderEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(senderEmail)) {
     // Never acknowledge delivery when no delivery service is configured.
     return NextResponse.json(
-      { error: "Envio indisponível. Contacte jubilio@nexovibe.co.mz." },
+      { error: "Envio indisponível. Contacte nexovibecontact@gmail.com." },
       { status: 503 },
     );
   }
   try {
-    const response = await fetch("https://api.resend.com/emails", {
+    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        "api-key": apiKey,
       },
       signal: AbortSignal.timeout(10000),
       body: JSON.stringify({
-        from: "NexoVibe <noreply@nexovibe.co.mz>",
-        to: ["jubilio@nexovibe.co.mz"],
-        reply_to: email,
+        sender: { name: "NexoVibe", email: senderEmail },
+        to: [{ email: "nexovibecontact@gmail.com", name: "NexoVibe" }],
+        replyTo: { email, name },
         subject: `Nova mensagem de ${name} — ${service || "NexoVibe"}`,
         // Plain text prevents visitor-supplied markup from becoming email HTML.
-        text: `NexoVibe — Contacto\n\nNome: ${name}\nEmail: ${email}\nÁrea: ${service || "Não especificada"}\n\n${message}`,
+        textContent: `NexoVibe — Contacto\n\nNome: ${name}\nEmail: ${email}\nÁrea: ${service || "Não especificada"}\n\n${message}`,
       }),
     });
     if (!response.ok) {
       return NextResponse.json(
         { error: "Não foi possível enviar a mensagem." },
+        { status: 502 },
+      );
+    }
+    const result: unknown = await response.json();
+    if (
+      !result || typeof result !== "object" ||
+      !("messageId" in result) || typeof result.messageId !== "string" ||
+      !result.messageId.trim()
+    ) {
+      return NextResponse.json(
+        { error: "Não foi possível confirmar o envio da mensagem." },
         { status: 502 },
       );
     }
