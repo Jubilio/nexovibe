@@ -15,6 +15,7 @@ export type Project = {
   label: string;
   mark: string;
   accent: string;
+  image: { src: string; alt: string; width: number; height: number; caption: string; layout: "identity" | "document" | "cover" };
   featured?: boolean;
   caseStudy?: string;
   status?: string;
@@ -25,6 +26,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "simgeo",
+    image: {"src": "/projects/portfolio/simgeo.webp", "alt": "Logótipo original do SimGeo: território, localização e ligações.", "width": 640, "height": 640, "caption": "Identidade do projecto", "layout": "identity"},
     title: "SimGeo",
     category: "GIS & Território",
     desc: "Cenários de cheias, ciclones e secas associados a dados de população, vulnerabilidade e infraestruturas para apoiar decisões no território.",
@@ -36,6 +38,7 @@ export const projects: Project[] = [
   },
   {
     id: "geoclick",
+    image: {"src": "/projects/portfolio/geoclick.svg", "alt": "Ícone original do GeoClick Capture, com marcador de localização e alvo.", "width": 128, "height": 128, "caption": "Identidade do projecto", "layout": "identity"},
     caseStudy: "geoclick-capture",
     status: "Plugin publicado · QGIS",
     title: "GeoClick Capture",
@@ -50,6 +53,7 @@ export const projects: Project[] = [
   },
   {
     id: "xlsform-ai",
+    image: {"src": "/projects/portfolio/xlsform.svg", "alt": "Ilustração do repositório: folha Excel com o painel de tradução XLSForm.", "width": 1400, "height": 760, "caption": "Ilustração do repositório", "layout": "document"},
     caseStudy: "xlsform-translator",
     status: "Projecto open source · Em evolução",
     title: "XLSForm AI Translator",
@@ -64,6 +68,7 @@ export const projects: Project[] = [
   },
   {
     id: "gpx-converter",
+    image: {"src": "/projects/portfolio/gpx-converter.webp", "alt": "Ícone original do GPX Batch Converter: conversão de dados GPS em camadas GIS.", "width": 256, "height": 256, "caption": "Identidade do projecto", "layout": "identity"},
     caseStudy: "gpx-batch-converter",
     status: "Plugin publicado · QGIS",
     featured: true,
@@ -78,6 +83,7 @@ export const projects: Project[] = [
   },
   {
     id: "tls-watcher",
+    image: {"src": "/projects/portfolio/tls-watcher.webp", "alt": "Demonstração do repositório TLS Cert Watcher, com campo de domínio e painel de resultados.", "width": 1200, "height": 838, "caption": "Demonstração do repositório", "layout": "document"},
     title: "TLS Cert Watcher",
     category: "Software & IA",
     desc: "Verificação individual ou em lote de certificados TLS, com detalhes de validade e exportação de resultados em CSV e JSON.",
@@ -89,6 +95,7 @@ export const projects: Project[] = [
   },
   {
     id: "mwanga",
+    image: {"src": "/projects/portfolio/mwanga.webp", "alt": "Imagem de apresentação original do Mwanga Financial, com símbolo M luminoso.", "width": 640, "height": 640, "caption": "Imagem do repositório", "layout": "identity"},
     title: "Mwanga",
     category: "Software & IA",
     desc: "Gestão financeira familiar com acompanhamento de receitas, despesas e poupanças, visualização de dados e uma assistente de IA.",
@@ -100,6 +107,8 @@ export const projects: Project[] = [
   },
   {
     id: "vulnerability",
+    status: "Em desenvolvimento · Integração de dados pendente",
+    image: {"src": "/projects/portfolio/vulnerability.webp", "alt": "Ilustração conceptual de território, povoações e ligações; não representa dados reais de Cabo Delgado.", "width": 1200, "height": 800, "caption": "Ilustração conceptual · IA", "layout": "cover"},
     title: "Vulnerabilidade em Cabo Delgado",
     category: "Dados & Investigação",
     desc: "Projecto de análise em R que combina deslocamento e indicadores ambientais e socioeconómicos num índice territorial de vulnerabilidade.",
@@ -111,6 +120,7 @@ export const projects: Project[] = [
   },
   {
     id: "research",
+    image: {"src": "/projects/portfolio/research.webp", "alt": "Mapa publicado do potencial de águas subterrâneas no distrito de Mueda, com legenda e pontos de água.", "width": 1074, "height": 835, "caption": "Mapa publicado · Mueda", "layout": "document"},
     title: "Investigação & conhecimento",
     category: "Dados & Investigação",
     desc: "Artigos, mapas e tutoriais sobre águas subterrâneas, sensoriamento remoto, análise humanitária e recolha de dados com KoboToolbox.",
