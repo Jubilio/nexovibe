@@ -2,7 +2,7 @@
 import { useState } from "react";
 import ContactForm from "@/components/ui/ContactForm";
 import { invitationPackages, invitationPricingNote, formatInvitationPrice, type InvitationPackageId } from "@/lib/invitations";
-import styles from "@/app/convites/convites.module.css";
+import styles from "@/app/(pt)/convites/convites.module.css";
 
 export default function InvitationBuilder() {
   const [selectedId, setSelectedId] = useState<InvitationPackageId>("essencial");

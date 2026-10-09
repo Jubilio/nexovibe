@@ -2,9 +2,11 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { getInvitationPackage, type InvitationPackageId } from "@/lib/invitations";
+import { whatsappUrl } from "@/lib/contact";
 type Status = "idle" | "loading" | "success" | "error";
 export default function ContactForm({ invitationPackage }: { invitationPackage?: InvitationPackageId }) {
   const selectedInvitation = invitationPackage ? getInvitationPackage(invitationPackage) : undefined;
+  const whatsapp = whatsappUrl(selectedInvitation ? `Olá, NexoVibe. Tenho interesse no pacote ${selectedInvitation.name}. Gostaria de confirmar as entregas, o prazo e o preço negociável.` : undefined);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
@@ -131,7 +133,7 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
               onChange={set("service")}
             >
               <option value="">Seleccione um serviço</option>
-              <option>Segurança de aplicações de IA</option>
+ <option>Segurança de aplicações de IA</option>
               <option>Pentest Web & API</option>
               <option>Segurança de dados & WebGIS</option>
               <option>GIS & análise espacial</option>
@@ -167,6 +169,7 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
               <a href="mailto:nexovibecontact@gmail.com">
                 Contactar a NexoVibe por email
               </a>
+              {" · "}<a href={whatsapp} target="_blank" rel="noopener noreferrer">Continuar pelo WhatsApp</a>
               {errorCode && <span className="block mt-2">Referência: {errorCode}</span>}
             </p>
           )}
@@ -181,6 +184,7 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
           <p className="form-note">
             Os seus dados serão utilizados para responder ao contacto e preparar a proposta. <Link href="/privacidade">Política de privacidade</Link>.
           </p>
+          <p className="form-note">Prefere conversar primeiro? <a href={whatsapp} target="_blank" rel="noopener noreferrer">Abrir WhatsApp ↗</a></p>
         </form>
       )}
     </div>

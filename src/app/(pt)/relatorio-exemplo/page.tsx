@@ -1,8 +1,9 @@
+import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
-export const metadata: Metadata = { alternates: { canonical: "/relatorio-exemplo" },title:"Relatório demonstrativo de segurança",description:"Exemplo fictício de entrega: âmbito, evidências, recomendações e reteste de uma aplicação de IA."};
+export const metadata: Metadata = { alternates: localeAlternates("/relatorio-exemplo" ),title:"Relatório demonstrativo de segurança",description:"Exemplo fictício de entrega: âmbito, evidências, recomendações e reteste de uma aplicação de IA."};
 export default function SampleReport(){return <><Navbar/><main id="main-content" className="container report-page">
 <p className="eyebrow">NEXOVIBE / EXEMPLO DE ENTREGA</p><h1>Da evidência à correcção.</h1>
 <p className="report-notice"><strong>Relatório demonstrativo · Cenário fictício.</strong> Este exemplo ilustra a estrutura de uma entrega. Não documenta um teste real, um cliente ou uma certificação.</p>

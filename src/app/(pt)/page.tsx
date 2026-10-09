@@ -1,5 +1,6 @@
+import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = { alternates: localeAlternates("/" ) };
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import HeroSection from "@/components/sections/HeroSection";

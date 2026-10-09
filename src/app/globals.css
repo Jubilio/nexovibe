@@ -903,7 +903,7 @@ h2 {
   border-color: #66827a;
 }
 .project-filters button > span {
-  font-size: 11px;
+ font-size: 11px;
 }
 .result-count {
   color: #8ea0a8;
@@ -1484,3 +1484,27 @@ h2 {
 .case-flow li { display: flex; flex-direction: column; gap: 12px; }
 .case-flow li span { color: var(--accent); font-size: 13px; }
 @media(max-width: 640px) { .expertise-section .services-grid, .case-flow ol { grid-template-columns: 1fr; } }
+
+/* Contact and locale controls stay reachable on narrow screens. */
+.language-switch { display: flex; flex-shrink: 0; align-items: center; gap: 2px; border: 1px solid #ffffff24; border-radius: 6px; padding: 3px; }
+.language-switch a { display: grid; place-items: center; min-width: 38px; min-height: 38px; font-size: 12px; color: #a8b6bf; border-radius: 3px; }
+.language-switch a[aria-current="page"] { background: #8be6c8; color: #0b1318; }
+.language-switch a:focus-visible { outline: 2px solid #8be6c8; outline-offset: 3px; }
+.direct-contact { display: flex; align-items: flex-start; flex-direction: column; gap: 14px; margin-top: 26px; overflow-wrap: anywhere; }
+.direct-contact > a:not(.button) { color: #8be6c8; font-size: 14px; }
+.direct-contact > span { font-size: 13px; color: #a8b6bf; }
+.demo-steps { display: grid; gap: 12px; margin-top: 24px; }
+.demo-steps details { border: 1px solid #ffffff1c; border-radius: 8px; background: #10171c; padding: 18px 22px; }
+.demo-steps summary { cursor: pointer; font-weight: 500; line-height: 1.6; }
+.demo-steps summary span { color: #8be6c8; margin-right: 16px; font-family: monospace; }
+.demo-steps details p { margin: 18px 0 0; }
+.project-demo { scroll-margin-top: 110px; }
+@media (max-width: 1200px) { .nav-inner { gap: 16px; } .desktop-nav { gap: 15px; } .nav-contact { padding: 12px; font-size: 12px; } }
+@media (max-width: 1200px) {
+  .desktop-nav { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-contact { margin-left: auto; }
+  .mobile-nav:not([hidden]) { display: flex; flex-direction: column; position: absolute; left: 0; right: 0; top: 88px; padding: 15px 20px 22px; background: #10171c; border-bottom: 1px solid var(--border); box-shadow: 0 15px 25px #0005; }
+  .mobile-nav a { padding: 14px 10px; font-size: 16px; }
+}
+@media (max-width: 600px) { .nav-inner { gap: 10px; } .language-switch { margin-left: auto; } .language-switch a { min-width: 34px; } .nav-contact { display: none; } .wordmark { font-size: 21px; } }

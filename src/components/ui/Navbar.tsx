@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const links = [
   { href: "/#servicos", label: "Serviços" },
@@ -50,6 +51,7 @@ export default function Navbar({ active }: { active?: string }) {
         <a className="nav-contact" href={active === "/convites" ? "/convites#pedido" : "/#contacto"}>
           {active === "/convites" ? "Pedir convite" : "Solicitar proposta"} <span aria-hidden="true">↗</span>
         </a>
+        <LanguageSwitcher />
         <button
           ref={menuButton}
           className="menu-toggle"

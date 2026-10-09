@@ -1,9 +1,10 @@
+import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ToolsSection from "@/components/sections/ToolsSection";
-export const metadata: Metadata = { alternates: { canonical: "/sobre" },
+export const metadata: Metadata = { alternates: localeAlternates("/sobre" ),
   title: "Sobre a NexoVibe",
   description:
     "Conheça a NexoVibe: dados, inteligência geoespacial e software para organizações, empresas e equipas de investigação.",

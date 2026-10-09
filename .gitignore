@@ -34,3 +34,7 @@ next-env.d.ts
 
 # generated Office add-in icons (predev / prebuild)
 /public/xlsform-translator/assets/
+
+# English build output, generated from shared templates and locales/en.json
+/src/app/en/
+/src/generated/

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { whatsappUrl, contactPhone } from "@/lib/contact";
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -21,6 +22,7 @@ export default function Footer() {
           <a href="/sobre">Sobre a marca</a>
           <Link href="/privacidade">Privacidade</Link>
           <a href="mailto:nexovibecontact@gmail.com">Email ↗</a>
+          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">WhatsApp · {contactPhone} ↗</a>
         </div>
         <span className="copyright">
           © {new Date().getFullYear()} NexoVibe · Moçambique

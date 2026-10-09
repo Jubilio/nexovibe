@@ -32,7 +32,7 @@ export default function ProjectCard({
         </h3>
         <p className="project-status">{project.status || "Projecto próprio · Consulte o estado no repositório"}</p>
         <p className="project-description">{project.desc}</p>
-        {project.caseStudy && <Link className="text-link case-link" href={`/portfolio/${project.caseStudy}`}>Ler estudo de caso ↗</Link>}
+        {project.caseStudy && <Link className="text-link case-link" href={`/portfolio/${project.caseStudy}`}>Ver projecto e demonstração ↗</Link>}
         <div className="tag-list">
           {project.tags.map((tag) => (
             <span key={tag}>{tag}</span>

@@ -119,3 +119,15 @@ Validação: `npm run build` e `node --test tests/contact-route.test.cjs` (trans
 Documentação: https://docs.netlify.com/manage/security/secure-access-to-sites/rate-limiting/ e https://nextjs.org/support-policy.
 
 Os estudos de caso não inventam métricas de adopção ou resultados de clientes. Os diagramas representam os fluxos documentados; não são capturas das aplicações.
+
+## Português e inglês
+
+As rotas portuguesas mantêm os endereços existentes em `src/app/(pt)`. A versão inglesa usa `/en`, com `lang`, canonicals, alternates e sitemap próprios. O selector mantém o percurso da página. As páginas do XLSForm apresentam apenas o idioma escolhido. O scanner é uma aplicação independente em português e está identificado como tal na navegação inglesa.
+
+`npm run locales` gera as rotas inglesas e os componentes a partir dos templates partilhados e do catálogo revisto em `locales/en.json`. Este passo também corre em `predev`, `prebuild` e nos testes de idiomas. `src/app/en` e `src/generated/en` são saídas ignoradas pelo Git; não editar directamente. Ao alterar texto nos templates portugueses, actualizar o catálogo inglês. O gerador mantém `/api`, ficheiros públicos e identificadores de pacotes; não introduz tradução no navegador nem pedidos a fornecedores de IA.
+
+## Contacto directo e demonstrações
+
+WhatsApp comercial: +258 87 451 8769, centralizado em `src/lib/contact.ts`. Os links abrem mensagens preparadas no idioma da página e, nos convites, com o nome do pacote seleccionado. Só o visitante envia a mensagem; os campos pessoais do formulário não são copiados automaticamente. O email e o formulário Brevo mantêm-se disponíveis.
+
+Os três estudos de caso incluem percursos guiados para experimentar as ferramentas no ambiente adequado. Não são simuladores nem provas de execução do QGIS dentro do site. O fluxo Brevo continua testado com transporte simulado: a entrega real e as configurações privadas do fornecedor exigem confirmação separada.
