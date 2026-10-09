@@ -3,10 +3,10 @@ import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ToolsSection from "@/components/sections/ToolsSection";
-export const metadata: Metadata = {
+export const metadata: Metadata = { alternates: { canonical: "/sobre" },
   title: "Sobre a NexoVibe",
   description:
-    "Conheça a NexoVibe: segurança de aplicações de IA, dados e sistemas geoespaciais, apoiada em desenvolvimento de software e análise.",
+    "Conheça a NexoVibe: dados, inteligência geoespacial e software para organizações, empresas e equipas de investigação.",
 };
 export default function AboutPage() {
   return (
@@ -22,10 +22,10 @@ export default function AboutPage() {
               <span>liga as peças.</span>
             </h1>
             <p className="about-lead">
-              Segurança de IA, dados e sistemas geoespaciais.
+              Dados, inteligência geoespacial e software.
             </p>
             <p>
-              A NexoVibe combina avaliação de segurança com desenvolvimento de software, análise de dados e sistemas de informação geográfica. O seu foco é ajudar organizações a compreender os riscos das suas aplicações e a implementar correcções adequadas ao seu contexto.
+              A NexoVibe combina análise de dados, sistemas de informação geográfica e desenvolvimento de software para ajudar organizações a compreender problemas e criar soluções úteis. A avaliação de segurança de aplicações de IA, Web e dados complementa este trabalho.
             </p>
             <p>
               Com origem em Moçambique, a marca desenvolve aplicações, plugins e
@@ -66,7 +66,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <dt>Abordagem</dt>
-                <dd>Âmbito, evidências & correcção</dd>
+                <dd>Contexto, validação & entrega</dd>
               </div>
             </dl>
           </aside>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import XLSFormLegalPage from '@/components/XLSFormLegalPage'
 
-export const metadata: Metadata = { title: 'User Guide — XLSForm AI Translator' }
+export const metadata: Metadata = { alternates: { canonical: "/xlsform-translator/user-guide" }, title: 'User Guide — XLSForm AI Translator' }
 
 export default function Page() {
   return <XLSFormLegalPage

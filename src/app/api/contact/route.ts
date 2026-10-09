@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ContactInputError, readContactInput } from "@/lib/contact-input";
 import { invitationQuoteSummary } from "@/lib/invitations";
 
 function deliveryError(code: string, status = 502, providerStatus?: number) {
@@ -26,14 +27,17 @@ function providerErrorCode(status: number, data: unknown): string {
 export async function POST(req: NextRequest) {
   let body: unknown;
   try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: "Pedido inválido." }, { status: 400 });
+    body = await readContactInput(req);
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof ContactInputError ? error.message : "Pedido inválido." }, { status: error instanceof ContactInputError ? error.status : 400 });
   }
   if (!body || typeof body !== "object" || Array.isArray(body)) {
     return NextResponse.json({ error: "Pedido inválido." }, { status: 400 });
   }
   const fields = body as Record<string, unknown>;
+  if (fields.website !== undefined && (typeof fields.website !== "string" || fields.website.trim())) {
+    return NextResponse.json({ error: "Não foi possível validar o pedido." }, { status: 400 });
+  }
   if (
     typeof fields.name !== "string" ||
     typeof fields.email !== "string" ||

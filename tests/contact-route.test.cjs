@@ -16,12 +16,17 @@ const catalogCompiled = ts.transpileModule(fs.readFileSync(path.join(__dirname, 
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
 }).outputText;
 new Function('module', 'exports', catalogCompiled)(catalog, catalog.exports);
-const routeRequire = (name) => name === '@/lib/invitations' ? catalog.exports : require(name);
+const input = { exports: {} };
+const inputCompiled = ts.transpileModule(fs.readFileSync(path.join(__dirname, '../src/lib/contact-input.ts'), 'utf8'), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+}).outputText;
+new Function('module', 'exports', inputCompiled)(input, input.exports);
+const routeRequire = (name) => name === '@/lib/invitations' ? catalog.exports : name === '@/lib/contact-input' ? input.exports : require(name);
 new Function('require', 'module', 'exports', compiled)(routeRequire, route, route.exports);
 const { POST } = route.exports;
 const valid = { name: 'Visitante', email: 'visitor@example.org', message: 'Pedido de avaliação', service: 'Pentest Web & API' };
 const request = (body = valid) => new NextRequest('http://localhost/api/contact', {
-  method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+  method: 'POST', headers: { 'Content-Type': 'application/json', Origin: 'http://localhost' }, body: JSON.stringify(body),
 });
 
 test('contact route uses Brevo safely and reports delivery acceptance accurately', async (t) => {
@@ -36,7 +41,22 @@ test('contact route uses Brevo safely and reports delivery acceptance accurately
         assert.equal((await POST(request(body))).status, 400);
       }
     });
-    await t.test('requires server configuration', async () => {
+    await t.test('blocks foreign origins, unsupported formats, oversized bodies and honeypots', async () => {
+      global.fetch = async () => { throw new Error('Transport must not be called'); };
+      const samples = [
+        [{ 'Content-Type': 'application/json', Origin: 'https://foreign.example' }, JSON.stringify(valid), 403],
+        [{ 'Content-Type': 'application/json' }, JSON.stringify(valid), 403],
+        [{ 'Content-Type': 'text/plain', Origin: 'http://localhost' }, JSON.stringify(valid), 415],
+        [{ 'Content-Type': 'application/json', Origin: 'http://localhost', 'Content-Length': '50000' }, '{}', 413],
+        [{ 'Content-Type': 'application/json', Origin: 'http://localhost' }, 'x'.repeat(33000), 413],
+        [{ 'Content-Type': 'application/json', Origin: 'http://localhost' }, '{', 400],
+      ];
+      for (const [headers, body, status] of samples) {
+        assert.equal((await POST(new NextRequest('http://localhost/api/contact', { method: 'POST', headers, body }))).status, status);
+      }
+      assert.equal((await POST(request({ ...valid, website: 'spam.example' }))).status, 400);
+    });
+    await t.test('requires server configuration' , async () => {
       delete process.env.BREVO_API_KEY;
       assert.equal((await POST(request())).status, 503);
       process.env.BREVO_API_KEY = 'test-only-key';

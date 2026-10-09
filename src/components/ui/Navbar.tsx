@@ -48,7 +48,7 @@ export default function Navbar({ active }: { active?: string }) {
           ))}
         </div>
         <a className="nav-contact" href={active === "/convites" ? "/convites#pedido" : "/#contacto"}>
-          {active === "/convites" ? "Pedir convite" : "Solicitar avaliação"} <span aria-hidden="true">↗</span>
+          {active === "/convites" ? "Pedir convite" : "Solicitar proposta"} <span aria-hidden="true">↗</span>
         </a>
         <button
           ref={menuButton}
@@ -72,7 +72,7 @@ export default function Navbar({ active }: { active?: string }) {
             </Link>
           ))}
           <a href={active === "/convites" ? "/convites#pedido" : "/#contacto"} onClick={() => setOpen(false)}>
-            {active === "/convites" ? "Pedir convite ↗" : "Solicitar avaliação ↗"}
+            {active === "/convites" ? "Pedir convite ↗" : "Solicitar proposta ↗"}
           </a>
         </div>
       </nav>

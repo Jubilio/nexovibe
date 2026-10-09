@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { getInvitationPackage, type InvitationPackageId } from "@/lib/invitations";
 type Status = "idle" | "loading" | "success" | "error";
@@ -16,6 +17,7 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
     deadline: "",
   });
   const pending = useRef(false);
+  const website = useRef<HTMLInputElement>(null);
   const set =
     (key: keyof typeof form) =>
     (
@@ -42,14 +44,14 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, service: selectedInvitation ? `Convites — ${selectedInvitation.name}` : form.service, ...(selectedInvitation ? { invitationPackage: selectedInvitation.id } : {}), message: `${selectedInvitation ? "Tipo de evento / convidados" : "Sistema"}: ${form.system.trim() || "Não especificado"}\n${selectedInvitation ? "Data do evento / entrega" : "Prazo pretendido"}: ${form.deadline.trim() || "A definir"}\n\n${form.message.trim()}` }),
+        body: JSON.stringify({ website: website.current?.value || "", name: form.name, email: form.email, service: selectedInvitation ? `Convites — ${selectedInvitation.name}` : form.service, ...(selectedInvitation ? { invitationPackage: selectedInvitation.id } : {}), message: `${selectedInvitation ? "Tipo de evento / convidados" : "Projecto"}: ${form.system.trim() || "Não especificado"}\n${selectedInvitation ? "Data do evento / entrega" : "Prazo pretendido"}: ${form.deadline.trim() || "A definir"}\n\n${form.message.trim()}` }),
         signal: controller.signal,
       });
       const result = await res.json().catch(() => null);
       if (res.ok && result?.ok === true) {
         setStatus("success");
       } else {
-        setErrorMessage(typeof result?.error === "string" ? result.error : "Não foi possível confirmar o envio. Tente novamente mais tarde.");
+        setErrorMessage(res.status === 429 ? "Recebemos vários pedidos desta ligação. Aguarde um minuto antes de tentar novamente." : typeof result?.error === "string" ? result.error : "Não foi possível confirmar o envio. Tente novamente mais tarde.");
         setErrorCode(typeof result?.code === "string" && /^EMAIL_[A-Z_]+$/.test(result.code) ? result.code : `HTTP_${res.status}`);
         setStatus("error");
       }
@@ -87,6 +89,10 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
           aria-label="Formulário de contacto"
           aria-busy={status === "loading"}
         >
+          <div className="contact-trap" aria-hidden="true">
+            <label htmlFor="contact-website">Deixe este campo vazio</label>
+            <input ref={website} id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
           <div className="form-row">
             <label htmlFor="contact-name">
               O seu nome
@@ -139,7 +145,7 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
           </label>}
           {!selectedInvitation && form.service === "Convites para eventos" && <p className="form-note"><a href="/convites#pacotes">Escolher pacote e consultar o preço ↗</a></p>}
           <div className="form-row">
-            <label htmlFor="contact-system">{selectedInvitation ? "Tipo de evento e número de convidados" : "Sistema a avaliar"} <span className="optional">(opcional)</span><input id="contact-system" name="system" maxLength={300} value={form.system} onChange={set("system")} placeholder={selectedInvitation ? "Ex.: casamento, 150 convidados" : "Ex.: assistente interno, API, WebGIS"} /></label>
+            <label htmlFor="contact-system">{selectedInvitation ? "Tipo de evento e número de convidados" : "Projecto ou sistema"} <span className="optional">(opcional)</span><input id="contact-system" name="system" maxLength={300} value={form.system} onChange={set("system")} placeholder={selectedInvitation ? "Ex.: casamento, 150 convidados" : "Ex.: dashboard, WebGIS, aplicação ou avaliação"} /></label>
             <label htmlFor="contact-deadline">{selectedInvitation ? "Data do evento e entrega pretendida" : "Prazo pretendido"} <span className="optional">(opcional)</span><input id="contact-deadline" name="deadline" maxLength={100} value={form.deadline} onChange={set("deadline")} placeholder={selectedInvitation ? "Ex.: evento em Fevereiro, entrega em Janeiro" : "Ex.: antes do lançamento em Novembro"} /></label>
           </div>
           <label htmlFor="contact-message">
@@ -173,7 +179,7 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
             <span aria-hidden="true">↗</span>
           </button>
           <p className="form-note">
-            Os seus dados serão utilizados apenas para responder ao contacto.
+            Os seus dados serão utilizados para responder ao contacto e preparar a proposta. <Link href="/privacidade">Política de privacidade</Link>.
           </p>
         </form>
       )}

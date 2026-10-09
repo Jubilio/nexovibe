@@ -1385,3 +1385,18 @@ h2 {
   .mobile-nav a { padding: 14px 10px; font-size: 16px; }
   .mobile-nav a[aria-current="page"] { color: var(--accent); }
 }
+
+.contact-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.form-note a { text-decoration: underline; text-underline-offset: 3px; }
+
+.expertise-section .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.project-status { font-size: 12px; color: var(--accent); margin-bottom: 12px; }
+.case-link { display: inline-block; margin: 18px 0 4px; }
+.case-study > .eyebrow { margin-top: 40px; }
+.case-lead { font-size: 22px; color: var(--muted); }
+.case-flow { margin: 36px 0; padding: 28px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+.case-flow figcaption { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.case-flow ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0; }
+.case-flow li { display: flex; flex-direction: column; gap: 12px; }
+.case-flow li span { color: var(--accent); font-size: 13px; }
+@media(max-width: 640px) { .expertise-section .services-grid, .case-flow ol { grid-template-columns: 1fr; } }

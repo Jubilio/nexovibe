@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import HeroSection from "@/components/sections/HeroSection";

@@ -16,6 +16,8 @@ export type Project = {
   mark: string;
   accent: string;
   featured?: boolean;
+  caseStudy?: string;
+  status?: string;
 };
 
 // Curated against the public repository READMEs on 18 September 2026.
@@ -31,10 +33,11 @@ export const projects: Project[] = [
     label: "SISTEMA DE APOIO À DECISÃO",
     mark: "SG",
     accent: "mint",
-    featured: true,
   },
   {
     id: "geoclick",
+    caseStudy: "geoclick-capture",
+    status: "Plugin publicado · QGIS",
     title: "GeoClick Capture",
     category: "GIS & Território",
     desc: "Verificação de localizações no QGIS: comparar fontes, guardar evidências e documentar cada decisão num registo auditável.",
@@ -47,6 +50,8 @@ export const projects: Project[] = [
   },
   {
     id: "xlsform-ai",
+    caseStudy: "xlsform-translator",
+    status: "Projecto open source · Em evolução",
     title: "XLSForm AI Translator",
     category: "Software & IA",
     desc: "Criação e tradução de questionários KoboToolbox dentro do Excel, com pré-visualização e preservação de variáveis, fórmulas e lógica.",
@@ -59,6 +64,9 @@ export const projects: Project[] = [
   },
   {
     id: "gpx-converter",
+    caseStudy: "gpx-batch-converter",
+    status: "Plugin publicado · QGIS",
+    featured: true,
     title: "GPX Batch Converter",
     category: "GIS & Território",
     desc: "Conversão e união de ficheiros GPX em Shapefiles directamente no QGIS. Um fluxo de trabalho para transformar recolhas GPS em camadas prontas a analisar.",
@@ -115,9 +123,10 @@ export const projects: Project[] = [
 ];
 
 export const services = [
-  { num: "01", title: "Segurança de aplicações de IA", desc: "Avaliação de assistentes, sistemas RAG e agentes: instruções maliciosas, exposição de informação e utilização indevida de ferramentas.", tags: ["LLM", "RAG", "Agentes"], icon: "code", checks: ["Acesso a documentos e isolamento entre utilizadores", "Prompt injection e tratamento de respostas", "Permissões, limites e acções das ferramentas"] },
-  { num: "02", title: "Pentest Web & API", desc: "Testes controlados para identificar falhas nas aplicações e integrações que suportam as suas operações.", tags: ["Web", "REST", "GraphQL"], icon: "grid", checks: ["Autenticação e gestão de sessões", "Autorização e acesso a recursos", "Lógica de negócio e exposição de dados"] },
-  { num: "03", title: "Segurança de dados & WebGIS", desc: "Revisão de plataformas geoespaciais e fluxos de dados, com atenção à sensibilidade da informação e a quem lhe pode aceder.", tags: ["WebGIS", "Dados", "Serviços OGC"], icon: "map", checks: ["Permissões de camadas e serviços geográficos", "Exportações e acesso a dados sensíveis", "Configuração e partilha da informação"] },
+  { num: "01", title: "Dados & dashboards", desc: "Transformar dados dispersos em informação utilizável para acompanhamento, investigação e decisão.", tags: ["R", "Python", "Power BI"], icon: "grid", checks: ["Preparação, validação e análise de dados", "Indicadores e relatórios reproduzíveis", "Dashboards adaptados à equipa"] },
+  { num: "02", title: "GIS & inteligência geoespacial", desc: "Compreender o território, verificar localizações e desenvolver ferramentas para trabalhar com dados espaciais.", tags: ["QGIS", "WebGIS", "Earth Engine"], icon: "map", checks: ["Análise espacial e cartografia", "Verificação e qualidade de dados geográficos", "Plugins QGIS e aplicações WebGIS"] },
+  { num: "03", title: "Software & automação", desc: "Criar aplicações e simplificar tarefas repetitivas, a partir dos processos e necessidades de cada organização.", tags: ["Web", "APIs", "XLSForm"], icon: "code", checks: ["Aplicações e integrações à medida", "Automação de fluxos de trabalho", "Ferramentas de recolha e tradução com IA"] },
+  { num: "04", title: "Segurança de IA, Web & dados", desc: "Avaliar riscos de aplicações e orientar correcções, com âmbito e autorização definidos antes dos testes.", tags: ["LLM", "API", "WebGIS"], icon: "code", checks: ["Prompt injection e exposição de informação", "Autenticação, permissões e acesso a dados", "Evidências, recomendações e reteste acordado"] },
 ];
 export const tools = [
   "Python",
@@ -134,10 +143,10 @@ export const tools = [
   "XLSForm",
 ];
 export const steps = [
-  { num: "01", title: "Definir o âmbito", desc: "Acordar os sistemas, objectivos, autorização, limites operacionais e condições dos testes." },
-  { num: "02", title: "Avaliar e validar", desc: "Executar os testes acordados, confirmar os resultados e documentar as evidências e limitações." },
-  { num: "03", title: "Priorizar e orientar", desc: "Entregar os resultados com impacto, prioridades de correcção e recomendações aplicáveis." },
-  { num: "04", title: "Apoiar e retestar", desc: "Esclarecer as recomendações e verificar as correcções dentro do período acordado na proposta." },
+  { num: "01", title: "Compreender e definir", desc: "Identificar o problema, os utilizadores, os dados disponíveis e os critérios de sucesso. Acordar entregas, prazos e orçamento." },
+  { num: "02", title: "Preparar e construir", desc: "Validar os dados, desenhar a solução e desenvolver uma primeira versão. Nas avaliações de segurança, acordar autorização e limites dos testes." },
+  { num: "03", title: "Validar em conjunto", desc: "Testar a solução com exemplos representativos, rever resultados com a equipa e documentar limitações e correcções." },
+  { num: "04", title: "Entregar e acompanhar", desc: "Disponibilizar a solução e a documentação, preparar a utilização e definir o suporte ou manutenção incluídos na proposta." },
 ];
 export const stats = [
   { num: "GIS", label: "Compreender o território" },

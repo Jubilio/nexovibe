@@ -7,15 +7,15 @@ export default function ServicesSection() {
       <div className="container section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">01 / SERVIÇOS DE SEGURANÇA</p>
+            <p className="eyebrow">01 / O QUE PODE CONTRATAR</p>
             <h2>
-              Três especializações.
+              Competências que se ligam.
               <br />
-              <span className="muted-heading">Um objectivo: reduzir o risco.</span>
+              <span className="muted-heading">Soluções para problemas reais.</span>
             </h2>
           </div>
           <p className="section-description">
-            Cada avaliação tem um âmbito acordado e recomendações adaptadas ao seu sistema, aos seus dados e à sua equipa.
+            Escolha o apoio de que precisa: dados, território, desenvolvimento ou segurança. Cada proposta define o problema, as entregas e o acompanhamento.
           </p>
         </div>
         <div className="services-grid">

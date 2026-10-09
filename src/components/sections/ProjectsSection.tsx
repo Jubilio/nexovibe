@@ -8,16 +8,16 @@ export default function ProjectsSection() {
         <div>
           <p className="eyebrow">04 / ENGENHARIA EM PRÁTICA</p>
           <h2>
-            Conheça as ferramentas
+            Conheça os problemas
             <br />
-            <span className="muted-heading">que desenvolvemos.</span>
+            <span className="muted-heading">que ajudamos a resolver.</span>
           </h2>
         </div>
         <Link href="/portfolio" className="text-link">
           Todos os projectos <span aria-hidden="true">↗</span>
         </Link>
       </div>
-      <p className="portfolio-context">Projectos próprios de dados, GIS e software. Este portefólio apresenta trabalho de desenvolvimento; não representa auditorias de segurança a clientes.</p>
+      <p className="portfolio-context">Projectos próprios com contexto, abordagem e resultados documentados. Explore os estudos de caso e consulte o código e as limitações de cada ferramenta.</p>
       <div className="projects-grid">
         {projects
           .filter((p) => p.featured)

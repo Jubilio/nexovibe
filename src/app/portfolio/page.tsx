@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ProjectExplorer from "@/components/ui/ProjectExplorer";
-export const metadata: Metadata = {
+export const metadata: Metadata = { alternates: { canonical: "/portfolio" },
   title: "Projectos",
   description:
     "Explore o portfólio de soluções NexoVibe: SimGeo, GeoClick Capture, GPX Batch Converter, XLSForm AI Translator e ferramentas de dados e software.",

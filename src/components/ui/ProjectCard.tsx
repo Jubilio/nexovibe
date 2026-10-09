@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Project } from "@/lib/data";
 export default function ProjectCard({
   project,
@@ -33,7 +34,9 @@ export default function ProjectCard({
             <span aria-hidden="true">↗</span>
           </a>
         </h3>
+        <p className="project-status">{project.status || "Projecto próprio · Consulte o estado no repositório"}</p>
         <p className="project-description">{project.desc}</p>
+        {project.caseStudy && <Link className="text-link case-link" href={`/portfolio/${project.caseStudy}`}>Ler estudo de caso ↗</Link>}
         <div className="tag-list">
           {project.tags.map((tag) => (
             <span key={tag}>{tag}</span>

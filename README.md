@@ -1,10 +1,10 @@
-# NexoVibe — Segurança de IA, Dados & WebGIS
+# NexoVibe — Dados, GIS & Software
 
-Site institucional da NexoVibe: segurança de aplicações de IA, pentest Web/API e segurança de dados/WebGIS, com portfólio de engenharia preservado.
+Site institucional da NexoVibe: dados, inteligência geoespacial, software, segurança e convites personalizados.
 
 ## Stack
 
-Next.js 14 (App Router), React 18, TypeScript e Tailwind CSS. O formulário de contacto utiliza a API transaccional da Brevo. O portfólio não necessita de base de dados nem de pedidos à API GitHub durante a navegação.
+Next.js 15.5.27 (App Router), React 18, TypeScript e Tailwind CSS. O formulário de contacto utiliza a API transaccional da Brevo. O portfólio não necessita de base de dados nem de pedidos à API GitHub durante a navegação.
 
 ## Executar
 
@@ -56,16 +56,19 @@ As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 202
 
 ## Rotas
 
-- `/` — serviços de segurança, metodologia, entregáveis, projectos em destaque e pedido de proposta.
+- `/` — serviços de dados, GIS, software e segurança, metodologia, entregáveis, projectos em destaque e pedido de proposta.
 - `/relatorio-exemplo` — amostra fictícia de relatório, com estilos para impressão.
 - `/scanner` — acesso à ferramenta AI Security Scanner existente.
 - `/portfolio` — catálogo de projectos com filtros por área.
 - `/sobre` — marca e princípios de trabalho.
+- `/portfolio/[slug]` — três estudos de caso baseados na documentação dos projectos.
+- `/privacidade` — tratamento dos dados do contacto comercial.
+- `/robots.txt` e `/sitemap.xml` — indexação das páginas públicas.
 - `/xlsform-translator/privacy`, `/terms`, `/support` e `/user-guide` — páginas existentes do suplemento, sob o prefixo `/xlsform-translator`.
 
 ## Links
 
-[Website](https://nexovibe.co.mz) · [GitHub](https://github.com/Jubilio) · [LinkedIn](https://www.linkedin.com/in/jubilio-mausse/) · [Artigos e tutoriais](https://jubilio.github.io/cv_articles)
+[Website](https://nexovibe.netlify.app) · [GitHub](https://github.com/Jubilio) · [LinkedIn](https://www.linkedin.com/in/jubilio-mausse/) · [Artigos e tutoriais](https://jubilio.github.io/cv_articles)
 
 ## Oferta de segurança
 
@@ -101,3 +104,18 @@ Preços de referência aprovados: Essencial 1.500 MT, Digital 4.500 MT e Complet
 O convite Ana & Rui é uma composição ilustrativa com dados fictícios, sem informações dos convidados dos projectos anteriores. Funcionalidades adicionais ficam sob orçamento. O período de alojamento, convidados e suporte é definido em cada proposta.
 
 Validação: `npm run build` e `node --test tests/contact-route.test.cjs` (transporte de email simulado, sem envio real).
+
+
+## Protecções do site
+
+- Next.js 15.5.27; Node 22 na Netlify; dependência Resend não utilizada removida.
+- Cabeçalhos CSP, anti-framing, nosniff, Referrer-Policy e Permissions-Policy. A CSP permite scripts inline para a hidratação estática do Next.js; não equivale a uma política com nonce. Apenas o scanner permite ligações HTTPS externas para o endpoint configurado pelo utilizador.
+- O optimizador remoto de imagens está desactivado: nenhuma página depende dele.
+- O endpoint de contacto exige JSON e uma origem permitida, rejeita pedidos cross-site e verifica um campo honeypot. A validação da origem não substitui antispam: clientes fora do navegador podem falsificar esse cabeçalho. O corpo é lido com limite real de 32 KiB, incluindo pedidos sem Content-Length.
+- `netlify/edge-functions/contact-rate-limit.js` configura 5 pedidos por IP/domínio em 60 segundos no percurso `/api/contact`. A Netlify pode demorar até 10 segundos a aplicar o bloqueio; não é um limite global de despesa nem impede bots distribuídos. Confirmar o funcionamento no deploy; não funciona no servidor local Next.js. Não usar contadores em memória como limite global em serverless.
+- `URL` e `DEPLOY_PRIME_URL` são fornecidos pela Netlify e utilizados na validação da origem. Manter estes valores alinhados com os domínios do projecto.
+- A recepção de email e as permissões/MFA das contas continuam a depender da configuração real dos fornecedores.
+
+Documentação: https://docs.netlify.com/manage/security/secure-access-to-sites/rate-limiting/ e https://nextjs.org/support-policy.
+
+Os estudos de caso não inventam métricas de adopção ou resultados de clientes. Os diagramas representam os fluxos documentados; não são capturas das aplicações.
