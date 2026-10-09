@@ -109,7 +109,7 @@ Validação: `npm run build` e `node --test tests/contact-route.test.cjs` (trans
 ## Protecções do site
 
 - Next.js 15.5.27; Node 22 na Netlify; dependência Resend não utilizada removida.
-- Cabeçalhos CSP, anti-framing, nosniff, Referrer-Policy e Permissions-Policy. A CSP permite scripts inline para a hidratação estática do Next.js; não equivale a uma política com nonce. Apenas o scanner permite ligações HTTPS externas para o endpoint configurado pelo utilizador.
+- Cabeçalhos CSP, anti-framing, nosniff, Referrer-Policy e Permissions-Policy. Nas páginas Next.js, a barra de revisão da Netlify pode abrir o seu iframe apenas no contexto deploy-preview; produção mantém frame-src none. A CSP permite scripts inline para a hidratação estática do Next.js; não equivale a uma política com nonce. Apenas o scanner permite ligações HTTPS externas para o endpoint configurado pelo utilizador.
 - O optimizador remoto de imagens está desactivado: nenhuma página depende dele.
 - O endpoint de contacto exige JSON e uma origem permitida, rejeita pedidos cross-site e verifica um campo honeypot. A validação da origem não substitui antispam: clientes fora do navegador podem falsificar esse cabeçalho. O corpo é lido com limite real de 32 KiB, incluindo pedidos sem Content-Length.
 - `netlify/edge-functions/contact-rate-limit.js` configura 5 pedidos por IP/domínio em 60 segundos no percurso `/api/contact`. A Netlify pode demorar até 10 segundos a aplicar o bloqueio; não é um limite global de despesa nem impede bots distribuídos. Confirmar o funcionamento no deploy; não funciona no servidor local Next.js. Não usar contadores em memória como limite global em serverless.
