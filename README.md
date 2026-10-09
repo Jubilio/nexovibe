@@ -96,7 +96,7 @@ A referência identifica a categoria da falha, sem revelar detalhes sensíveis. 
 
 A página `/convites` apresenta três pacotes, escolha de serviço com preço em MT e formulário de proposta. O pedido inclui pacote, preço resolvido no servidor, dados do evento e referências de design; usa a integração Brevo existente. Não processa pagamentos.
 
-Os preços e condições são **propostas comerciais para aprovação**, não uma tabela aprovada: Essencial 1.500 MT, Digital 4.500 MT e Completo 9.500 MT. Antes de publicar, confirme os valores e as condições em `src/lib/invitations.ts` e altere `invitationPricingProvisional` para `false`. O catálogo é partilhado pela interface e pelo servidor; nunca aceitar preços enviados pelo navegador.
+Preços de referência aprovados: Essencial 1.500 MT, Digital 4.500 MT e Completo 9.500 MT. Todos são negociáveis conforme as necessidades do evento; o valor final e as entregas são acordados na proposta. Os valores e a nota comercial estão em `src/lib/invitations.ts`, partilhados pela interface e pelo servidor; nunca aceitar preços enviados pelo navegador.
 
 O convite Ana & Rui é uma composição ilustrativa com dados fictícios, sem informações dos convidados dos projectos anteriores. Funcionalidades adicionais ficam sob orçamento. O período de alojamento, convidados e suporte é definido em cada proposta.
 

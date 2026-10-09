@@ -38,6 +38,7 @@ export default function InvitationsPage() {
         <div className={styles.faq}>
           <details><summary>Posso trazer uma ideia ou referência?</summary><p>Sim. Podes partilhar uma paleta, um esboço ou links de inspiração. Criamos uma composição própria e ajustamos contigo até à aprovação, dentro das revisões do pacote.</p></details>
           <details><summary>Como é utilizada a inteligência artificial?</summary><p>A IA apoia a exploração de ideias, elementos visuais e textos. A composição, a revisão e a preparação final são acompanhadas pela NexoVibe e aprovadas por ti.</p></details>
+          <details><summary>Os preços são negociáveis?</summary><p>Sim. Os valores apresentados são preços de referência. Partilha o teu orçamento e as necessidades do evento para ajustarmos as entregas e funcionalidades. O valor final é acordado contigo antes de começarmos.</p></details>
           <details><summary>O que fica definido na proposta?</summary><p>O preço final, as entregas, os prazos, as revisões e eventuais extras. Nos convites online, também o período de alojamento, o suporte e, quando aplicável, o número de convidados. O pedido não efectua uma compra nem exige pagamento.</p></details>
           <details><summary>Posso acrescentar funcionalidades?</summary><p>Sim. Check-in com QR Code, organização de mesas, versões bilingues, domínio próprio e peças gráficas adicionais são orçamentados à parte.</p></details>
         </div>

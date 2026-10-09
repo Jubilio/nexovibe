@@ -75,7 +75,8 @@ test('contact route uses Brevo safely and reports delivery acceptance accurately
           const sent = JSON.parse(options.body);
           assert.ok(sent.textContent.includes(item.name));
           assert.ok(sent.textContent.includes(catalog.exports.formatInvitationPrice(item.price)));
-          assert.ok(sent.textContent.includes('Preço provisório'));
+          assert.ok(sent.textContent.includes('Preço de referência, negociável'));
+          assert.ok(!sent.textContent.includes('provisório'));
           assert.ok(!sent.textContent.includes('FORGED_PRICE'));
           assert.equal(sent.to[0].email, 'nexovibecontact@gmail.com');
           return Response.json({ messageId: '<test@example.org>' }, { status: 201 });

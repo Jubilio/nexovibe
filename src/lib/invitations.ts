@@ -1,5 +1,5 @@
-// Suggested commercial values. Approve these before merging/publishing.
-export const invitationPricingProvisional = true;
+// Reference prices approved by the owner; final scope and price are agreed in the proposal.
+export const invitationPricingNote = "Preço de referência, negociável conforme as necessidades do evento. O valor final é acordado na proposta.";
 export const invitationPackages = [
   {
     id: "essencial", name: "Convite Essencial", price: 1500,
@@ -33,5 +33,5 @@ export function formatInvitationPrice(value: number) {
 export function invitationQuoteSummary(id: string) {
   const item = getInvitationPackage(id);
   if (!item) return null;
-  return `${item.name} — ${formatInvitationPrice(item.price)}\n${invitationPricingProvisional ? "Preço provisório, sujeito a aprovação comercial." : "Preço base; extras e âmbito final confirmados na proposta."}\n${item.terms}`;
+  return `${item.name} — ${formatInvitationPrice(item.price)}\n${invitationPricingNote}\n${item.terms}`;
 }
