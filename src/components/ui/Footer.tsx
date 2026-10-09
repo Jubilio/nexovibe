@@ -17,6 +17,7 @@ export default function Footer() {
           >
             GitHub ↗
           </a>
+          <Link href="/convites">Convites para eventos</Link>
           <a href="/sobre">Sobre a marca</a>
           <a href="mailto:nexovibecontact@gmail.com">Email ↗</a>
         </div>

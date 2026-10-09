@@ -11,7 +11,13 @@ const compiled = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
 }).outputText;
 const route = { exports: {} };
-new Function('require', 'module', 'exports', compiled)(require, route, route.exports);
+const catalog = { exports: {} };
+const catalogCompiled = ts.transpileModule(fs.readFileSync(path.join(__dirname, '../src/lib/invitations.ts'), 'utf8'), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+}).outputText;
+new Function('module', 'exports', catalogCompiled)(catalog, catalog.exports);
+const routeRequire = (name) => name === '@/lib/invitations' ? catalog.exports : require(name);
+new Function('require', 'module', 'exports', compiled)(routeRequire, route, route.exports);
 const { POST } = route.exports;
 const valid = { name: 'Visitante', email: 'visitor@example.org', message: 'Pedido de avaliação', service: 'Pentest Web & API' };
 const request = (body = valid) => new NextRequest('http://localhost/api/contact', {
@@ -56,6 +62,26 @@ test('contact route uses Brevo safely and reports delivery acceptance accurately
       assert.ok(called);
       assert.equal(response.status, 200);
       assert.deepEqual(await response.json(), { ok: true });
+    });
+    await t.test('rejects invalid invitation packages before sending', async () => {
+      global.fetch = async () => { throw new Error('Transport must not be called'); };
+      for (const invitationPackage of ['unknown', '', 42, null, {}]) {
+        assert.equal((await POST(request({ ...valid, invitationPackage }))).status, 400);
+      }
+    });
+    await t.test('includes the selected package and authoritative price in email', async () => {
+      for (const item of catalog.exports.invitationPackages) {
+        global.fetch = async (_url, options) => {
+          const sent = JSON.parse(options.body);
+          assert.ok(sent.textContent.includes(item.name));
+          assert.ok(sent.textContent.includes(catalog.exports.formatInvitationPrice(item.price)));
+          assert.ok(sent.textContent.includes('Preço provisório'));
+          assert.ok(!sent.textContent.includes('FORGED_PRICE'));
+          assert.equal(sent.to[0].email, 'nexovibecontact@gmail.com');
+          return Response.json({ messageId: '<test@example.org>' }, { status: 201 });
+        };
+        assert.equal((await POST(request({ ...valid, invitationPackage: item.id, price: 'FORGED_PRICE' }))).status, 200);
+      }
     });
     await t.test('classifies provider errors without exposing raw data', async () => {
       const cases = [

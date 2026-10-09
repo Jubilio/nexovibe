@@ -90,3 +90,14 @@ O formulário apresenta uma referência segura de erro. Os logs da função regi
 | `EMAIL_TIMEOUT`, `EMAIL_UNCONFIRMED` | Verificar entrega antes de repetir para evitar duplicações |
 
 A referência identifica a categoria da falha, sem revelar detalhes sensíveis. Um teste de envio real é necessário após corrigir a configuração.
+
+
+## Convites para eventos
+
+A página `/convites` apresenta três pacotes, escolha de serviço com preço em MT e formulário de proposta. O pedido inclui pacote, preço resolvido no servidor, dados do evento e referências de design; usa a integração Brevo existente. Não processa pagamentos.
+
+Os preços e condições são **propostas comerciais para aprovação**, não uma tabela aprovada: Essencial 1.500 MT, Digital 4.500 MT e Completo 9.500 MT. Antes de publicar, confirme os valores e as condições em `src/lib/invitations.ts` e altere `invitationPricingProvisional` para `false`. O catálogo é partilhado pela interface e pelo servidor; nunca aceitar preços enviados pelo navegador.
+
+O convite Ana & Rui é uma composição ilustrativa com dados fictícios, sem informações dos convidados dos projectos anteriores. Funcionalidades adicionais ficam sob orçamento. O período de alojamento, convidados e suporte é definido em cada proposta.
+
+Validação: `npm run build` e `node --test tests/contact-route.test.cjs` (transporte de email simulado, sem envio real).

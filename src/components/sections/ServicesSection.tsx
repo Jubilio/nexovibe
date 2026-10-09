@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { services } from "@/lib/data";
 import { getIcon } from "@/components/ui/Icons";
 export default function ServicesSection() {
@@ -31,6 +32,7 @@ export default function ServicesSection() {
             </article>
           ))}
         </div>
+        <div className="invitation-home-link"><p>Também criamos convites personalizados para momentos especiais.</p><Link href="/convites" className="text-link">Explorar convites e pacotes ↗</Link></div>
       </div>
     </section>
   );

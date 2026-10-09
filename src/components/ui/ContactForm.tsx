@@ -1,7 +1,9 @@
 "use client";
 import { useRef, useState } from "react";
+import { getInvitationPackage, type InvitationPackageId } from "@/lib/invitations";
 type Status = "idle" | "loading" | "success" | "error";
-export default function ContactForm() {
+export default function ContactForm({ invitationPackage }: { invitationPackage?: InvitationPackageId }) {
+  const selectedInvitation = invitationPackage ? getInvitationPackage(invitationPackage) : undefined;
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
@@ -40,7 +42,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, service: form.service, message: `Sistema: ${form.system.trim() || "Não especificado"}\nPrazo pretendido: ${form.deadline.trim() || "A definir"}\n\n${form.message.trim()}` }),
+        body: JSON.stringify({ name: form.name, email: form.email, service: selectedInvitation ? `Convites — ${selectedInvitation.name}` : form.service, ...(selectedInvitation ? { invitationPackage: selectedInvitation.id } : {}), message: `${selectedInvitation ? "Tipo de evento / convidados" : "Sistema"}: ${form.system.trim() || "Não especificado"}\n${selectedInvitation ? "Data do evento / entrega" : "Prazo pretendido"}: ${form.deadline.trim() || "A definir"}\n\n${form.message.trim()}` }),
         signal: controller.signal,
       });
       const result = await res.json().catch(() => null);
@@ -114,7 +116,7 @@ export default function ContactForm() {
               />
             </label>
           </div>
-          <label htmlFor="contact-service">
+          {!selectedInvitation && <label htmlFor="contact-service">
             Serviço pretendido <span className="optional">(opcional)</span>
             <select
               id="contact-service"
@@ -131,15 +133,17 @@ export default function ContactForm() {
               <option>Software & automação</option>
               <option>IA & XLSForm</option>
               <option>Formação & workshops</option>
+              <option>Convites para eventos</option>
               <option>Outro desafio</option>
             </select>
-          </label>
+          </label>}
+          {!selectedInvitation && form.service === "Convites para eventos" && <p className="form-note"><a href="/convites#pacotes">Escolher pacote e consultar o preço ↗</a></p>}
           <div className="form-row">
-            <label htmlFor="contact-system">Sistema a avaliar <span className="optional">(opcional)</span><input id="contact-system" name="system" maxLength={300} value={form.system} onChange={set("system")} placeholder="Ex.: assistente interno, API, WebGIS" /></label>
-            <label htmlFor="contact-deadline">Prazo pretendido <span className="optional">(opcional)</span><input id="contact-deadline" name="deadline" maxLength={100} value={form.deadline} onChange={set("deadline")} placeholder="Ex.: antes do lançamento em Novembro" /></label>
+            <label htmlFor="contact-system">{selectedInvitation ? "Tipo de evento e número de convidados" : "Sistema a avaliar"} <span className="optional">(opcional)</span><input id="contact-system" name="system" maxLength={300} value={form.system} onChange={set("system")} placeholder={selectedInvitation ? "Ex.: casamento, 150 convidados" : "Ex.: assistente interno, API, WebGIS"} /></label>
+            <label htmlFor="contact-deadline">{selectedInvitation ? "Data do evento e entrega pretendida" : "Prazo pretendido"} <span className="optional">(opcional)</span><input id="contact-deadline" name="deadline" maxLength={100} value={form.deadline} onChange={set("deadline")} placeholder={selectedInvitation ? "Ex.: evento em Fevereiro, entrega em Janeiro" : "Ex.: antes do lançamento em Novembro"} /></label>
           </div>
           <label htmlFor="contact-message">
-            Como podemos ajudar?
+            {selectedInvitation ? "Conta-nos a tua ideia" : "Como podemos ajudar?"}
             <textarea
               id="contact-message"
               name="message"
@@ -148,7 +152,7 @@ export default function ContactForm() {
               rows={4}
               value={form.message}
               onChange={set("message")}
-              placeholder="Descreva o contexto e os seus objectivos. Não inclua palavras-passe, chaves de acesso ou dados pessoais de terceiros."
+              placeholder={selectedInvitation ? "Cores, estilo, textos e links de referências visuais. Não inclua a lista de convidados nesta fase." : "Descreva o contexto e os seus objectivos. Não inclua palavras-passe, chaves de acesso ou dados pessoais de terceiros."}
             />
           </label>
           {status === "error" && (

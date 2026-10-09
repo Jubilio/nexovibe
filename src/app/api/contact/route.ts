@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invitationQuoteSummary } from "@/lib/invitations";
 
 function deliveryError(code: string, status = 502, providerStatus?: number) {
   // Diagnostic categories only: never log credentials, message bodies or raw provider errors.
@@ -65,6 +66,17 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Resolve the quote on the server; never trust a visitor-supplied price.
+  let invitationSummary = "";
+  if (fields.invitationPackage !== undefined) {
+    if (typeof fields.invitationPackage !== "string") {
+      return NextResponse.json({ error: "Pacote de convite inválido." }, { status: 400 });
+    }
+    const summary = invitationQuoteSummary(fields.invitationPackage);
+    if (!summary) return NextResponse.json({ error: "Pacote de convite inválido." }, { status: 400 });
+    invitationSummary = `\n\nPedido de convite\n${summary}`;
+  }
+
   const apiKey = process.env.BREVO_API_KEY?.trim();
   const senderEmail = process.env.BREVO_SENDER_EMAIL?.trim();
   if (!apiKey) return deliveryError("EMAIL_CONFIG_KEY", 503);
@@ -85,7 +97,7 @@ export async function POST(req: NextRequest) {
         replyTo: { email, name },
         subject: `Nova mensagem de ${name} — ${service || "NexoVibe"}`,
         // Plain text prevents visitor-supplied markup from becoming email HTML.
-        textContent: `NexoVibe — Contacto\n\nNome: ${name}\nEmail: ${email}\nÁrea: ${service || "Não especificada"}\n\n${message}`,
+        textContent: `NexoVibe — Contacto\n\nNome: ${name}\nEmail: ${email}\nÁrea: ${service || "Não especificada"}\n\n${message}${invitationSummary}`,
       }),
     });
     const result: unknown = await response.json().catch(() => null);
