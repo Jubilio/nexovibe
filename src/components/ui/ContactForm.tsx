@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 type Status = "idle" | "loading" | "success" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorCode, setErrorCode] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,7 +25,10 @@ export default function ContactForm() {
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (pending.current) return;
+    setErrorMessage("");
+    setErrorCode("");
     if (!form.name.trim() || !form.message.trim()) {
+      setErrorMessage("Preencha o nome e a mensagem antes de enviar.");
       setStatus("error");
       return;
     }
@@ -38,9 +43,17 @@ export default function ContactForm() {
         body: JSON.stringify({ name: form.name, email: form.email, service: form.service, message: `Sistema: ${form.system.trim() || "Não especificado"}\nPrazo pretendido: ${form.deadline.trim() || "A definir"}\n\n${form.message.trim()}` }),
         signal: controller.signal,
       });
-      const result = await res.json();
-      setStatus(res.ok && result.ok === true ? "success" : "error");
+      const result = await res.json().catch(() => null);
+      if (res.ok && result?.ok === true) {
+        setStatus("success");
+      } else {
+        setErrorMessage(typeof result?.error === "string" ? result.error : "Não foi possível confirmar o envio. Tente novamente mais tarde.");
+        setErrorCode(typeof result?.code === "string" && /^EMAIL_[A-Z_]+$/.test(result.code) ? result.code : `HTTP_${res.status}`);
+        setStatus("error");
+      }
     } catch {
+      setErrorMessage("Não foi possível confirmar o envio. Verifique a ligação e a recepção antes de tentar novamente.");
+      setErrorCode("EMAIL_CONNECTION");
       setStatus("error");
     } finally {
       clearTimeout(timeout);
@@ -140,11 +153,11 @@ export default function ContactForm() {
           </label>
           {status === "error" && (
             <p className="form-error" role="alert">
-              Não foi possível enviar. Tente novamente ou{" "}
+              {errorMessage || "Não foi possível enviar."}{" "}
               <a href="mailto:nexovibecontact@gmail.com">
-                contacte a NexoVibe por email
+                Contactar a NexoVibe por email
               </a>
-              .
+              {errorCode && <span className="block mt-2">Referência: {errorCode}</span>}
             </p>
           )}
           <button

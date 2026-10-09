@@ -57,6 +57,31 @@ test('contact route uses Brevo safely and reports delivery acceptance accurately
       assert.equal(response.status, 200);
       assert.deepEqual(await response.json(), { ok: true });
     });
+    await t.test('classifies provider errors without exposing raw data', async () => {
+      const cases = [
+        [401, 'unauthorized', 'Key not found', 'EMAIL_AUTH'],
+        [401, 'unauthorized', 'We detected an unrecognised IP address', 'EMAIL_IP_BLOCKED'],
+        [400, 'invalid_parameter', 'sender is invalid', 'EMAIL_SENDER'],
+        [403, 'permission_denied', 'Account is not activated', 'EMAIL_PERMISSION'],
+        [402, 'not_enough_credits', 'No credits', 'EMAIL_LIMIT'],
+        [429, 'rate_limit', 'Too many requests', 'EMAIL_LIMIT'],
+      ];
+      const originalLog = console.error;
+      const logs = [];
+      console.error = (...args) => logs.push(args);
+      try {
+        for (const [status, code, message, expected] of cases) {
+          global.fetch = async () => Response.json({ code, message: message + ' secret@example.org PRIVATE_DATA' }, { status });
+          const response = await POST(request());
+          const result = await response.json();
+          assert.equal(response.status, 502);
+          assert.equal(result.code, expected);
+          assert.ok(!JSON.stringify(result).includes('PRIVATE_DATA'));
+        }
+        assert.ok(!JSON.stringify(logs).includes('PRIVATE_DATA'));
+        assert.ok(!JSON.stringify(logs).includes('secret@example.org'));
+      } finally { console.error = originalLog; }
+    });
     await t.test('rejects provider failure, unconfirmed success and transport errors', async () => {
       for (const response of [Response.json({ error: 'rejected' }, { status: 400 }), Response.json({}), new Response('invalid JSON', { status: 201 })]) {
         global.fetch = async () => response;

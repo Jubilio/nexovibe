@@ -70,3 +70,23 @@ As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 202
 ## Oferta de segurança
 
 O formulário inclui serviço, sistema a avaliar e prazo pretendido. Os dois últimos são incorporados na mensagem enviada pela API existente. O envio real depende de `BREVO_API_KEY` e `BREVO_SENDER_EMAIL`, com remetente verificado na Brevo. A amostra de relatório é explicitamente fictícia e não deve ser apresentada como auditoria de cliente ou certificação. Os projectos do portfólio documentam desenvolvimento, não contratos de segurança.
+
+## Diagnóstico de envio
+
+O formulário apresenta uma referência segura de erro. Os logs da função registam a mesma referência e o estado HTTP do fornecedor, sem mensagens, endereços, credenciais ou resposta integral da Brevo.
+
+| Referência | Verificar |
+|---|---|
+| `EMAIL_CONFIG_KEY` | `BREVO_API_KEY` disponível na função de produção após novo deploy |
+| `EMAIL_CONFIG_SENDER` | `BREVO_SENDER_EMAIL` preenchido com um email válido |
+| `EMAIL_AUTH` | Chave API activa (não chave SMTP/MCP), copiada integralmente |
+| `EMAIL_IP_BLOCKED` | Brevo → Settings → Security → Authorized IPs; confirmar a origem da integração antes de autorizar |
+| `EMAIL_SENDER` | Remetente verificado e correspondente a `BREVO_SENDER_EMAIL` |
+| `EMAIL_PERMISSION` | Permissões e activação transaccional da conta Brevo |
+| `EMAIL_LIMIT` | Limites de pedidos ou créditos disponíveis |
+| `EMAIL_REQUEST` | Parâmetros rejeitados pela Brevo |
+| `EMAIL_PROVIDER` | Erro do fornecedor não classificado; consultar logs e painel Brevo |
+| `EMAIL_NETWORK`, `EMAIL_CONNECTION` | Ligação do servidor à Brevo ou do navegador ao site |
+| `EMAIL_TIMEOUT`, `EMAIL_UNCONFIRMED` | Verificar entrega antes de repetir para evitar duplicações |
+
+A referência identifica a categoria da falha, sem revelar detalhes sensíveis. Um teste de envio real é necessário após corrigir a configuração.
