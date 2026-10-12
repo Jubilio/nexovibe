@@ -7,7 +7,7 @@ const root = process.cwd();
 const catalog = JSON.parse(fs.readFileSync('locales/en.json', 'utf8'));
 for (const output of ['src/app/en', 'src/generated/en']) fs.rmSync(output, { recursive: true, force: true });
 const norm = value => value.replace(/\s+/g, ' ').trim();
-const routes = ['sobre', 'portfolio', 'convites', 'privacidade', 'relatorio-exemplo', 'xlsform-translator', 'scanner'];
+const routes = ['formacao', 'sobre', 'portfolio', 'convites', 'privacidade', 'relatorio-exemplo', 'xlsform-translator', 'scanner'];
 function route(value) {
   if (value === '/') return '/en';
   if (value.startsWith('/#') || routes.some(p => value === `/${p}` || value.startsWith(`/${p}/`) || value.startsWith(`/${p}#`))) return '/en' + value;

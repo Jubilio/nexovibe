@@ -18,6 +18,7 @@ export default function Footer() {
           >
             GitHub ↗
           </a>
+          <Link href="/formacao">Formação e recursos</Link>
           <Link href="/convites">Convites para eventos</Link>
           <a href="/sobre">Sobre a marca</a>
           <Link href="/privacidade">Privacidade</Link>
