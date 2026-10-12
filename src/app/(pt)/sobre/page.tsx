@@ -1,10 +1,12 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ToolsSection from "@/components/sections/ToolsSection";
-export const metadata: Metadata = { alternates: localeAlternates("/sobre" ),
+export const metadata: Metadata = {
+  ...shareMetadata("/sobre", "Sobre a NexoVibe", "Tecnologia com propósito. Conheça a abordagem da NexoVibe aos dados, ao território e ao desenvolvimento de soluções digitais.", "about"), alternates: localeAlternates("/sobre" ),
   title: "Sobre a NexoVibe",
   description:
     "Conheça a NexoVibe: dados, inteligência geoespacial e software para organizações, empresas e equipas de investigação.",

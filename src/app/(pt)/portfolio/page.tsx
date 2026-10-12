@@ -1,9 +1,11 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ProjectExplorer from "@/components/ui/ProjectExplorer";
-export const metadata: Metadata = { alternates: localeAlternates("/portfolio" ),
+export const metadata: Metadata = {
+  ...shareMetadata("/portfolio", "Projectos | NexoVibe", "Explore projectos de GIS, dados e software: ferramentas, demonstrações e estudos de caso documentados.", "portfolio"), alternates: localeAlternates("/portfolio" ),
   title: "Projectos",
   description:
     "Explore o portfólio de soluções NexoVibe: SimGeo, GeoClick Capture, GPX Batch Converter, XLSForm AI Translator e ferramentas de dados e software.",

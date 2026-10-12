@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = caseStudies.find(item => item.slug === slug);
   if (!item) return {};
-  return { title: `${item.name} — Estudo de caso`, description: item.lead, alternates: localeAlternates(`/portfolio/${slug}`), openGraph: { title: `${item.name} | NexoVibe`, description: item.lead, url: `/portfolio/${slug}` } };
+  return { title: `${item.name} — Estudo de caso`, description: item.lead, alternates: localeAlternates(`/portfolio/${slug}`), ...shareMetadata(`/portfolio/${slug}`, `${item.name} | NexoVibe`, item.lead, slug) };
 }
 export default async function CaseStudy({ params }: Props) {
   const { slug } = await params;
