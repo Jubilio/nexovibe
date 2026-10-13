@@ -3,8 +3,7 @@
 Cartões PNG estáticos de 1200 × 630 para a página inicial, portfólio, Sobre,
 convites, relatório demonstrativo e os três estudos de caso. Cada página tem
 Open Graph e Twitter Card com título, descrição, URL e imagem próprios.
-As páginas inglesas usam imagens inglesas. O scanner mantém a sua língua actual,
-Português; `/scanner` redirecciona para o HTML estático com metadados próprios.
+As páginas inglesas usam imagens inglesas. A formação também tem previews PT/EN.
 
 ![Selecção de previews](social-previews.jpg)
 

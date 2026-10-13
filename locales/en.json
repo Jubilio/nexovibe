@@ -33,7 +33,6 @@
   "A definir": "To be agreed",
   "A enviar…": "Sending…",
   "A tua história.": "Your story.",
-  "AI Scanner": "AI Scanner (Portuguese)",
   "ANTES DE COMEÇAR": "BEFORE WE START",
   "ANÁLISE REPRODUTÍVEL": "REPRODUCIBLE ANALYSIS",
   "AS FERRAMENTAS POR TRÁS DAS IDEIAS": "THE TOOLS BEHIND THE IDEAS",
@@ -275,7 +274,6 @@
   "SEGURANÇA & MONITORIA": "SECURITY & MONITORING",
   "SISTEMA DE APOIO À DECISÃO": "DECISION SUPPORT SYSTEM",
   "Saltar para o conteúdo": "Skip to content",
-  "Scanner e XLSForm Translator": "Scanner and XLSForm Translator",
   "Segurança": "Security",
   "Segurança WebGIS": "WebGIS security",
   "Segurança de IA, Web & dados": "AI, Web & data security",
@@ -422,7 +420,6 @@
   "No gestor de plugins do QGIS, procure GPX Batch Converter. Abra a ferramenta e seleccione os ficheiros GPX de teste.": "In the QGIS plugin manager, search for GPX Batch Converter. Open the tool and select your test GPX files.",
   "Não envie palavras-passe, chaves de API, listas de convidados, dados de beneficiários ou outros dados sensíveis no primeiro contacto.": "Do not send passwords, API keys, guest lists, beneficiary data or other sensitive information in your first enquiry.",
   "Número de convidados, alojamento e suporte definidos na proposta. Check-in e mesas sob orçamento.": "Guest numbers, hosting and support are defined in the proposal. Check-in and seating plans are quoted separately.",
-  "O AI Scanner permite testes locais simulados e pedidos do navegador ao endpoint HTTPS indicado pelo utilizador. Em modo real, esse endpoint recebe os pedidos e a chave que o utilizador introduzir. As avaliações permanecem na sessão do navegador e podem ser exportadas; reveja o conteúdo antes de partilhar.": "The AI Scanner supports simulated local tests and browser requests to the HTTPS endpoint specified by the user. In real mode, that endpoint receives requests and the key entered by the user. Assessments remain in the browser session and can be exported; review the contents before sharing.",
   "O botão abre uma conversa com a NexoVibe no WhatsApp, serviço da Meta, apenas quando clica. A mensagem preparada pode ser revista antes do envio. O site não envia automaticamente os campos do formulário para o WhatsApp. Ao enviar uma mensagem, partilha o seu número e o conteúdo com esse serviço e com a NexoVibe.": "The button opens a conversation with NexoVibe on WhatsApp, a Meta service, only when clicked. You can review the prepared message before sending. The website does not automatically send form fields to WhatsApp. Sending a message shares your number and its contents with that service and NexoVibe.",
   "O contacto comercial é gerido pela NexoVibe, sob responsabilidade de Jubílio Maússe, em Moçambique. Para questões sobre os seus dados, escreva para": "Commercial enquiries are managed by NexoVibe, under the responsibility of Jubílio Maússe in Mozambique. For questions about your information, write to",
   "O endereço IP pode ser utilizado pela infraestrutura de alojamento para registos técnicos e limitação de pedidos. O código do formulário não regista o conteúdo da mensagem nem a chave do serviço de email nos logs.": "The hosting infrastructure may use your IP address for technical logs and rate limiting. The form code does not log message contents or the email service key.",
@@ -520,5 +517,6 @@
   "Estudo de caso GPX ↗": "GPX case study ↗",
   "Estudo de caso GeoClick ↗": "GeoClick case study ↗",
   "Plugins QGIS: ferramentas desenvolvidas, conhecimento partilhado e recursos para aprender.": "QGIS plugins: tools built, knowledge shared and learning resources.",
-  "REGISTOS & MATERIAIS": "RECORDS & MATERIALS"
+  "REGISTOS & MATERIAIS": "RECORDS & MATERIALS",
+  "Esta página explica o tratamento dos dados no site institucional da NexoVibe e nos pedidos de proposta. Actualizada em 13 de Outubro de 2026.": "This page explains how data is handled on the NexoVibe website and in proposal enquiries. Updated on 13 October 2026."
 }

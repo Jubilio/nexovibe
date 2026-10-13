@@ -1,7 +1,7 @@
 # Materiais de formação e evidências
 
 Adições à página inicial, Sobre e estudos de caso, com nova rota `/formacao`
-e equivalente `/en/formacao`. Serviços, convites, scanner, contacto, WhatsApp,
+e equivalente `/en/formacao`. Serviços, convites, contacto, WhatsApp,
 filtros, demonstrações e recursos anteriores continuam disponíveis.
 
 Materiais fornecidos pelo autor:

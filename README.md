@@ -58,7 +58,6 @@ As descrições foram verificadas nos READMEs públicos em 18 de Setembro de 202
 
 - `/` — serviços de dados, GIS, software e segurança, metodologia, entregáveis, projectos em destaque e pedido de proposta.
 - `/relatorio-exemplo` — amostra fictícia de relatório, com estilos para impressão.
-- `/scanner` — acesso à ferramenta AI Security Scanner existente.
 - `/portfolio` — catálogo de projectos com filtros por área.
 - `/sobre` — marca e princípios de trabalho.
 - `/portfolio/[slug]` — três estudos de caso baseados na documentação dos projectos.
@@ -109,7 +108,7 @@ Validação: `npm run build` e `node --test tests/contact-route.test.cjs` (trans
 ## Protecções do site
 
 - Next.js 15.5.27; Node 22 na Netlify; dependência Resend não utilizada removida.
-- Cabeçalhos CSP, anti-framing, nosniff, Referrer-Policy e Permissions-Policy. Nas páginas Next.js, a barra de revisão da Netlify pode abrir o seu iframe apenas no contexto deploy-preview; produção mantém frame-src none. A CSP permite scripts inline para a hidratação estática do Next.js; não equivale a uma política com nonce. Apenas o scanner permite ligações HTTPS externas para o endpoint configurado pelo utilizador.
+- Cabeçalhos CSP, anti-framing, nosniff, Referrer-Policy e Permissions-Policy. Nas páginas Next.js, a barra de revisão da Netlify pode abrir o seu iframe apenas no contexto deploy-preview; produção mantém frame-src none. A CSP permite scripts inline para a hidratação estática do Next.js; não equivale a uma política com nonce.
 - O optimizador remoto de imagens está desactivado: nenhuma página depende dele.
 - O endpoint de contacto exige JSON e uma origem permitida, rejeita pedidos cross-site e verifica um campo honeypot. A validação da origem não substitui antispam: clientes fora do navegador podem falsificar esse cabeçalho. O corpo é lido com limite real de 32 KiB, incluindo pedidos sem Content-Length.
 - `netlify/edge-functions/contact-rate-limit.js` configura 5 pedidos por IP/domínio em 60 segundos no percurso `/api/contact`. A Netlify pode demorar até 10 segundos a aplicar o bloqueio; não é um limite global de despesa nem impede bots distribuídos. Confirmar o funcionamento no deploy; não funciona no servidor local Next.js. Não usar contadores em memória como limite global em serverless.
@@ -122,7 +121,7 @@ Os estudos de caso não inventam métricas de adopção ou resultados de cliente
 
 ## Português e inglês
 
-As rotas portuguesas mantêm os endereços existentes em `src/app/(pt)`. A versão inglesa usa `/en`, com `lang`, canonicals, alternates e sitemap próprios. O selector mantém o percurso da página. As páginas do XLSForm apresentam apenas o idioma escolhido. O scanner é uma aplicação independente em português e está identificado como tal na navegação inglesa.
+As rotas portuguesas mantêm os endereços existentes em `src/app/(pt)`. A versão inglesa usa `/en`, com `lang`, canonicals, alternates e sitemap próprios. O selector mantém o percurso da página. As páginas do XLSForm apresentam apenas o idioma escolhido.
 
 `npm run locales` gera as rotas inglesas e os componentes a partir dos templates partilhados e do catálogo revisto em `locales/en.json`. Este passo também corre em `predev`, `prebuild` e nos testes de idiomas. `src/app/en` e `src/generated/en` são saídas ignoradas pelo Git; não editar directamente. Ao alterar texto nos templates portugueses, actualizar o catálogo inglês. O gerador mantém `/api`, ficheiros públicos e identificadores de pacotes; não introduz tradução no navegador nem pedidos a fornecedores de IA.
 

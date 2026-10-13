@@ -20,7 +20,6 @@ CARDS = {
     'geoclick-capture': [('ESTUDO DE CASO · QGIS', 'GeoClick\nCapture', 'Localizações com contexto e evidências.'), ('CASE STUDY · QGIS', 'GeoClick\nCapture', 'Locations with context and evidence.')],
     'xlsform-translator': [('ESTUDO DE CASO · EXCEL', 'XLSForm AI\nTranslator', 'Traduzir questionários. Preservar a estrutura.'), ('CASE STUDY · EXCEL', 'XLSForm AI\nTranslator', 'Translate questionnaires. Preserve structure.')],
     'training': [('FORMAÇÃO & COMUNIDADE', 'Aprender, construir\ne partilhar.', 'Plugins QGIS · Recursos técnicos'), ('TRAINING & COMMUNITY', 'Learn, build\nand share.', 'QGIS plugins · Technical resources')],
-    'scanner': [('FERRAMENTA · SEGURANÇA DE IA', 'AI Security\nScanner', 'Testes, evidências e remediação.')],
 }
 def card(slug, text, language):
     warm = slug == 'invitations'
@@ -69,4 +68,4 @@ sheet=Image.new('RGB',(1200,630),'#0a0e11')
 for i,im in enumerate(thumbs): sheet.paste(im,((i%2)*600,(i//2)*315))
 (ROOT/'docs').mkdir(exist_ok=True)
 sheet.save(ROOT/'docs/social-previews.jpg',quality=90)
-print('Generated 19 social PNGs and a four-card preview sheet.')
+print('Generated 18 social PNGs and a four-card preview sheet.')

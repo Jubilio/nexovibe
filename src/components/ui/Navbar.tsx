@@ -10,7 +10,6 @@ const links = [
   { href: "/formacao", label: "Formação" },
   { href: "/convites", label: "Convites" },
   { href: "/sobre", label: "A NexoVibe" },
-  { href: "/scanner", label: "AI Scanner" },
 ];
 export default function Navbar({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);
