@@ -16,7 +16,7 @@ interface Props {
   sections: Section[]
 }
 
-export default function XLSFormLegalPage({ titlePt, titleEn, introPt, introEn, sections }: Props) {
+export default function XLSFormLegalPage({ titlePt, introPt, sections }: Props) {
   return (
     <main className="min-h-screen bg-brand-dark px-5 py-12 text-white">
       <div className="mx-auto max-w-4xl">

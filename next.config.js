@@ -1,9 +1,9 @@
 const previewFrame = process.env.CONTEXT === "deploy-preview" ? "frame-src https://app.netlify.com" : "frame-src 'none'";
-const csp = (scanner = false) => [
+const csp = () => [
   "default-src 'self'", "base-uri 'self'", "object-src 'none'", "frame-ancestors 'none'",
   "form-action 'self'", "script-src 'self' 'unsafe-inline'", "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:", "font-src 'self'", previewFrame,
-  scanner ? "connect-src 'self' https:" : "connect-src 'self'", "upgrade-insecure-requests",
+  "connect-src 'self'", "upgrade-insecure-requests",
 ].join("; ");
 const common = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -20,8 +20,6 @@ module.exports = {
   async headers() {
     return [
       { source: "/:path*", headers: [...common, { key: "Content-Security-Policy", value: csp() }] },
-      // Scanner deliberately contacts the visitor's authorised HTTPS endpoint.
-      { source: "/ai-security-scanner/:path*", headers: [{ key: "Content-Security-Policy", value: csp(true) }] },
       { source: "/api/:path*", headers: [{ key: "Cache-Control", value: "no-store" }] },
     ];
   },

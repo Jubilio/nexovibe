@@ -44,7 +44,7 @@ for (const source of sourceFiles) {
       if(ts.isNewExpression(node.parent) && node.parent.expression.getText(ast)==='URL') translated=value;
       if(translated!==value) {
         let replacement;
-        if(isText) replacement=' '+translated+' ';
+        if(isText) replacement=' '+translated.replaceAll("'", "&apos;").replaceAll('"', "&quot;")+' ';
         else if(isPart) {
           const spacing = catalog[key] !== undefined ? (value.match(/^\s*/)?.[0] || '') + translated + (value.match(/\s*$/)?.[0] || '') : translated;
           replacement=(node.kind===ts.SyntaxKind.TemplateHead?'`':'}')+spacing.replace(/`/g,'\\`')+(node.kind===ts.SyntaxKind.TemplateTail?'`':'${');
