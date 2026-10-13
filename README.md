@@ -14,6 +14,7 @@ npm run dev
 ```
 
 ```sh
+npm run lint
 npx tsc --noEmit
 npm run build
 npm start
@@ -130,3 +131,11 @@ As rotas portuguesas mantêm os endereços existentes em `src/app/(pt)`. A vers�
 WhatsApp comercial: +258 87 451 8769, centralizado em `src/lib/contact.ts`. Os links abrem mensagens preparadas no idioma da página e, nos convites, com o nome do pacote seleccionado. Só o visitante envia a mensagem; os campos pessoais do formulário não são copiados automaticamente. O email e o formulário Brevo mantêm-se disponíveis.
 
 Os três estudos de caso incluem percursos guiados para experimentar as ferramentas no ambiente adequado. Não são simuladores nem provas de execução do QGIS dentro do site. O fluxo Brevo continua testado com transporte simulado: a entrega real e as configurações privadas do fornecedor exigem confirmação separada.
+
+## Verificação automática de código
+
+`npm run lint` gera as versões inglesas e executa o ESLint CLI com as regras
+Next.js Core Web Vitals e TypeScript, sem perguntas interactivas. A verificação
+abrange `src/`, incluindo os ficheiros gerados PT/EN, e falha em erros ou avisos.
+O CI executa lint antes dos testes, auditoria das dependências e build.
+O código independente em `tools/` está fora do âmbito do site institucional.

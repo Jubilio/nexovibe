@@ -1,5 +1,6 @@
 import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
+import Link from "next/link";
 import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
@@ -44,9 +45,9 @@ export default function PortfolioPage() {
             <p className="eyebrow">TEM UM DESAFIO SEMELHANTE?</p>
             <h2>Vamos construir a próxima solução.</h2>
           </div>
-          <a className="button button-primary" href="/#contacto">
+          <Link className="button button-primary" href="/#contacto">
             Iniciar uma conversa ↗
-          </a>
+          </Link>
         </section>
       </main>
       <Footer />

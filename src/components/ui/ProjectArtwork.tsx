@@ -1,10 +1,11 @@
+import Image from "next/image";
 import type { Project } from "@/lib/data";
 
 export default function ProjectArtwork({ project, eager = false }: { project: Project; eager?: boolean }) {
   const { image } = project;
   return (
     <span className={`project-artwork artwork-${image.layout} artwork-${project.id}`}>
-      <img
+      <Image
         src={image.src}
         alt={image.alt}
         width={image.width}
