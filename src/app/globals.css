@@ -1508,3 +1508,20 @@ h2 {
   .mobile-nav a { padding: 14px 10px; font-size: 16px; }
 }
 @media (max-width: 600px) { .nav-inner { gap: 10px; } .language-switch { margin-left: auto; } .language-switch a { min-width: 34px; } .nav-contact { display: none; } .wordmark { font-size: 21px; } }
+
+/* Added evidence and learning sections preserve existing page layouts. */
+.community-grid, .training-overview, .training-gallery { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+.community-highlight figure, .training-page figure, .case-evidence figure { margin: 0; min-width: 0; }
+.community-highlight img, .training-page img, .case-evidence img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 8px; }
+.community-highlight figcaption, .training-page figcaption, .case-evidence figcaption { color: var(--muted); font-size: 13px; line-height: 1.7; margin-top: 12px; }
+.community-copy p, .community-copy li, .training-overview p, .founder-story p { color: var(--muted); }
+.community-copy ul { padding-left: 20px; line-height: 1.8; display: grid; gap: 12px; }
+.training-overview h2 { margin-bottom: 24px; }
+.training-overview .form-note { margin-top: 22px; }
+.training-gallery { margin-top: 32px; }
+.training-resources { padding-bottom: 90px; }
+.founder-story { border-top: 1px solid var(--border); }
+.founder-story p { max-width: 780px; margin-top: 24px; }
+.case-evidence figure { margin-top: 26px; max-width: 900px; }
+.footer-links { flex-wrap: wrap; }
+@media (max-width: 850px) { .community-grid, .training-overview, .training-gallery { grid-template-columns: 1fr; gap: 28px; } .training-overview figure, .training-gallery figure:last-child { max-width: 520px; } }

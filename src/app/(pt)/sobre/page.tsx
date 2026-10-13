@@ -1,10 +1,12 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ToolsSection from "@/components/sections/ToolsSection";
-export const metadata: Metadata = { alternates: localeAlternates("/sobre" ),
+export const metadata: Metadata = {
+  ...shareMetadata("/sobre", "Sobre a NexoVibe", "Tecnologia com propósito. Conheça a abordagem da NexoVibe aos dados, ao território e ao desenvolvimento de soluções digitais.", "about"), alternates: localeAlternates("/sobre" ),
   title: "Sobre a NexoVibe",
   description:
     "Conheça a NexoVibe: dados, inteligência geoespacial e software para organizações, empresas e equipas de investigação.",
@@ -100,6 +102,13 @@ export default function AboutPage() {
               </p>
             </article>
           </div>
+        </section>
+        <section className="section container founder-story" aria-labelledby="founder-story-title">
+          <p className="eyebrow">DA EXPERIÊNCIA À CONSTRUÇÃO DE FERRAMENTAS</p>
+          <h2 id="founder-story-title">Jubílio Maússe</h2>
+          <p>Fundador e responsável técnico da NexoVibe. Combina análise geoespacial, gestão de dados e desenvolvimento de software, com experiência em informação humanitária e ferramentas para processos de campo.</p>
+          <p>O trabalho inclui plugins QGIS próprios e partilha de conhecimento técnico. Os materiais da formação OpenStreetMap Ghana documentam a apresentação do GPX Batch Converter e do GeoClick Capture.</p>
+          <div className="button-row"><Link href="/formacao" className="button button-secondary">Conhecer a formação e os recursos ↗</Link></div>
         </section>
         <ToolsSection />
         <section className="container about-outro">

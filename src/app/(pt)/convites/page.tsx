@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
@@ -5,10 +6,10 @@ import Footer from "@/components/ui/Footer";
 import InvitationBuilder from "@/components/InvitationBuilder";
 import styles from "./convites.module.css";
 
-export const metadata: Metadata = { alternates: localeAlternates("/convites" ),
+export const metadata: Metadata = {
+  ...shareMetadata("/convites", "Convites personalizados | NexoVibe", "Design inspirado em ti. Escolhe o formato, consulta o preço e partilha a tua ideia.", "invitations"), alternates: localeAlternates("/convites" ),
   title: "Convites personalizados para eventos",
   description: "A tua ideia, num convite feito à tua medida. Convites em imagem, PDF ou página digital com confirmação de presença. Conhece os pacotes NexoVibe.",
-  openGraph: { title: "Convites personalizados | NexoVibe", description: "Design inspirado em ti. Escolhe o formato, consulta o preço e partilha a tua ideia.", url: "https://nexovibe.netlify.app/convites" },
 };
 export default function InvitationsPage() {
   return <>

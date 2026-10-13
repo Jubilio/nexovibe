@@ -7,9 +7,9 @@ const links = [
   { href: "/#servicos", label: "Serviços" },
   { href: "/#metodologia", label: "Metodologia" },
   { href: "/portfolio", label: "Projectos" },
+  { href: "/formacao", label: "Formação" },
   { href: "/convites", label: "Convites" },
   { href: "/sobre", label: "A NexoVibe" },
-  { href: "/scanner", label: "AI Scanner" },
 ];
 export default function Navbar({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);

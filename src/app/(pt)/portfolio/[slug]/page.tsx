@@ -1,5 +1,7 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
@@ -15,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = caseStudies.find(item => item.slug === slug);
   if (!item) return {};
-  return { title: `${item.name} — Estudo de caso`, description: item.lead, alternates: localeAlternates(`/portfolio/${slug}`), openGraph: { title: `${item.name} | NexoVibe`, description: item.lead, url: `/portfolio/${slug}` } };
+  return { title: `${item.name} — Estudo de caso`, description: item.lead, alternates: localeAlternates(`/portfolio/${slug}`), ...shareMetadata(`/portfolio/${slug}`, `${item.name} | NexoVibe`, item.lead, slug) };
 }
 export default async function CaseStudy({ params }: Props) {
   const { slug } = await params;
@@ -29,6 +31,11 @@ export default async function CaseStudy({ params }: Props) {
     {project && <figure className={`case-artwork accent-${project.accent}`}><ProjectArtwork project={project} eager /><figcaption className="project-image-caption">{project.image.caption}</figcaption></figure>}
     <figure className="case-flow"><figcaption>Fluxo de utilização documentado</figcaption><ol>{item.flow.map((step, i) => <li key={step}><span>0{i + 1}</span>{step}</li>)}</ol></figure>
     <ProjectDemo slug={slug} />
+    {(slug === "gpx-batch-converter" || slug === "geoclick-capture") && <section className="case-evidence">
+      <h2>A ferramenta no QGIS</h2><p>Captura real do gestor de plugins: identificação da ferramenta e descrição das funcionalidades.</p>
+      <figure><a href={slug === "gpx-batch-converter" ? "/community/gpx-qgis.webp" : "/community/geoclick-qgis.webp"} target="_blank" rel="noopener noreferrer"><Image src={slug === "gpx-batch-converter" ? "/community/gpx-qgis.webp" : "/community/geoclick-qgis.webp"} alt={slug === "gpx-batch-converter" ? "GPX Batch Converter instalado no gestor de plugins QGIS." : "GeoClick Capture instalado no gestor de plugins QGIS."} width={slug === "gpx-batch-converter" ? 881 : 883} height={slug === "gpx-batch-converter" ? 671 : 673} sizes="(max-width: 900px) 100vw, 900px" /></a><figcaption>Captura fornecida pelo autor. Versões, avaliações e downloads reflectem o momento da captura.</figcaption></figure>
+      <div className="button-row"><Link href="/formacao" className="text-link">Ver apresentação e registo da formação ↗</Link></div>
+    </section>}
     <section><h2>O problema</h2><p>{item.problem}</p></section>
     <section><h2>A abordagem</h2><p>{item.approach}</p></section>
     <section><h2>O resultado verificável</h2><p>{item.result}</p><div className="button-row"><a href={item.source} className="button button-secondary" target="_blank" rel="noopener noreferrer">Código e documentação ↗</a><a href={item.evidence} className="text-link">{item.evidenceLabel} ↗</a></div></section>

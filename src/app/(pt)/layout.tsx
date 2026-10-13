@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../globals.css";
@@ -31,15 +32,8 @@ export const metadata: Metadata = {
     "Soluções tecnológicas",
   ],
   authors: [{ name: "NexoVibe" }],
-  openGraph: {
-    title: "NexoVibe — Dados, GIS & Software",
-    description:
-      "Análise de dados, inteligência geoespacial, software e segurança de IA para organizações e empresas. Soluções desenvolvidas em Moçambique.",
-    url: "https://nexovibe.netlify.app",
-    siteName: "NexoVibe",
-    locale: "pt_MZ",
-    type: "website",
-  },
+  ...shareMetadata("/", "NexoVibe — Dados, GIS & Software",
+    "Análise de dados, inteligência geoespacial, software e segurança de IA para organizações e empresas. Soluções desenvolvidas em Moçambique.", "home"),
   icons: {
     icon: "/icon.svg",
     apple: "/icon.svg",
