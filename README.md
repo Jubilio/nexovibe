@@ -4,7 +4,7 @@ Site institucional da NexoVibe: dados, inteligência geoespacial, software, segu
 
 ## Stack
 
-Next.js 15.5.27 (App Router), React 18, TypeScript e Tailwind CSS. O formulário de contacto utiliza a API transaccional da Brevo. O portfólio não necessita de base de dados nem de pedidos à API GitHub durante a navegação.
+Next.js 15.5.28 (App Router), React 18, TypeScript e Tailwind CSS. O formulário de contacto utiliza a API transaccional da Brevo. O portfólio não necessita de base de dados nem de pedidos à API GitHub durante a navegação.
 
 ## Executar
 
@@ -108,7 +108,7 @@ Validação: `npm run build` e `node --test tests/contact-route.test.cjs` (trans
 
 ## Protecções do site
 
-- Next.js 15.5.27; Node 22 na Netlify; dependência Resend não utilizada removida.
+- Next.js 15.5.28; Node 22 na Netlify; dependência Resend não utilizada removida.
 - Cabeçalhos CSP, anti-framing, nosniff, Referrer-Policy e Permissions-Policy. Nas páginas Next.js, a barra de revisão da Netlify pode abrir o seu iframe apenas no contexto deploy-preview; produção mantém frame-src none. A CSP permite scripts inline para a hidratação estática do Next.js; não equivale a uma política com nonce.
 - O optimizador remoto de imagens está desactivado: nenhuma página depende dele.
 - O endpoint de contacto exige JSON e uma origem permitida, rejeita pedidos cross-site e verifica um campo honeypot. A validação da origem não substitui antispam: clientes fora do navegador podem falsificar esse cabeçalho. O corpo é lido com limite real de 32 KiB, incluindo pedidos sem Content-Length.
