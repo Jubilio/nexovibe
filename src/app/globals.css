@@ -1525,3 +1525,305 @@ h2 {
 .case-evidence figure { margin-top: 26px; max-width: 900px; }
 .footer-links { flex-wrap: wrap; }
 @media (max-width: 850px) { .community-grid, .training-overview, .training-gallery { grid-template-columns: 1fr; gap: 28px; } .training-overview figure, .training-gallery figure:last-child { max-width: 520px; } }
+
+/* ---------------------------------------------------------------------------
+   Visual refinements (Oct 2026): depth, rhythm and consistent interaction.
+   Keeps the graphite + mint identity; overrides earlier rules where noted.
+--------------------------------------------------------------------------- */
+:root {
+  --surface-2: #131d23;
+  --border-soft: #ffffff10;
+  --accent-soft: #8be6c81a;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* Hero: a faint survey grid and mint glow give the dark canvas some depth. */
+.hero.security-hero { isolation: isolate; }
+.hero.security-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -94px -50vw 0;
+  background:
+    radial-gradient(ellipse 45% 55% at 78% 30%, #8be6c814, transparent 70%),
+    radial-gradient(ellipse 35% 40% at 12% 18%, #6fb6e00d, transparent 70%),
+    linear-gradient(#ffffff06 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, #ffffff06 1px, transparent 1px) 0 0 / 56px 56px;
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
+  pointer-events: none;
+}
+.security-brief {
+  border-radius: 12px;
+  border-color: #2b3a42;
+  background: linear-gradient(160deg, #142027f2, #0e1519f2);
+  box-shadow: 0 30px 80px -30px #000c, inset 0 1px 0 #ffffff0d;
+  backdrop-filter: blur(6px);
+}
+.brief-row { transition: padding .35s var(--ease); }
+.brief-row > span:last-child { transition: transform .35s var(--ease); }
+.brief-row:hover { padding-left: 8px; }
+.brief-row:hover > span:last-child { transform: translate(3px, -3px); }
+.hero-capabilities { letter-spacing: .01em; }
+
+/* Buttons and links: clearer affordances. */
+.button { border-radius: 8px; }
+.button-primary { box-shadow: 0 10px 30px -12px #8be6c880; }
+.button-primary:hover { box-shadow: 0 14px 34px -12px #8be6c8a6; }
+.button-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.nav-contact { border-radius: 8px; transition: border-color .2s, color .2s; }
+.text-link > span, .text-link { transition: color .2s; }
+.text-link:hover { color: #b4f5df; }
+
+/* Section headings: a short mint rule before every eyebrow ties sections together. */
+.section .eyebrow,
+.deliverables-section .eyebrow,
+.contact-section .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section .eyebrow::before,
+.deliverables-section .eyebrow::before,
+.contact-section .eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.muted-heading { color: #7d8e97; }
+
+/* Services: a true 2×2 grid of cells (previous rules assumed 3 columns). */
+.expertise-section .services-grid {
+  gap: 0;
+  border: 1px solid #263239;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0d1418;
+}
+.expertise-section .service-card,
+.expertise-section .service-card:first-child,
+.expertise-section .service-card:last-child {
+  padding: 36px 36px 34px;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background .35s var(--ease);
+}
+.expertise-section .service-card:nth-child(odd) { border-right: 1px solid #263239; }
+.expertise-section .service-card:nth-child(-n + 2) { border-bottom: 1px solid #263239; }
+.expertise-section .service-card::after {
+  content: "";
+  position: absolute;
+  left: 36px;
+  top: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width .45s var(--ease);
+}
+.expertise-section .service-card:hover { background: #121c21; }
+.expertise-section .service-card:hover::after { width: 64px; }
+.expertise-section .service-top > span:last-child {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid #8be6c82e;
+}
+.expertise-section .service-tags {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px dashed #ffffff14;
+  color: #9fc2b8;
+}
+
+/* Checklists: Tailwind's reset removes list markers, so draw our own. */
+.service-checks,
+.community-copy ul {
+  list-style: none;
+  padding-left: 0;
+}
+.service-checks li,
+.community-copy li {
+  position: relative;
+  padding-left: 28px;
+}
+.service-checks li::before,
+.community-copy li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .62em;
+  width: 12px;
+  height: 7px;
+  border-left: 1.5px solid var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  transform: translateY(-50%) rotate(-45deg);
+}
+.service-checks { color: #b3c0c6; }
+
+/* Process: steps read as a connected sequence. */
+.process-grid { gap: 20px; }
+.process-grid article {
+  position: relative;
+  padding: 26px 24px 28px;
+  border: 1px solid var(--border-soft);
+  border-top: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #10181d, transparent);
+  transition: border-color .3s, transform .35s var(--ease);
+}
+.process-grid article::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: .55;
+}
+.process-grid article:hover { border-color: #8be6c84d; transform: translateY(-3px); }
+.process-grid .step-number,
+.deliverables-grid .step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #8be6c859;
+  background: var(--accent-soft);
+  font-size: 11px;
+}
+
+/* Deliverables: same card language as the process, on the lighter band. */
+.deliverables-grid { gap: 20px; }
+.deliverables-grid article {
+  padding: 28px 26px 30px;
+  border: 1px solid #ffffff12;
+  border-radius: 12px;
+  background: #0c1418;
+  transition: border-color .3s, transform .35s var(--ease);
+}
+.deliverables-grid article:hover { border-color: #8be6c84d; transform: translateY(-3px); }
+.deliverables-grid h3 { margin-top: 0; }
+.deliverables-grid p { font-size: 15px; line-height: 1.75; }
+
+/* Project cards: lift on hover, equal heights, tags pinned to the bottom. */
+.project-card { display: flex; flex-direction: column; }
+.project-info { flex: 1; display: flex; flex-direction: column; }
+.project-info .tag-list { margin-top: auto; padding-top: 22px; }
+.project-info .case-link { align-self: flex-start; }
+.project-visual.project-visual-image {
+  border-radius: 12px;
+  transition: border-color .3s, transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.project-card:hover .project-visual.project-visual-image {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--project-accent) 55%, transparent);
+  box-shadow: 0 24px 50px -24px #000, 0 0 0 1px color-mix(in srgb, var(--project-accent) 20%, transparent);
+}
+.project-artwork img { transition: transform .6s var(--ease); }
+.project-card:hover .project-artwork img { transform: scale(1.03); }
+.project-info h3 a > span { transition: transform .3s var(--ease), color .3s; }
+.project-card:hover .project-info h3 a > span { transform: translate(3px, -3px); color: var(--project-accent); }
+.tag-list span { border-radius: 999px; padding: 4px 11px; background: #ffffff05; }
+.project-filters button { border-radius: 999px; transition: color .2s, border-color .2s, background .2s; }
+
+/* Community: tighter join with the projects above, framed image. */
+.community-highlight { padding-top: 40px; }
+.community-highlight img { border-radius: 12px; box-shadow: 0 30px 70px -35px #000; }
+.community-copy ul { margin: 22px 0 6px; }
+
+/* Contact: a little glow behind the form so it reads as the destination. */
+.contact-section { position: relative; overflow: hidden; }
+.contact-section::before {
+  content: "";
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  right: -200px;
+  top: -220px;
+  background: radial-gradient(circle, #8be6c812, transparent 65%);
+  pointer-events: none;
+}
+.contact-grid { position: relative; }
+.contact-form-panel {
+  border-radius: 14px;
+  border-color: #2b3c3f;
+  box-shadow: 0 40px 90px -45px #000;
+}
+.contact-form-panel input,
+.contact-form-panel select,
+.contact-form-panel textarea {
+  border-radius: 8px;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.contact-form-panel input:hover,
+.contact-form-panel select:hover,
+.contact-form-panel textarea:hover { border-color: #3d4f56; }
+.contact-form-panel input:focus,
+.contact-form-panel select:focus,
+.contact-form-panel textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #162328;
+  box-shadow: 0 0 0 3px #8be6c826;
+}
+
+/* About page: tools as chips; brand panel matches the hero card. */
+.tools-list { gap: 10px; }
+.tools-list span {
+  font-size: 15px;
+  letter-spacing: 0;
+  color: #c3d0d3;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff04;
+  transition: border-color .2s, color .2s;
+}
+.tools-list span:hover { border-color: #8be6c866; color: var(--accent); }
+.brand-panel { border-radius: 14px; box-shadow: 0 30px 80px -35px #000; }
+.about-principles .service-card { transition: background .3s; }
+
+/* Footer: links in tidy columns instead of one crowded row. */
+.site-footer { border-top: 1px solid var(--border-soft); padding: 56px 0 36px; }
+.footer-links {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: 14px 56px;
+  padding-top: 6px;
+}
+.footer-links a { transition: color .2s; }
+.copyright {
+  margin-top: 18px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-soft);
+}
+
+@media (max-width: 850px) {
+  .process-grid article, .deliverables-grid article { padding: 22px 20px 24px; }
+}
+@media (max-width: 640px) {
+  .expertise-section .services-grid { border-radius: 12px; }
+  .expertise-section .service-card,
+  .expertise-section .service-card:first-child,
+  .expertise-section .service-card:last-child { padding: 28px 22px; }
+  .expertise-section .service-card:nth-child(odd) { border-right: 0; }
+  .expertise-section .service-card:not(:last-child) { border-bottom: 1px solid #263239; }
+  .expertise-section .service-card::after { left: 22px; }
+  .footer-links { grid-template-rows: none; grid-auto-flow: row; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .hero.security-hero::before { inset: -50px -20px 0; }
+  .process-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+@media (hover: none) {
+  .process-grid article:hover, .deliverables-grid article:hover,
+  .project-card:hover .project-visual.project-visual-image { transform: none; }
+}
