@@ -1,6 +1,7 @@
 import { shareMetadata } from "@/lib/share";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Background3D from "@/components/ui/Background3D";
 import "../globals.css";
 
 const inter = localFont({
@@ -47,7 +48,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-MZ" className={`${inter.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Background3D />
+        {children}
+      </body>
     </html>
   );
 }
