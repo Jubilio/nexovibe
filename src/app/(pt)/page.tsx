@@ -2,7 +2,7 @@ import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  ...shareMetadata("/", "NexoVibe — Dados, GIS & Software", "Análise de dados, inteligência geoespacial, software e segurança de IA para organizações e empresas. Soluções desenvolvidas em Moçambique.", "home"), alternates: localeAlternates("/" ) };
+  ...shareMetadata("/", "NexoVibe — Dados, GIS & Software", "Recolha de dados de campo, mapas e dashboards de monitoria para ONGs, agências e equipas de investigação em Moçambique.", "home"), alternates: localeAlternates("/" ) };
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import HeroSection from "@/components/sections/HeroSection";

@@ -133,21 +133,20 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
               onChange={set("service")}
             >
               <option value="">Seleccione um serviço</option>
- <option>Segurança de aplicações de IA</option>
-              <option>Pentest Web & API</option>
-              <option>Segurança de dados & WebGIS</option>
-              <option>GIS & análise espacial</option>
-              <option>Dados & dashboards</option>
-              <option>Software & automação</option>
-              <option>IA & XLSForm</option>
+              <option>Recolha de dados de campo</option>
+              <option>Mapas & análise territorial</option>
+              <option>Dashboards & relatórios de monitoria</option>
+              <option>Ciclo completo: recolha, mapas e monitoria</option>
+              <option>Ferramentas à medida</option>
               <option>Formação & workshops</option>
+              <option>Avaliação de segurança</option>
               <option>Convites para eventos</option>
               <option>Outro desafio</option>
             </select>
           </label>}
           {!selectedInvitation && form.service === "Convites para eventos" && <p className="form-note"><a href="/convites#pacotes">Escolher pacote e consultar o preço ↗</a></p>}
           <div className="form-row">
-            <label htmlFor="contact-system">{selectedInvitation ? "Tipo de evento e número de convidados" : "Projecto ou sistema"} <span className="optional">(opcional)</span><input id="contact-system" name="system" maxLength={300} value={form.system} onChange={set("system")} placeholder={selectedInvitation ? "Ex.: casamento, 150 convidados" : "Ex.: dashboard, WebGIS, aplicação ou avaliação"} /></label>
+            <label htmlFor="contact-system">{selectedInvitation ? "Tipo de evento e número de convidados" : "Projecto ou sistema"} <span className="optional">(opcional)</span><input id="contact-system" name="system" maxLength={300} value={form.system} onChange={set("system")} placeholder={selectedInvitation ? "Ex.: casamento, 150 convidados" : "Ex.: estudo de base, mapa de cobertura ou dashboard"} /></label>
             <label htmlFor="contact-deadline">{selectedInvitation ? "Data do evento e entrega pretendida" : "Prazo pretendido"} <span className="optional">(opcional)</span><input id="contact-deadline" name="deadline" maxLength={100} value={form.deadline} onChange={set("deadline")} placeholder={selectedInvitation ? "Ex.: evento em Fevereiro, entrega em Janeiro" : "Ex.: antes do lançamento em Novembro"} /></label>
           </div>
           <label htmlFor="contact-message">

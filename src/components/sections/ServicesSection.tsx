@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { services } from "@/lib/data";
 import { getIcon } from "@/components/ui/Icons";
 export default function ServicesSection() {
@@ -9,13 +8,13 @@ export default function ServicesSection() {
           <div>
             <p className="eyebrow">01 / O QUE PODE CONTRATAR</p>
             <h2>
-              Competências que se ligam.
+              Dados de campo fiáveis,
               <br />
-              <span className="muted-heading">Soluções para problemas reais.</span>
+              <span className="muted-heading">do terreno ao relatório.</span>
             </h2>
           </div>
           <p className="section-description">
-            Escolha o apoio de que precisa: dados, território, desenvolvimento ou segurança. Cada proposta define o problema, as entregas e o acompanhamento.
+            Contrate um serviço ou o ciclo completo. Cada proposta define o problema, as entregas e o acompanhamento.
           </p>
         </div>
         <div className="services-grid">
@@ -32,7 +31,6 @@ export default function ServicesSection() {
             </article>
           ))}
         </div>
-        <div className="invitation-home-link"><p>Também criamos convites personalizados para momentos especiais.</p><Link href="/convites" className="text-link">Explorar convites e pacotes ↗</Link></div>
       </div>
     </section>
   );
