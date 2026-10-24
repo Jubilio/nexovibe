@@ -39,6 +39,7 @@ export default function ProjectExplorer() {
             key={project.id}
             project={project}
             index={projects.indexOf(project)}
+            headingLevel="h2"
           />
         ))}
       </div>

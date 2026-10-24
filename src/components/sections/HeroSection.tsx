@@ -12,14 +12,14 @@ export default function HeroSection() {
         </div>
         <p className="hero-capabilities">Data Analytics <span aria-hidden="true">/</span> Geospatial Intelligence <span aria-hidden="true">/</span> Software</p>
       </div>
-      <aside className="security-brief" aria-label="Áreas de aplicação da NexoVibe">
+      <div className="security-brief" role="group" aria-label="Áreas de aplicação da NexoVibe">
         <div className="brief-header"><span>TECNOLOGIA APLICADA</span><span>01—03</span></div>
         <div className="brief-row"><span className="brief-index">01</span><div><h2>Dados & análise</h2><p>Recolha · Indicadores · Dashboards</p></div><span aria-hidden="true">↗</span></div>
         <div className="brief-row"><span className="brief-index">02</span><div><h2>Inteligência geoespacial</h2><p>Mapas · Território · Verificação</p></div><span aria-hidden="true">↗</span></div>
         <div className="brief-row"><span className="brief-index">03</span><div><h2>Software & segurança</h2><p>Aplicações · Automação · IA</p></div><span aria-hidden="true">↗</span></div>
         <div className="brief-footer"><p>Do problema à solução.</p><span>Requisitos claros. Resultados verificáveis.<br />Ferramentas adaptadas à sua equipa.</span></div>
         <Link className="text-link brief-link" href="/portfolio">Explorar estudos de caso <span aria-hidden="true">↗</span></Link>
-      </aside>
+      </div>
       <div className="hero-baseline"><span>DATA · GEOSPATIAL INTELLIGENCE · SOFTWARE</span><a href="#metodologia">Como trabalhamos <span aria-hidden="true">↓</span></a></div>
     </section>
   );

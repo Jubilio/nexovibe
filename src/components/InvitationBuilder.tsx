@@ -23,7 +23,7 @@ export default function InvitationBuilder() {
       </fieldset>
     </section>
     <section id="pedido" className={`container ${styles.request}`}>
-      <aside className={styles.summary}>
+      <div className={styles.summary}>
         <p className="eyebrow">O TEU CONVITE COMEÇA AQUI</p><h2>Vamos dar vida<br />à tua ideia?</h2>
         <div aria-live="polite" aria-atomic="true" className={styles.quote}>
           <span>O TEU PACOTE</span><h3>{selected.name}</h3><strong>{formatInvitationPrice(selected.price)}</strong>
@@ -31,7 +31,7 @@ export default function InvitationBuilder() {
         </div>
         <a href="#pacotes" className="text-link">Alterar pacote ↑</a>
         <p className={styles.caption}>Envia a tua ideia. Respondemos com uma proposta, os prazos e os próximos passos. Sem pagamento nesta etapa.</p>
-      </aside>
+      </div>
       <ContactForm invitationPackage={selectedId} />
     </section>
   </>;
