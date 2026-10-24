@@ -10,7 +10,7 @@ Personal portraits have been removed from the site. Project cover panels are typ
 
 ## Contact
 
-The existing `/api/contact` endpoint requires `RESEND_API_KEY` and a verified sender domain for `noreply@nexovibe.co.mz`. Without that configuration, it returns 503 and the form offers the direct email address. A successful status is returned only after the email provider accepts the request. Personal messages are not logged. No database is required.
+The existing `/api/contact` endpoint sends through the Brevo transactional API and requires `BREVO_API_KEY` and a verified `BREVO_SENDER_EMAIL` (see README). Without that configuration, it returns 503 and the form offers the direct email address. A successful status is returned only after the email provider accepts the request. Personal messages are not logged. No database is required.
 
 ## Development
 
