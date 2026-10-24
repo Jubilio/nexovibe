@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     template: "%s | NexoVibe",
   },
   description:
-    "Análise de dados, inteligência geoespacial, software e segurança de IA para organizações e empresas. Soluções desenvolvidas em Moçambique.",
+    "Recolha de dados de campo, mapas e dashboards de monitoria para ONGs, agências e equipas de investigação em Moçambique.",
   keywords: [
-    "AI Security",
-    "Pentest Web e API",
-    "Segurança WebGIS",
-    "IA",
+    "KoboToolbox",
+    "XLSForm",
+    "MEAL",
+    "Dashboards de monitoria",
     "GIS",
     "SIG",
     "Data Analytics",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "NexoVibe" }],
   ...shareMetadata("/", "NexoVibe — Dados, GIS & Software",
-    "Análise de dados, inteligência geoespacial, software e segurança de IA para organizações e empresas. Soluções desenvolvidas em Moçambique.", "home"),
+    "Recolha de dados de campo, mapas e dashboards de monitoria para ONGs, agências e equipas de investigação em Moçambique.", "home"),
   icons: {
     icon: "/icon.svg",
     apple: "/icon.svg",

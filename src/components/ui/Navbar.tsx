@@ -8,7 +8,6 @@ const links = [
   { href: "/#metodologia", label: "Metodologia" },
   { href: "/portfolio", label: "Projectos" },
   { href: "/formacao", label: "Formação" },
-  { href: "/convites", label: "Convites" },
   { href: "/sobre", label: "A NexoVibe" },
 ];
 export default function Navbar({ active }: { active?: string }) {
