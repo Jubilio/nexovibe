@@ -8,7 +8,7 @@ export default function Footer() {
           <Link href="/" className="wordmark">
             NexoVibe<span className="wordmark-dot">.</span>
           </Link>
-          <p>Dados, inteligência geoespacial e software.</p>
+          <p>Dados de campo, mapas e monitoria.</p>
         </div>
         <div className="footer-links">
           <a

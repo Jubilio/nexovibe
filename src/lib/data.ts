@@ -132,11 +132,12 @@ export const projects: Project[] = [
   },
 ];
 
+// Priority services agreed in the October 2026 positioning: one field-data cycle for NGOs, agencies and research teams.
 export const services = [
-  { num: "01", title: "Dados & dashboards", desc: "Transformar dados dispersos em informação utilizável para acompanhamento, investigação e decisão.", tags: ["R", "Python", "Power BI"], icon: "grid", checks: ["Preparação, validação e análise de dados", "Indicadores e relatórios reproduzíveis", "Dashboards adaptados à equipa"] },
-  { num: "02", title: "GIS & inteligência geoespacial", desc: "Compreender o território, verificar localizações e desenvolver ferramentas para trabalhar com dados espaciais.", tags: ["QGIS", "WebGIS", "Earth Engine"], icon: "map", checks: ["Análise espacial e cartografia", "Verificação e qualidade de dados geográficos", "Plugins QGIS e aplicações WebGIS"] },
-  { num: "03", title: "Software & automação", desc: "Criar aplicações e simplificar tarefas repetitivas, a partir dos processos e necessidades de cada organização.", tags: ["Web", "APIs", "XLSForm"], icon: "code", checks: ["Aplicações e integrações à medida", "Automação de fluxos de trabalho", "Ferramentas de recolha e tradução com IA"] },
-  { num: "04", title: "Segurança de IA, Web & dados", desc: "Avaliar riscos de aplicações e orientar correcções, com âmbito e autorização definidos antes dos testes.", tags: ["LLM", "API", "WebGIS"], icon: "code", checks: ["Prompt injection e exposição de informação", "Autenticação, permissões e acesso a dados", "Evidências, recomendações e reteste acordado"] },
+  { num: "01", title: "Recolha de dados de campo", desc: "Questionários KoboToolbox prontos para o terreno, em várias línguas, e respostas validadas antes da análise.", tags: ["KoboToolbox", "XLSForm", "IA"], icon: "doc", checks: ["Desenho e tradução de questionários XLSForm", "Testes e revisão da lógica antes da recolha", "Validação e limpeza das respostas"] },
+  { num: "02", title: "Mapas & análise territorial", desc: "Saber onde estão as pessoas, os riscos e as intervenções, com localizações verificadas e mapas prontos a partilhar.", tags: ["QGIS", "WebGIS", "Earth Engine"], icon: "map", checks: ["Mapas de intervenção e de cobertura", "Verificação de localizações e pontos GPS", "Análise de vulnerabilidade e de risco"] },
+  { num: "03", title: "Dashboards & relatórios de monitoria", desc: "Indicadores do programa actualizados e relatórios que gestores e doadores conseguem ler.", tags: ["Power BI", "R", "MEAL"], icon: "pulse", checks: ["Indicadores alinhados com o quadro lógico", "Dashboards para a equipa e para doadores", "Relatórios reproduzíveis e actualizações periódicas"] },
+  { num: "04", title: "Ferramentas à medida & formação", desc: "Quando o processo o exige, automatizamos o fluxo de trabalho e preparamos a equipa para o utilizar.", tags: ["Python", "Plugins QGIS", "Formação"], icon: "code", checks: ["Automação e integrações entre ferramentas", "Plugins QGIS e aplicações de apoio", "Formação em QGIS e KoboToolbox"] },
 ];
 export const tools = [
   "Python",
