@@ -1827,3 +1827,21 @@ h2 {
   .process-grid article:hover, .deliverables-grid article:hover,
   .project-card:hover .project-visual.project-visual-image { transform: none; }
 }
+
+/* Animated 3D background: fixed behind all content, decorative only. */
+.bg-3d { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bg-3d > * { position: absolute; inset: 0; }
+.bg-3d-fallback {
+  background:
+    radial-gradient(circle at 72% 46%, #8be6c814 0, transparent 32%),
+    radial-gradient(ellipse at 15% 85%, #c9a55a0d, transparent 45%);
+}
+.bg-3d-canvas { opacity: 0; transition: opacity 1.2s ease; }
+.bg-3d-canvas.is-ready { opacity: 1; }
+/* Keeps text contrast high where copy sits on the left and at the bottom. */
+.bg-3d-veil { opacity: 1; background: linear-gradient(90deg, #0a0e11cc 0%, #0a0e1166 45%, transparent 75%), linear-gradient(0deg, #0a0e1199, transparent 40%); }
+@media (max-width: 759px) {
+  .bg-3d-fallback { background: radial-gradient(circle at 78% 24%, #8be6c812 0, transparent 45%); }
+  .bg-3d-veil { background: linear-gradient(90deg, #0a0e1199 0%, #0a0e1133 60%, transparent 100%), linear-gradient(180deg, transparent 35%, #0a0e1199 80%); }
+}
+@media print { .bg-3d { display: none; } }
