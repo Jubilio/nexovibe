@@ -10,6 +10,7 @@
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
     "test": "node --test tests/*.test.cjs",
+    "test:responsive": "node --test tests/e2e/*.test.cjs",
     "locales": "node scripts/build-locales.mjs",
     "prelint": "node scripts/build-locales.mjs"
   },
@@ -26,6 +27,7 @@
     "autoprefixer": "^10.4.27",
     "eslint": "9.39.5",
     "eslint-config-next": "15.5.28",
+    "playwright": "1.63.0",
     "postcss": "^8.5.23",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.0.0"

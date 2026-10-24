@@ -12,14 +12,14 @@ export default function HeroSection() {
         </div>
         <p className="hero-capabilities">KoboToolbox <span aria-hidden="true">/</span> QGIS <span aria-hidden="true">/</span> Power BI</p>
       </div>
-      <aside className="security-brief" aria-label="Serviços prioritários da NexoVibe">
+      <div className="security-brief" role="group" aria-label="Serviços prioritários da NexoVibe">
         <div className="brief-header"><span>UM CICLO, TRÊS SERVIÇOS</span><span>01—03</span></div>
         <div className="brief-row"><span className="brief-index">01</span><div><h2>Recolha de dados</h2><p>Questionários · Tradução · Validação</p></div><span aria-hidden="true">↗</span></div>
         <div className="brief-row"><span className="brief-index">02</span><div><h2>Mapas & território</h2><p>Localizações · Cobertura · Vulnerabilidade</p></div><span aria-hidden="true">↗</span></div>
         <div className="brief-row"><span className="brief-index">03</span><div><h2>Monitoria</h2><p>Indicadores · Dashboards · Relatórios</p></div><span aria-hidden="true">↗</span></div>
         <div className="brief-footer"><p>Dados fiáveis para decidir.</p><span>A mesma equipa do questionário ao dashboard.<br />Sem perdas entre fornecedores.</span></div>
         <Link className="text-link brief-link" href="/portfolio">Explorar estudos de caso <span aria-hidden="true">↗</span></Link>
-      </aside>
+      </div>
       <div className="hero-baseline"><span>FIELD DATA · GEOSPATIAL INTELLIGENCE · MEAL</span><a href="#metodologia">Como trabalhamos <span aria-hidden="true">↓</span></a></div>
     </section>
   );

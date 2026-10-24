@@ -20,7 +20,7 @@ export default function XLSFormLegalPage({ titleEn, introEn, sections }: Props) 
   return (
     <main className="min-h-screen bg-brand-dark px-5 py-12 text-white">
       <div className="mx-auto max-w-4xl">
-        <Link href="/en" className="text-sm text-emerald-300 hover:underline">← NexoVibe</Link>
+        <Link href="/en" className="inline-flex min-h-11 items-center text-sm text-emerald-300 hover:underline">← NexoVibe</Link>
         <div className="mt-4 flex"><LanguageSwitcher /></div>
         <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl md:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">XLSForm AI Translator</p>
@@ -51,7 +51,7 @@ export default function XLSFormLegalPage({ titleEn, introEn, sections }: Props) 
             <Link className="rounded-full border border-white/15 px-4 py-2 hover:bg-white/10" href="/en/xlsform-translator/user-guide">User Guide</Link>
           </nav>
 
-          <p className="mt-8 text-xs text-white/45">Last updated: 22 July 2026</p>
+          <p className="mt-8 text-xs text-white/65">Last updated: 22 July 2026</p>
         </div>
       </div>
     </main>

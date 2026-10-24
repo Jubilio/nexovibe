@@ -4,10 +4,13 @@ import ProjectArtwork from "./ProjectArtwork";
 export default function ProjectCard({
   project,
   index,
+  headingLevel = "h3",
 }: {
   project: Project;
   index: number;
+  headingLevel?: "h2" | "h3";
 }) {
+  const Heading = headingLevel;
   return (
     <article className={`project-card accent-${project.accent}`}>
       <a
@@ -24,12 +27,12 @@ export default function ProjectCard({
       </a>
       <div className="project-info">
         <p className="project-category">{project.category}</p>
-        <h3>
+        <Heading className="project-title">
           <a href={project.link} target="_blank" rel="noopener noreferrer">
             {project.title}
             <span aria-hidden="true">↗</span>
           </a>
-        </h3>
+        </Heading>
         <p className="project-status">{project.status || "Projecto próprio · Consulte o estado no repositório"}</p>
         <p className="project-description">{project.desc}</p>
         {project.caseStudy && <Link className="text-link case-link" href={`/portfolio/${project.caseStudy}`}>Ver projecto e demonstração ↗</Link>}

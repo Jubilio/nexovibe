@@ -13,6 +13,7 @@ const links = [
 export default function Navbar({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
+  const nav = useRef<HTMLElement>(null);
   useEffect(() => {
     if (!open) return;
     const close = (event: KeyboardEvent) => {
@@ -21,15 +22,22 @@ export default function Navbar({ active }: { active?: string }) {
         menuButton.current?.focus();
       }
     };
+    const closeOutside = (event: PointerEvent) => {
+      if (!nav.current?.contains(event.target as Node)) setOpen(false);
+    };
     document.addEventListener("keydown", close);
-    return () => document.removeEventListener("keydown", close);
+    document.addEventListener("pointerdown", closeOutside);
+    return () => {
+      document.removeEventListener("keydown", close);
+      document.removeEventListener("pointerdown", closeOutside);
+    };
   }, [open]);
   return (
     <header className="site-header">
       <a href="#main-content" className="skip-link">
         Saltar para o conteúdo
       </a>
-      <nav className="container nav-inner" aria-label="Navegação principal">
+      <nav ref={nav} className="container nav-inner" aria-label="Navegação principal">
         <Link href="/" className="wordmark" aria-label="NexoVibe — Início">
           <span className="brand-symbol" aria-hidden="true">
             N<span>↗</span>
