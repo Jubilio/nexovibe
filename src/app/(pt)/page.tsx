@@ -8,6 +8,7 @@ import Footer from "@/components/ui/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
+import StartSection from "@/components/sections/StartSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import DeliverablesSection from "@/components/sections/DeliverablesSection";
 import CommunitySection from "@/components/sections/CommunitySection";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <main id="main-content">
         <HeroSection />
         <ServicesSection />
+        <StartSection />
         <ProcessSection />
         <DeliverablesSection />
         <ProjectsSection />

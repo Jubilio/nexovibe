@@ -1858,3 +1858,25 @@ main { overflow-x: clip; }
   .hero-baseline a,
   .direct-contact > a:not(.button) { display: inline-flex; align-items: center; min-height: 44px; }
 }
+
+/* Start options: free questionnaire review and fixed-price pilot. */
+.hero-proof { margin-top: 22px; font-size: 14px; color: var(--muted); }
+.start-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.start-grid article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 30px 28px;
+  border: 1px solid #ffffff12;
+  border-radius: 12px;
+  background: #0c1418;
+  scroll-margin-top: 96px;
+}
+.start-grid h3 { font-size: 22px; margin: 0; }
+.start-grid p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 0; }
+.start-grid .button { margin-top: auto; }
+.start-label { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.start-guarantee { border-left: 2px solid var(--accent); padding-left: 12px; }
+.form-promise { color: var(--accent); }
+@media (max-width: 850px) { .start-grid { grid-template-columns: 1fr; } .start-grid article { padding: 24px 20px; } }

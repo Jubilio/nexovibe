@@ -8,8 +8,9 @@ export default function HeroSection() {
         <p className="hero-description">Ajudamos ONGs, agências e equipas de investigação em Moçambique a recolher, verificar e mapear dados de campo, e a transformá-los em indicadores que gestores e doadores conseguem usar.</p>
         <div className="button-row">
           <a className="button button-primary" href="#contacto">Solicitar proposta <span aria-hidden="true">↗</span></a>
-          <a className="button button-quiet" href="#servicos">Explorar serviços</a>
+          <a className="button button-quiet" href="#revisao">Rever o meu questionário grátis</a>
         </div>
+        <p className="hero-proof">2 plugins QGIS próprios · Tradutor XLSForm para Excel · Análise territorial em Cabo Delgado</p>
         <p className="hero-capabilities">KoboToolbox <span aria-hidden="true">/</span> QGIS <span aria-hidden="true">/</span> Power BI</p>
       </div>
       <div className="security-brief" role="group" aria-label="Serviços prioritários da NexoVibe">

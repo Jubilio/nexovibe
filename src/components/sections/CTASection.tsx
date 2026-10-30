@@ -7,12 +7,11 @@ export default function CTASection() {
         <div>
           <p className="eyebrow">05 / VAMOS CONVERSAR</p>
           <h2>
-            Tem dados, uma ideia
-            <br />ou um processo
-            <br /><span>para melhorar?</span>
+            Tem uma recolha a começar
+            <br /><span>ou um relatório para o doador?</span>
           </h2>
           <p>
-            Conte-nos o desafio, quem vai utilizar a solução e o resultado pretendido. Preparamos uma proposta com entregas, prazo e investimento.
+            Diga-nos o prazo e o que precisa de entregar. Respondemos em 1 dia útil com os próximos passos e uma estimativa.
           </p>
           <span className="contact-location">
             Moçambique · Colaboração à distância
