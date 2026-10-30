@@ -155,7 +155,7 @@ export const tools = [
 ];
 export const steps = [
   { num: "01", title: "Compreender e definir", desc: "Identificar o problema, os utilizadores, os dados disponíveis e os critérios de sucesso. Acordar entregas, prazos e orçamento." },
-  { num: "02", title: "Preparar e construir", desc: "Validar os dados, desenhar a solução e desenvolver uma primeira versão. Nas avaliações de segurança, acordar autorização e limites dos testes." },
+  { num: "02", title: "Preparar e construir", desc: "Validar os dados, desenhar a solução e desenvolver uma primeira versão para rever consigo." },
   { num: "03", title: "Validar em conjunto", desc: "Testar a solução com exemplos representativos, rever resultados com a equipa e documentar limitações e correcções." },
   { num: "04", title: "Entregar e acompanhar", desc: "Disponibilizar a solução e a documentação, preparar a utilização e definir o suporte ou manutenção incluídos na proposta." },
 ];
