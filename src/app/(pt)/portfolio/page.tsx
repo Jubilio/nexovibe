@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ProjectExplorer from "@/components/ui/ProjectExplorer";
 export const metadata: Metadata = {
   ...shareMetadata("/portfolio", "Projectos | NexoVibe", "Explore projectos de GIS, dados e software: ferramentas, demonstrações e estudos de caso documentados.", "portfolio"), alternates: localeAlternates("/portfolio" ),
@@ -16,6 +17,7 @@ export default function PortfolioPage() {
     <>
       <Navbar active="/portfolio" />
       <main id="main-content" className="container interior-page">
+        <Breadcrumbs items={[{ href: "/portfolio", label: "Projectos" }]} />
         <header className="page-heading">
           <p className="eyebrow">PORTFÓLIO / PROJECTOS & EXPLORAÇÕES</p>
           <h1>

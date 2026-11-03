@@ -4,9 +4,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 export const metadata: Metadata = {
   ...shareMetadata("/relatorio-exemplo", "Relatório demonstrativo de segurança | NexoVibe", "Exemplo fictício de entrega: âmbito, evidências, recomendações e reteste de uma aplicação de IA.", "report"), alternates: localeAlternates("/relatorio-exemplo" ),title:"Relatório demonstrativo de segurança",description:"Exemplo fictício de entrega: âmbito, evidências, recomendações e reteste de uma aplicação de IA."};
 export default function SampleReport(){return <><Navbar/><main id="main-content" className="container report-page">
+<Breadcrumbs items={[{ href: "/portfolio", label: "Projectos" }, { href: "/relatorio-exemplo", label: "Relatório demonstrativo" }]} />
 <p className="eyebrow">NEXOVIBE / EXEMPLO DE ENTREGA</p><h1>Da evidência à correcção.</h1>
 <p className="report-notice"><strong>Relatório demonstrativo · Cenário fictício.</strong> Este exemplo ilustra a estrutura de uma entrega. Não documenta um teste real, um cliente ou uma certificação.</p>
 <dl className="report-facts"><div><dt>Sistema ilustrativo</dt><dd>Assistente interno com pesquisa documental (RAG)</dd></div><div><dt>Tipo de avaliação</dt><dd>Revisão de controlo de acesso a documentos</dd></div><div><dt>Referência</dt><dd>DEMO-01</dd></div><div><dt>Estado</dt><dd>Exemplo fictício, sem validação em ambiente real</dd></div></dl>

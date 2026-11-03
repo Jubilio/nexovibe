@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { localeAlternates } from "@/lib/locale";
 import { shareMetadata } from "@/lib/share";
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 };
 export default function TrainingPage() {
   return <><Navbar active="/formacao" /><main id="main-content" className="container interior-page training-page">
+    <Breadcrumbs items={[{ href: "/formacao", label: "Formação" }]} />
     <header className="page-heading"><p className="eyebrow">FORMAÇÃO & COMUNIDADE</p><h1>Aprender, construir<br /><span>e partilhar.</span></h1><div className="page-intro"><p>Recursos e registos de uma sessão sobre desenvolvimento de plugins QGIS com Python, apresentados por Jubílio Maússe no âmbito de uma formação OpenStreetMap Ghana.</p></div></header>
     <section className="training-overview" aria-labelledby="training-title"><div><p className="eyebrow">ACTIVIDADE PASSADA · 21 AGOSTO 2026</p><h2 id="training-title">Introduction to QGIS Plugins</h2><p>Dos problemas operacionais à criação de ferramentas: estrutura de plugins, processamento em segundo plano, documentação e exemplos com GPX Batch Converter e GeoClick Capture.</p>
       <dl className="report-facts"><div><dt>Apresentador</dt><dd>Jubílio Maússe</dd></div><div><dt>Contexto</dt><dd>OpenStreetMap Ghana Training</dd></div><div><dt>Data indicada nos materiais</dt><dd><time dateTime="2026-08-21">21 de Agosto de 2026</time></dd></div><div><dt>Recursos</dt><dd>Apresentação de 14 páginas e manual técnico</dd></div></dl>

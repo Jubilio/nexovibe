@@ -1,12 +1,15 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { leadStorageKey } from "@/lib/analytics";
 import { getInvitationPackage, type InvitationPackageId } from "@/lib/invitations";
 import { whatsappUrl } from "@/lib/contact";
 type Status = "idle" | "loading" | "success" | "error";
 export default function ContactForm({ invitationPackage }: { invitationPackage?: InvitationPackageId }) {
   const selectedInvitation = invitationPackage ? getInvitationPackage(invitationPackage) : undefined;
   const whatsapp = whatsappUrl(selectedInvitation ? `Olá, NexoVibe. Tenho interesse no pacote ${selectedInvitation.name}. Gostaria de confirmar as entregas, o prazo e o preço negociável.` : undefined);
+  const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
@@ -52,6 +55,9 @@ export default function ContactForm({ invitationPackage }: { invitationPackage?:
       const result = await res.json().catch(() => null);
       if (res.ok && result?.ok === true) {
         setStatus("success");
+        // The thank-you page records the conversion once, only after a confirmed send.
+        try { sessionStorage.setItem(leadStorageKey, selectedInvitation ? "convites" : form.service || "geral"); } catch { /* storage blocked */ }
+        router.push("/obrigado");
       } else {
         setErrorMessage(res.status === 429 ? "Recebemos vários pedidos desta ligação. Aguarde um minuto antes de tentar novamente." : typeof result?.error === "string" ? result.error : "Não foi possível confirmar o envio. Tente novamente mais tarde.");
         setErrorCode(typeof result?.code === "string" && /^EMAIL_[A-Z_]+$/.test(result.code) ? result.code : `HTTP_${res.status}`);

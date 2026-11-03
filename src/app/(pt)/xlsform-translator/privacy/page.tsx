@@ -1,8 +1,9 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from 'next'
 import XLSFormLegalPage from '@/components/XLSFormLegalPage'
 
-export const metadata: Metadata = { alternates: localeAlternates("/xlsform-translator/privacy" ), title: 'Política de privacidade — XLSForm AI Translator' }
+export const metadata: Metadata = { alternates: localeAlternates("/xlsform-translator/privacy" ), title: 'Política de privacidade — XLSForm AI Translator', description: "Como o suplemento XLSForm AI Translator para Excel trata textos, chaves de API e registos técnicos.", ...shareMetadata("/xlsform-translator/privacy", "Política de privacidade — XLSForm AI Translator", "Como o suplemento XLSForm AI Translator para Excel trata textos, chaves de API e registos técnicos.", "xlsform-translator") }
 
 export default function Page() {
   return <XLSFormLegalPage

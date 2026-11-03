@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ToolsSection from "@/components/sections/ToolsSection";
 export const metadata: Metadata = {
   ...shareMetadata("/sobre", "Sobre a NexoVibe", "Tecnologia com propósito. Conheça a abordagem da NexoVibe aos dados, ao território e ao desenvolvimento de soluções digitais.", "about"), alternates: localeAlternates("/sobre" ),
@@ -16,6 +17,7 @@ export default function AboutPage() {
     <>
       <Navbar active="/sobre" />
       <main id="main-content">
+        <div className="container breadcrumbs-bar"><Breadcrumbs items={[{ href: "/sobre", label: "A NexoVibe" }]} /></div>
         <section className="container interior-page about-intro">
           <div>
             <p className="eyebrow">A NEXOVIBE / TECNOLOGIA COM PROPÓSITO</p>

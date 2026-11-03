@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { whatsappUrl, contactPhone } from "@/lib/contact";
+import ConsentSettingsButton from "./ConsentSettingsButton";
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -20,8 +21,9 @@ export default function Footer() {
           </a>
           <Link href="/formacao">Formação e recursos</Link>
           <Link href="/convites">Convites para eventos</Link>
-          <a href="/sobre">Sobre a marca</a>
+          <Link href="/sobre">Sobre a marca</Link>
           <Link href="/privacidade">Privacidade</Link>
+          <ConsentSettingsButton />
           <a href="mailto:nexovibecontact@gmail.com">Email ↗</a>
           <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">WhatsApp · {contactPhone} ↗</a>
         </div>
