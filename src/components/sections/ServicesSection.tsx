@@ -1,4 +1,5 @@
 import { services } from "@/lib/data";
+import Link from "next/link";
 import { getIcon } from "@/components/ui/Icons";
 export default function ServicesSection() {
   return (
@@ -28,6 +29,7 @@ export default function ServicesSection() {
               <p>{s.desc}</p>
               <ul className="service-checks">{s.checks.map((check) => <li key={check}>{check}</li>)}</ul>
               <div className="service-tags">{s.tags.join(" / ")}</div>
+              <Link className="text-link service-example" href={s.example.href}>{s.example.label} ↗</Link>
             </article>
           ))}
         </div>

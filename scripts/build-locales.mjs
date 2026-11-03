@@ -7,7 +7,7 @@ const root = process.cwd();
 const catalog = JSON.parse(fs.readFileSync('locales/en.json', 'utf8'));
 for (const output of ['src/app/en', 'src/generated/en']) fs.rmSync(output, { recursive: true, force: true });
 const norm = value => value.replace(/\s+/g, ' ').trim();
-const routes = ['formacao', 'sobre', 'portfolio', 'convites', 'privacidade', 'relatorio-exemplo', 'xlsform-translator'];
+const routes = ['formacao', 'obrigado', 'sobre', 'portfolio', 'convites', 'privacidade', 'relatorio-exemplo', 'xlsform-translator'];
 function route(value) {
   if (value === '/') return '/en';
   if (value.startsWith('/#') || routes.some(p => value === `/${p}` || value.startsWith(`/${p}/`) || value.startsWith(`/${p}#`))) return '/en' + value;
@@ -17,7 +17,7 @@ function route(value) {
 const sourceFiles = [];
 function walk(dir) { for (const entry of fs.readdirSync(dir, {withFileTypes:true})) { const file = path.join(dir, entry.name); if(entry.isDirectory()) walk(file); else if(/\.tsx?$/.test(file)) sourceFiles.push(file); } }
 walk('src/components'); walk('src/app/(pt)');
-sourceFiles.push('src/lib/data.ts','src/lib/case-studies.ts','src/lib/invitations.ts','src/lib/contact.ts');
+sourceFiles.push('src/lib/data.ts','src/lib/case-studies.ts','src/lib/invitations.ts','src/lib/contact.ts','src/lib/proof.ts');
 const strings = new Set();
 for (const source of sourceFiles) {
   if(source.endsWith('/LanguageSwitcher.tsx')) continue;
@@ -34,7 +34,7 @@ for (const source of sourceFiles) {
       let translated=catalog[key]??value;
       if(isLiteral||isPart) translated=route(translated);
       if(isLiteral && value.startsWith('@/components/') && !value.endsWith('/LanguageSwitcher')) translated=value.replace('@/components/','@/generated/en/components/');
-      if(isLiteral && ['@/lib/data','@/lib/case-studies','@/lib/invitations','@/lib/contact'].includes(value)) translated=value.replace('@/lib/','@/generated/en/lib/');
+      if(isLiteral && ['@/lib/data','@/lib/case-studies','@/lib/invitations','@/lib/contact','@/lib/proof'].includes(value)) translated=value.replace('@/lib/','@/generated/en/lib/');
       if(value==='./LanguageSwitcher') translated='@/components/ui/LanguageSwitcher';
       if(value==='./convites.module.css') translated='@/app/(pt)/convites/convites.module.css';
       if(value==='../globals.css') translated='@/app/globals.css';

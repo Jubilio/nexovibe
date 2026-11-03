@@ -1,8 +1,9 @@
+import { shareMetadata } from "@/lib/share";
 import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from 'next'
 import XLSFormLegalPage from '@/components/XLSFormLegalPage'
 
-export const metadata: Metadata = { alternates: localeAlternates("/xlsform-translator/support" ), title: 'Suporte — XLSForm AI Translator' }
+export const metadata: Metadata = { alternates: localeAlternates("/xlsform-translator/support" ), title: 'Suporte — XLSForm AI Translator', description: "Ajuda, contactos e resolução de problemas do suplemento XLSForm AI Translator.", ...shareMetadata("/xlsform-translator/support", "Suporte — XLSForm AI Translator", "Ajuda, contactos e resolução de problemas do suplemento XLSForm AI Translator.", "xlsform-translator") }
 
 export default function Page() {
   return <XLSFormLegalPage

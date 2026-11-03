@@ -13,6 +13,8 @@ import ProcessSection from "@/components/sections/ProcessSection";
 import DeliverablesSection from "@/components/sections/DeliverablesSection";
 import CommunitySection from "@/components/sections/CommunitySection";
 import CTASection from "@/components/sections/CTASection";
+import FAQSection from "@/components/sections/FAQSection";
+import ProofSection from "@/components/sections/ProofSection";
 export default function HomePage() {
   return (
     <>
@@ -24,7 +26,9 @@ export default function HomePage() {
         <ProcessSection />
         <DeliverablesSection />
         <ProjectsSection />
+        <ProofSection />
         <CommunitySection />
+        <FAQSection />
         <CTASection />
       </main>
       <Footer />

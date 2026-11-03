@@ -3,6 +3,7 @@ import { localeAlternates } from "@/lib/locale";
 import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import InvitationBuilder from "@/components/InvitationBuilder";
 import styles from "./convites.module.css";
 
@@ -15,6 +16,7 @@ export default function InvitationsPage() {
   return <>
     <Navbar active="/convites" />
     <main id="main-content" className={styles.page}>
+      <div className="container breadcrumbs-bar"><Breadcrumbs items={[{ href: "/convites", label: "Convites" }]} /></div>
       <section className={`container ${styles.hero}`}>
         <div>
           <p className="eyebrow">NEXOVIBE / CONVITES & CELEBRAÇÕES</p>

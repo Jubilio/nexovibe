@@ -123,7 +123,9 @@ tools/                 Código independente, fora do âmbito do site
 | `/formacao` | Formação em plugins QGIS e recursos partilhados |
 | `/convites` | Pacotes de convites para eventos |
 | `/relatorio-exemplo` | Amostra fictícia de relatório, com estilos para impressão |
-| `/privacidade` | Tratamento dos dados do contacto comercial |
+| `/privacidade` | Tratamento dos dados do contacto comercial e da medição de visitas |
+| `/obrigado` | Confirmação depois de um envio do formulário (não indexada); regista a conversão |
+| Endereço inexistente | Página 404 própria, em português e inglês (`not-found.tsx` + `[...missing]`) |
 | `/xlsform-translator/{privacy,terms,support,user-guide}` | Páginas do suplemento XLSForm AI Translator |
 | `/robots.txt`, `/sitemap.xml` | Indexação das páginas públicas |
 
@@ -189,6 +191,19 @@ Em caso de falha, o formulário mostra uma referência segura. Os logs da funç�
 | `EMAIL_TIMEOUT`, `EMAIL_UNCONFIRMED` | Verificar a entrega antes de repetir, para evitar duplicações |
 
 Depois de corrigir a configuração, fazer sempre um teste de envio real.
+
+## Medição (Google Analytics 4)
+
+Opcional. Para activar, definir `NEXT_PUBLIC_GA_MEASUREMENT_ID` (formato `G-XXXXXXXXXX`) na Netlify, em **Project configuration → Environment variables**, e fazer um novo deploy. Sem esta variável, o site não carrega o Google Analytics nem mostra o aviso de medição.
+
+- O script só é carregado depois de o visitante clicar em «Aceitar». A escolha fica no navegador e pode ser alterada em «Preferências de medição», no rodapé.
+- A CSP só autoriza os domínios da Google quando a variável está definida (`next.config.js`).
+- Eventos: `generate_lead` na página `/obrigado` (uma vez por envio confirmado) e `whatsapp_click`. No GA4, marcar `generate_lead` como evento-chave para medir conversões.
+
+## Prova social e SEO
+
+- **Casos de clientes e avaliações:** `src/lib/proof.ts`. As listas estão vazias de propósito; a secção só aparece na página inicial quando houver entradas reais, autorizadas pelo cliente, e gera os dados estruturados `Review`. Acrescentar também os textos em `locales/en.json`.
+- **Dados estruturados:** `ProfessionalService` e `WebSite` em todas as páginas (`layout.tsx`), `FAQPage` na página inicial (`FAQSection.tsx`) e `BreadcrumbList` nas páginas interiores (`Breadcrumbs.tsx`). Não há morada nem mapa até existir um endereço real.
 
 ## Segurança
 
