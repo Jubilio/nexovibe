@@ -9,7 +9,7 @@ export default function InvitationBuilder() {
   const selected = invitationPackages.find((item) => item.id === selectedId)!;
   return <>
     <section id="pacotes" className={`container ${styles.section}`}>
-      <p className="eyebrow">ESCOLHE COMO QUERES CONVIDAR</p><h2>Um formato para cada celebração.</h2>
+      <p className="eyebrow">Escolhe como queres convidar</p><h2>Um formato para cada celebração.</h2>
       <p className={styles.intro}>Selecciona o pacote para consultar o preço e preparar o teu pedido.</p>
       <p className={styles.notice}>Preços negociáveis conforme as necessidades do teu evento. Partilha a tua ideia e o teu orçamento para encontrarmos a solução adequada.</p>
       <fieldset className={styles.packages}><legend className={styles.srOnly}>Pacote de convite</legend>
@@ -24,9 +24,9 @@ export default function InvitationBuilder() {
     </section>
     <section id="pedido" className={`container ${styles.request}`}>
       <div className={styles.summary}>
-        <p className="eyebrow">O TEU CONVITE COMEÇA AQUI</p><h2>Vamos dar vida<br />à tua ideia?</h2>
+        <p className="eyebrow">O teu convite começa aqui</p><h2>Vamos dar vida<br />à tua ideia?</h2>
         <div aria-live="polite" aria-atomic="true" className={styles.quote}>
-          <span>O TEU PACOTE</span><h3>{selected.name}</h3><strong>{formatInvitationPrice(selected.price)}</strong>
+          <span>O teu pacote</span><h3>{selected.name}</h3><strong>{formatInvitationPrice(selected.price)}</strong>
           <p>{invitationPricingNote}</p><p>{selected.terms}</p>
         </div>
         <a href="#pacotes" className="text-link">Alterar pacote ↑</a>

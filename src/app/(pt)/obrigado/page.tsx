@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ThankYouPage() {
   return <><Navbar /><main id="main-content" className="container report-page thank-you">
     <LeadTracker />
-    <p className="eyebrow">NEXOVIBE / PEDIDO RECEBIDO</p>
+    <p className="eyebrow">NexoVibe / Pedido recebido</p>
     <h1>Obrigado. Recebemos o seu pedido.</h1>
     <p className="case-lead">Respondemos em 1 dia útil, por email, com os próximos passos e uma estimativa.</p>
     <section><h2>O que acontece a seguir</h2><ol className="thank-you-steps">

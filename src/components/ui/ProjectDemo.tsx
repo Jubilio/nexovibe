@@ -28,7 +28,7 @@ export default function ProjectDemo({ slug }: { slug: string }) {
   const guide = guides[slug];
   if (!guide) return null;
   return <section id="experimentar" className="project-demo">
-    <p className="eyebrow">EXPERIMENTAR O PROJECTO</p><h2>Da documentação à prática.</h2><p>{guide.intro}</p>
+    <p className="eyebrow">Experimentar o projecto</p><h2>Da documentação à prática.</h2><p>{guide.intro}</p>
     <div className="demo-steps">{guide.steps.map(([title, detail], index) => <details key={title} open={index === 0}><summary><span>0{index + 1}</span>{title}</summary><p>{detail}</p></details>)}</div>
   </section>;
 }

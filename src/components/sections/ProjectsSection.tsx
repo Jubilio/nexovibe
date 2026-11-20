@@ -6,7 +6,7 @@ export default function ProjectsSection() {
     <section id="projectos" className="section container">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">04 / ENGENHARIA EM PRÁTICA</p>
+          <p className="eyebrow">04 / Engenharia em prática</p>
           <h2>
             Conheça os problemas
             <br />

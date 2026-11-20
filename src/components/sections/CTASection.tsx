@@ -5,7 +5,7 @@ export default function CTASection() {
     <section id="contacto" className="contact-section">
       <div className="container contact-grid">
         <div>
-          <p className="eyebrow">05 / VAMOS CONVERSAR</p>
+          <p className="eyebrow">05 / Vamos conversar</p>
           <h2>
             Tem uma recolha a começar
             <br /><span>ou um relatório para o doador?</span>

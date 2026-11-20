@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return <><Navbar /><main id="main-content" className="container report-page">
     <Breadcrumbs items={[{ href: "/privacidade", label: "Privacidade" }]} />
-    <p className="eyebrow">NEXOVIBE / PRIVACIDADE</p><h1>Os dados do seu contacto.</h1>
+    <p className="eyebrow">NexoVibe / Privacidade</p><h1>Os dados do seu contacto.</h1>
     <p>Esta página explica o tratamento dos dados no site institucional da NexoVibe e nos pedidos de proposta. Actualizada em 3 de Novembro de 2026.</p>
     <section><h2>Quem recebe o pedido</h2><p>O contacto comercial é gerido pela NexoVibe, sob responsabilidade de Jubílio Maússe, em Moçambique. Para questões sobre os seus dados, escreva para <a className="text-link" href="mailto:nexovibecontact@gmail.com">nexovibecontact@gmail.com</a>.</p></section>
     <section><h2>Informação recolhida e finalidade</h2><p>O formulário recolhe o nome, email, serviço e mensagem. Pode incluir voluntariamente informações sobre o projecto, evento, prazo ou orçamento. Utilizamos estes dados para responder, esclarecer requisitos e preparar a proposta. O envio não subscreve uma newsletter.</p><p>Não envie palavras-passe, chaves de API, listas de convidados, dados de beneficiários ou outros dados sensíveis no primeiro contacto.</p></section>

@@ -30,16 +30,19 @@ const faqs = [
 export default function FAQSection() {
   return (
     <section id="perguntas" className="section container" aria-labelledby="faq-heading">
-      <div className="section-heading"><div><p className="eyebrow">PERGUNTAS FREQUENTES</p><h2 id="faq-heading">Antes de pedir<br /><span className="muted-heading">uma proposta.</span></h2></div></div>
-      <div className="faq-list">
+      <div className="section-heading"><div><p className="eyebrow">Perguntas frequentes</p><h2 id="faq-heading">Antes de pedir<br /><span className="muted-heading">uma proposta.</span></h2></div></div>
+      {/* Question beside answer, all visible: easier to scan than a stack of accordions. */}
+      <dl className="faq-list">
         {faqs.map(item => (
-          <details key={item.q}>
-            <summary>{item.q}</summary>
-            <p>{item.a}</p>
-            {item.link && <Link className="text-link" href={item.link.href}>{item.link.label} ↗</Link>}
-          </details>
+          <div className="faq-item" key={item.q}>
+            <dt>{item.q}</dt>
+            <dd>
+              <p>{item.a}</p>
+              {item.link && <Link className="text-link" href={item.link.href}>{item.link.label} ↗</Link>}
+            </dd>
+          </div>
         ))}
-      </div>
+      </dl>
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "FAQPage",

@@ -6,7 +6,7 @@ export default function ProofSection() {
   const rated = testimonials.filter(t => t.rating);
   return (
     <section id="resultados" className="section container" aria-labelledby="proof-heading">
-      <div className="section-heading"><div><p className="eyebrow">RESULTADOS DE CLIENTES</p><h2 id="proof-heading">O que mudou<br /><span className="muted-heading">para quem trabalhou connosco.</span></h2></div></div>
+      <div className="section-heading"><div><p className="eyebrow">Resultados de clientes</p><h2 id="proof-heading">O que mudou<br /><span className="muted-heading">para quem trabalhou connosco.</span></h2></div></div>
       {clientResults.length > 0 && <div className="proof-grid">{clientResults.map(item => (
         <article key={item.client + item.result}>
           <span className="start-label">{item.sector}</span>

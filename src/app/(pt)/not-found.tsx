@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 export default function NotFound() {
   return <><Navbar /><main id="main-content" className="container report-page not-found">
-    <p className="eyebrow">ERRO 404 / PÁGINA NÃO ENCONTRADA</p>
+    <p className="eyebrow">Erro 404 / Página não encontrada</p>
     <h1>Esta página não existe.</h1>
     <p className="case-lead">O endereço pode ter mudado ou ter um erro. Estes caminhos levam ao que a maioria das pessoas procura:</p>
     <ul className="not-found-links">
