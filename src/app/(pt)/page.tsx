@@ -15,6 +15,7 @@ import CommunitySection from "@/components/sections/CommunitySection";
 import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
 import ProofSection from "@/components/sections/ProofSection";
+import TaglineSection from "@/components/sections/TaglineSection";
 export default function HomePage() {
   return (
     <>
@@ -22,6 +23,7 @@ export default function HomePage() {
       <main id="main-content">
         <HeroSection />
         <ServicesSection />
+        <TaglineSection />
         <StartSection />
         <ProcessSection />
         <DeliverablesSection />

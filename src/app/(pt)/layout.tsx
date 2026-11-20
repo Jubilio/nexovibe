@@ -1,19 +1,13 @@
 import { shareMetadata } from "@/lib/share";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import Background3D from "@/components/ui/Background3D";
 import Analytics from "@/components/ui/Analytics";
 import MobileCta from "@/components/ui/MobileCta";
 import JsonLd from "@/components/ui/JsonLd";
 import { contactEmail, contactPhone } from "@/lib/contact";
 import "../globals.css";
-
-const inter = localFont({
-  src: "../../../public/fonts/inter-latin-variable.woff2",
-  variable: "--font-inter",
-  weight: "100 900",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nexovibe.netlify.app"),
@@ -51,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-MZ" className={`${inter.variable}`}>
+    <html lang="pt-MZ" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="antialiased">
         <Background3D />
         {children}
