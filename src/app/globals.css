@@ -2051,7 +2051,7 @@ em, i { font-style: normal; }
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    background: #000000eb;
+    background: #000000f2;
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
   }
@@ -2069,6 +2069,13 @@ em, i { font-style: normal; }
   }
   .mobile-nav a[aria-current="page"] { color: var(--accent); }
   .site-header .wordmark, .site-header .language-switch { position: relative; z-index: 2; }
+  /* A blurred ancestor would trap the fixed panel, so the bar steps back while the menu is open. */
+  .site-header .nav-inner:has(.mobile-nav:not([hidden])) {
+    background: transparent;
+    border-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 @keyframes menu-link-in {
   from { opacity: 0; transform: translateY(24px); }
