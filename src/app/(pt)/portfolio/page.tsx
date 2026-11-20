@@ -19,7 +19,7 @@ export default function PortfolioPage() {
       <main id="main-content" className="container interior-page">
         <Breadcrumbs items={[{ href: "/portfolio", label: "Projectos" }]} />
         <header className="page-heading">
-          <p className="eyebrow">PORTFÓLIO / PROJECTOS & EXPLORAÇÕES</p>
+          <p className="eyebrow">Portfólio / Projectos & explorações</p>
           <h1>
             Código que resolve.
             <br />
@@ -44,7 +44,7 @@ export default function PortfolioPage() {
         <ProjectExplorer />
         <section className="portfolio-cta">
           <div>
-            <p className="eyebrow">TEM UM DESAFIO SEMELHANTE?</p>
+            <p className="eyebrow">Tem um desafio semelhante?</p>
             <h2>Vamos construir a próxima solução.</h2>
           </div>
           <Link className="button button-primary" href="/#contacto">

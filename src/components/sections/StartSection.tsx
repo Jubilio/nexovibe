@@ -4,7 +4,7 @@ export default function StartSection() {
     <section id="comecar" className="section container" aria-labelledby="start-heading">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">COMO COMEÇAR</p>
+          <p className="eyebrow">Como começar</p>
           <h2 id="start-heading">
             Comece pequeno.
             <br />
@@ -17,8 +17,8 @@ export default function StartSection() {
           <span className="start-label">Grátis · Sem compromisso</span>
           <h3>Vai para o terreno em breve?</h3>
           <p>Envie o seu XLSForm. Em 48 horas devolvemos uma lista de erros de lógica, saltos e tradução.</p>
-          <a className="button button-secondary" href="#contacto">Rever o meu questionário ↗</a>
           <p className="form-note">Tratamos o ficheiro como confidencial. Não envie dados de inquiridos.</p>
+          <a className="button button-secondary" href="#contacto">Rever o meu questionário ↗</a>
         </article>
         <article>
           <span className="start-label">Piloto · Preço fechado</span>

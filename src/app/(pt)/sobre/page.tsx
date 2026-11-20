@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div className="container breadcrumbs-bar"><Breadcrumbs items={[{ href: "/sobre", label: "A NexoVibe" }]} /></div>
         <section className="container interior-page about-intro">
           <div>
-            <p className="eyebrow">A NEXOVIBE / TECNOLOGIA COM PROPÓSITO</p>
+            <p className="eyebrow">A NexoVibe / Tecnologia com propósito</p>
             <h1>
               Tecnologia que
               <br />
@@ -51,7 +51,7 @@ export default function AboutPage() {
             aria-label="Áreas de actuação da NexoVibe"
           >
             <span className="brand-kicker">
-              NEXOVIBE / IA · DADOS · TERRITÓRIO
+              NexoVibe / IA · Dados · Território
             </span>
             <div className="brand-monogram" aria-hidden="true">
               N<span>↗</span>
@@ -77,7 +77,7 @@ export default function AboutPage() {
           </aside>
         </section>
         <section className="container about-principles">
-          <p className="eyebrow">OS PRINCÍPIOS DA NEXOVIBE</p>
+          <p className="eyebrow">Os princípios da NexoVibe</p>
           <div className="services-grid">
             <article className="service-card">
               <span className="step-number">01</span>
@@ -106,7 +106,7 @@ export default function AboutPage() {
           </div>
         </section>
         <section className="section container founder-story" aria-labelledby="founder-story-title">
-          <p className="eyebrow">DA EXPERIÊNCIA À CONSTRUÇÃO DE FERRAMENTAS</p>
+          <p className="eyebrow">Da experiência à construção de ferramentas</p>
           <h2 id="founder-story-title">Jubílio Maússe</h2>
           <p>Fundador e responsável técnico da NexoVibe. Combina análise geoespacial, gestão de dados e desenvolvimento de software, com experiência em informação humanitária e ferramentas para processos de campo.</p>
           <p>O trabalho inclui plugins QGIS próprios e partilha de conhecimento técnico. Os materiais da formação OpenStreetMap Ghana documentam a apresentação do GPX Batch Converter e do GeoClick Capture.</p>

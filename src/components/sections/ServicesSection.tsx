@@ -7,7 +7,7 @@ export default function ServicesSection() {
       <div className="container section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">01 / O QUE PODE CONTRATAR</p>
+            <p className="eyebrow">01 / O que pode contratar</p>
             <h2>
               Dados de campo fiáveis,
               <br />

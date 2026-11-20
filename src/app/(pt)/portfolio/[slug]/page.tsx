@@ -27,7 +27,7 @@ export default async function CaseStudy({ params }: Props) {
   const project = projects.find(project => project.caseStudy === slug);
   return <><Navbar active="/portfolio" /><main id="main-content" className="container report-page case-study">
     <Breadcrumbs items={[{ href: "/portfolio", label: "Projectos" }, { href: `/portfolio/${slug}`, label: item.name }]} />
-    <p className="eyebrow">ESTUDO DE CASO / {item.area}</p><h1>{item.name}</h1><p className="case-lead">{item.lead}</p>
+    <p className="eyebrow">Estudo de caso / {item.area}</p><h1>{item.name}</h1><p className="case-lead">{item.lead}</p>
     <dl className="report-facts"><div><dt>Estado</dt><dd>{item.status}</dd></div><div><dt>Contribuição</dt><dd>Projecto próprio · concepção e desenvolvimento</dd></div><div><dt>Tecnologias</dt><dd>{item.tools.join(" · ")}</dd></div><div><dt>Referência</dt><dd>{item.version}</dd></div></dl>
     {project && <figure className={`case-artwork accent-${project.accent}`}><ProjectArtwork project={project} eager /><figcaption className="project-image-caption">{project.image.caption}</figcaption></figure>}
     <figure className="case-flow"><figcaption>Fluxo de utilização documentado</figcaption><ol>{item.flow.map((step, i) => <li key={step}><span>0{i + 1}</span>{step}</li>)}</ol></figure>

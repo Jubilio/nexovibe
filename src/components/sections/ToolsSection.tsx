@@ -5,7 +5,7 @@ export default function ToolsSection() {
       className="container tools-section"
       aria-label="Tecnologias e ferramentas"
     >
-      <p className="eyebrow">AS FERRAMENTAS POR TRÁS DAS IDEIAS</p>
+      <p className="eyebrow">As ferramentas por trás das ideias</p>
       <div className="tools-list">
         {tools.map((tool) => (
           <span key={tool}>{tool}</span>

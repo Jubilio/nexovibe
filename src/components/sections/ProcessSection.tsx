@@ -2,7 +2,7 @@ import { steps } from "@/lib/data";
 export default function ProcessSection() {
   return (
     <section id="metodologia" className="section container">
-      <p className="eyebrow">02 / METODOLOGIA</p>
+      <p className="eyebrow">02 / Metodologia</p>
       <h2>Clareza em cada etapa.</h2>
       <div className="process-grid">
         {steps.map((step) => (

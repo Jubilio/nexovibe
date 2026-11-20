@@ -25,11 +25,14 @@ export default function Navbar({ active }: { active?: string }) {
     const closeOutside = (event: PointerEvent) => {
       if (!nav.current?.contains(event.target as Node)) setOpen(false);
     };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", close);
     document.addEventListener("pointerdown", closeOutside);
     return () => {
       document.removeEventListener("keydown", close);
       document.removeEventListener("pointerdown", closeOutside);
+      document.body.style.overflow = previousOverflow;
     };
   }, [open]);
   return (
@@ -67,20 +70,29 @@ export default function Navbar({ active }: { active?: string }) {
           aria-controls="mobile-navigation"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
         >
-          <span aria-hidden="true">{open ? "×" : "☰"}</span>
+          <span className="menu-toggle-lines" aria-hidden="true" />
         </button>
-        <div id="mobile-navigation" className="mobile-nav" hidden={!open}>
-          {links.map((l) => (
+        <div
+          id="mobile-navigation"
+          className="mobile-nav"
+          hidden={!open}
+          onClick={(event) => {
+            // The panel fills the screen, so a tap on its empty area counts as a tap outside the menu.
+            if (event.target === event.currentTarget) setOpen(false);
+          }}
+        >
+          {links.map((l, i) => (
             <Link
               key={l.href}
               href={l.href}
+              style={{ "--i": i } as React.CSSProperties}
               onClick={() => setOpen(false)}
               aria-current={active === l.href ? "page" : undefined}
             >
               {l.label}
             </Link>
           ))}
-          <a href={active === "/convites" ? "/convites#pedido" : "/#contacto"} onClick={() => setOpen(false)}>
+          <a href={active === "/convites" ? "/convites#pedido" : "/#contacto"} style={{ "--i": links.length } as React.CSSProperties} onClick={() => setOpen(false)}>
             {active === "/convites" ? "Pedir convite ↗" : "Solicitar proposta ↗"}
           </a>
         </div>
